@@ -2,8 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'QuicheSans';
+  src: url('/public/fonts/Fontspring-DEMO-quichesans-black.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-blackitalic.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-bold.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-bolditalic.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-extrabold.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-extrabolditalic.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-italic.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-light.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-lightitalic.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-medium.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-mediumitalic.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-regular.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-thin.otf') format('otf'),
+      url('/public/fonts/Fontspring-DEMO-quichesans-thinitalic.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSerif';
+  src: url('/public/fonts/NotoSerifDisplay-SemiCondensedItalic.ttf') format('otf');
+
+  font-style: normal;
+  font-style: normal;
+}
+
   :root {
-    --background: 0 0% 100%;
+    --background: 48 80.9% 43.1%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -33,4 +60,113 @@
   body {
     @apply text-foreground antialiased;
   }
+}
+
+
+.icon-transition {
+    transition: transform 0.5 ease; /* Transição suave para o ícone */
+}
+
+.icon-up {
+    transform: translateY(-15px); /* Ajuste a altura do deslocamento conforme necessário */
+}
+
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ou a altura desejada */
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.footer{
+  z-index: -1;
+}
+
+.rotacao{
+  transform: rotate(180deg);
+}
+
+.oculto{
+  display: flex;
+  justify-content: space-evenly;
+}
+body {
+    overflow: hidden;
+}
+
+.bg-main {
+  background-color: #ececec;
+}
+
+/* Swiper */
+
+.swiper {
+  width: 99.25rem;
+  /* height: 29.125rem; */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* card */
+.bg-card {
+  background-color: #667e79;
+}
+
+.text-card {
+  color: #6a6868;
+  font-size: 0.93rem;
+  font-family: "quiche-sans", sans-serif;
+}
+
+.font-quiche {
+  font-family: "quiche-sans", sans-serif;
+}
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* Manda o vídeo para o fundo */
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantém a proporção do vídeo */
+}
+.iconBack{
+  background-image: url('../public/img/de-volta.png');
+  background-size: contain;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  
 }
