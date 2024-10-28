@@ -6,6 +6,7 @@ import avaliacoes from "@/public/img/icons/icone-estrela.png";
 import carrinho from "@/public/img/icons/carrinho.png";
 import telefone from "@/public/img/icons/icone-telefone.png";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import logoGold from "@/public/img/logo-gold.png"
 
 import {
   Sidebar,
@@ -67,8 +68,8 @@ export function AppSidebar() {
           <SidebarGroup>
             <SidebarGroupLabel>
               <Image
-              src="/assets/images/logo-gold.png"
-              alt=""
+              src={logoGold}
+              alt="Logo da empresa"
               width={54}
               height={54}
               ></Image>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import iconeMenu from "@/public/img/icons/icone-musicmenu.png";
-import logoGold from "@/public/img/logo-gold.png";
+import logoGold from "@/public/img/logo-gold.png"
 import iconeBag from "@/public/img/icons/icone-bag-compra.png";
 import GreyCard from "@/components/gray-card";
 import { Search } from "lucide-react";
