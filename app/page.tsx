@@ -25,7 +25,7 @@ const Home = () => {
       </div>
       <div>
         <Link
-          href="/pages/main"
+          href="/pages/CategoriaMarcas"
           className="align-items-center me-24 flex justify-end text-center text-xs text-white hover:text-slate-300"
         >
           Continuar sem login

@@ -1,6 +1,6 @@
-import Button from "../../../components/Button";
-import Title from "../../../components/Title";
-import Input from "../../../components/Input";
+import Button from "@/components/button";
+import Title from "@/components/Title";
+import Input from "@/components/Input";
 import Link from "next/link";
 // import BackButton from "../components/BackButton";
 // import Title from "../components/Title";

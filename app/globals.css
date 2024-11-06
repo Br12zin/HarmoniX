@@ -170,3 +170,31 @@ body {
   height: 30px;
   
 }
+.centralizador{
+  display: flex;
+  justify-content: space-evenly;
+}
+.imgc{
+  background-image: url(../public/img/chat.png);
+  background-size:auto;
+  background-position:top;
+  background-repeat: no-repeat;
+}
+.imgt{
+  background-image: url(../public/img/telefone_colorido.png);
+  background-size: auto;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+.imge{
+  background-image: url(../public/img/icons/icone\ email.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.circulofundo{
+  background-image: url(../public/img/Elipse\ 22.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
