@@ -4,21 +4,21 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { PanelLeft } from "lucide-react";
-
+import Image from "next/image";
+// import iconeMenu from "@/public/assets/icons/icone-musicmenu.svg";
 import { useIsMobile } from "@/app/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/buttonsidebar";
-import { Input } from "@/components/ui/inputsidebar";
-import { Separator } from "@/components/ui/separator";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "./buttonsidebar";
+import { Input } from "./inputsidebar";
+import { Separator } from "./separator";
+import { Sheet, SheetContent } from "./sheet";
+import { Skeleton } from "./skeleton";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "./tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -151,7 +151,7 @@ const SidebarProvider = React.forwardRef<
               } as React.CSSProperties
             }
             className={cn(
-              "group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar",
+              "group/sidebar-wrapper has-[[data-variant=inset]]:bg-sidebar flex min-h-svh",
               className,
             )}
             ref={ref}
@@ -191,7 +191,7 @@ const Sidebar = React.forwardRef<
       return (
         <div
           className={cn(
-            "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground",
+            "bg-sidebar text-sidebar-foreground flex h-full w-[--sidebar-width] flex-col",
             className,
           )}
           ref={ref}
@@ -208,7 +208,7 @@ const Sidebar = React.forwardRef<
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
-            className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+            className="bg-sidebar text-sidebar-foreground w-[--sidebar-width] p-0 [&>button]:hidden"
             style={
               {
                 "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
@@ -225,7 +225,7 @@ const Sidebar = React.forwardRef<
     return (
       <div
         ref={ref}
-        className="group peer hidden text-sidebar-foreground md:block"
+        className="text-sidebar-foreground group peer hidden md:block"
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
@@ -258,7 +258,7 @@ const Sidebar = React.forwardRef<
         >
           <div
             data-sidebar="sidebar"
-            className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+            className="bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow"
           >
             {children}
           </div>
@@ -269,31 +269,160 @@ const Sidebar = React.forwardRef<
 );
 Sidebar.displayName = "Sidebar";
 
+//
+// eslint-disable-next-line react-hooks/rules-of-hooks
+
+//  //
 const SidebarTrigger = React.forwardRef<
+  React.ElementRef<typeof Button>,
+  React.ComponentProps<typeof Button>
+>(({ className, onClick, fillbtnnav, ...props }, ref) => {
+  const { toggleSidebar } = useSidebar();
+  //
+
+  return (
+    <div>
+      {
+        <Button
+          ref={ref}
+          data-sidebar="trigger"
+          variant="link"
+          size="icon"
+          // fill={fillbtnnav}
+          className={cn(`ms-10 mt-7 flex h-10 w-10 items-center`, className)}
+          onClick={(event) => {
+            onClick?.(event);
+            toggleSidebar();
+          }}
+          {...props}
+        >
+          <svg
+            version="1.0"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512.000000 512.000000"
+            preserveAspectRatio="xMidYMid meet"
+            style={{ width: "100%", height: "100%" }}
+          >
+            <g
+              transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+              fill={fillbtnnav}
+              stroke="none"
+              height="8.5rem"
+              width="8.5rem"
+            >
+              <path
+                d="M4380 4950 c-190 -93 -452 -222 -584 -286 -216 -106 -240 -120 -252
+-150 -12 -28 -14 -326 -14 -1849 l0 -1816 -24 -47 c-38 -73 -59 -100 -138
+-180 -366 -369 -1121 -534 -1441 -313 -244 168 -40 535 428 769 192 96 408
+154 634 170 118 8 126 10 148 36 33 39 32 104 -3 139 -34 34 -78 40 -214 27
+-562 -53 -1104 -375 -1262 -751 -103 -247 -10 -490 234 -608 139 -67 232 -85
+443 -85 155 0 197 4 305 27 511 107 934 395 1078 734 l22 52 0 1794 0 1794
+223 108 c122 60 327 159 455 221 l232 113 0 -312 0 -312 -308 -175 c-169 -96
+-319 -187 -334 -202 -63 -60 -13 -168 78 -168 16 0 164 78 382 203 265 151
+360 210 373 232 18 28 19 59 19 484 l0 453 -34 34 c-26 26 -42 34 -67 33 -23
+0 -152 -58 -379 -169z"
+              />
+              <path
+                d="M314 4289 c-25 -13 -54 -60 -54 -89 0 -29 26 -77 49 -90 13 -7 448
+-10 1323 -10 l1304 0 23 21 c50 47 50 111 -1 154 l-30 25 -1296 -1 c-851 0
+-1304 -4 -1318 -10z"
+              />
+              <path
+                d="M320 2872 c-68 -34 -78 -117 -19 -166 l31 -26 1291 0 c1007 0 1297 3
+1316 13 14 6 34 27 45 46 18 31 18 37 5 75 -28 82 80 76 -1359 76 -1194 0
+-1277 -1 -1310 -18z"
+              />
+              <path
+                d="M294 1436 c-40 -40 -44 -75 -14 -123 13 -21 31 -35 57 -42 41 -12
+1116 -16 1172 -5 65 13 101 80 76 140 -28 67 4 64 -658 64 l-599 0 -34 -34z"
+              />
+            </g>
+          </svg>
+          <span className="sr-only">Toggle Sidebar</span>
+        </Button>
+
+        // ) : (
+      }
+    </div>
+  );
+});
+SidebarTrigger.displayName = "SidebarTrigger";
+
+const CustomTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
   const { toggleSidebar } = useSidebar();
+  //
 
   return (
-    <Button
-      ref={ref}
-      data-sidebar="trigger"
-      variant="ghost"
-      size="icon"
-      className={cn("h-7 w-7", className)}
-      onClick={(event) => {
-        onClick?.(event);
-        toggleSidebar();
-      }}
-      {...props}
-    >
-      <PanelLeft />
-      <span className="sr-only">Toggle Sidebar</span>
-    </Button>
+    <div>
+      {
+        <Button
+          ref={ref}
+          data-sidebar="trigger"
+          variant="ghost"
+          size="icon"
+          className={cn("ms-10 mt-7 flex w-8 items-center", className)}
+          onClick={(event) => {
+            onClick?.(event);
+            toggleSidebar();
+          }}
+          {...props}
+        >
+          <Image
+            src="/img/icons/de-volta.png"
+            alt="Icone do Menu que oculta a sidebar"
+            className="w-14"
+            width={56}
+            height={56}
+            quality={100}
+          ></Image>
+
+          <span className="sr-only">Toggle Sidebar</span>
+        </Button>
+
+        // ) : (
+      }
+    </div>
   );
 });
-SidebarTrigger.displayName = "SidebarTrigger";
+
+CustomTrigger.displayName = "CustomTrigger";
+
+// const bgTrigger = React.forwardRef<
+//   React.ElementRef<typeof Button>,
+//   React.ComponentProps<typeof Button>
+// >(({ className, onClick, ...props }, ref) => {
+//   const { toggleSidebar } = useSidebar();
+//   //
+
+//   return (
+//     <div>
+//       {
+//         <Button
+//           ref={ref}
+//           data-sidebar="trigger"
+//           variant="ghost"
+//           size="icon"
+//           className={cn("ms-10 mt-7 flex w-8 items-center", className)}
+//           onClick={(event) => {
+//             onClick?.(event);
+//             toggleSidebar();
+//           }}
+//           {...props}
+//         >
+//           <DarkerBackground />
+//           <span className="sr-only">Toggle Sidebar</span>
+//         </Button>
+
+//         // ) : (
+//       }
+//     </div>
+//   );
+// });
+
+// bgTrigger.displayName = "bgTrigger";
 
 const SidebarRail = React.forwardRef<
   HTMLButtonElement,
@@ -310,10 +439,10 @@ const SidebarRail = React.forwardRef<
       onClick={toggleSidebar}
       title="Toggle Sidebar"
       className={cn(
-        "absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
+        "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex",
         "[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize",
         "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
-        "group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar",
+        "group-data-[collapsible=offcanvas]:hover:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full",
         "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
         "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
         className,
@@ -351,7 +480,7 @@ const SidebarInput = React.forwardRef<
       ref={ref}
       data-sidebar="input"
       className={cn(
-        "h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
+        "focus-visible:ring-sidebar-ring h-8 w-full bg-background shadow-none focus-visible:ring-2",
         className,
       )}
       {...props}
@@ -398,7 +527,7 @@ const SidebarSeparator = React.forwardRef<
     <Separator
       ref={ref}
       data-sidebar="separator"
-      className={cn("mx-2 w-auto bg-sidebar-border", className)}
+      className={cn("bg-sidebar-border mx-2 w-auto", className)}
       {...props}
     />
   );
@@ -449,7 +578,7 @@ const SidebarGroupLabel = React.forwardRef<
       ref={ref}
       data-sidebar="group-label"
       className={cn(
-        "flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 outline-none ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium outline-none transition-[margin,opa] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
         className,
       )}
@@ -470,7 +599,7 @@ const SidebarGroupAction = React.forwardRef<
       ref={ref}
       data-sidebar="group-action"
       className={cn(
-        "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 outline-none transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 after:md:hidden",
         "group-data-[collapsible=icon]:hidden",
@@ -616,7 +745,7 @@ const SidebarMenuAction = React.forwardRef<
       ref={ref}
       data-sidebar="menu-action"
       className={cn(
-        "absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 outline-none transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 after:md:hidden",
         "peer-data-[size=sm]/menu-button:top-1",
@@ -624,7 +753,7 @@ const SidebarMenuAction = React.forwardRef<
         "peer-data-[size=lg]/menu-button:top-2.5",
         "group-data-[collapsible=icon]:hidden",
         showOnHover &&
-          "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0",
+          "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
         className,
       )}
       {...props}
@@ -641,7 +770,7 @@ const SidebarMenuBadge = React.forwardRef<
     ref={ref}
     data-sidebar="menu-badge"
     className={cn(
-      "pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground",
+      "text-sidebar-foreground pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums",
       "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground",
       "peer-data-[size=sm]/menu-button:top-1",
       "peer-data-[size=default]/menu-button:top-1.5",
@@ -700,7 +829,7 @@ const SidebarMenuSub = React.forwardRef<
     ref={ref}
     data-sidebar="menu-sub"
     className={cn(
-      "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5",
+      "border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5",
       "group-data-[collapsible=icon]:hidden",
       className,
     )}
@@ -732,7 +861,7 @@ const SidebarMenuSubButton = React.forwardRef<
       data-size={size}
       data-active={isActive}
       className={cn(
-        "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground",
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground active:bg-sidebar-accent active:text-sidebar-accent-foreground [&>svg]:text-sidebar-accent-foreground flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
         "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
         size === "sm" && "text-xs",
         size === "md" && "text-sm",
@@ -770,4 +899,6 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
+  CustomTrigger,
+  // bgTrigger,
 };
