@@ -20,7 +20,7 @@ const GreyCard = ({ imagem, titulo, paragrafo }) => {
       <p className="mt-2 px-[5.3rem] text-center font-medium text-card">
         {paragrafo}
       </p>
-    </Link>
+    </Link >
   );
 };
 

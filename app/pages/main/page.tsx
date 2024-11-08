@@ -4,29 +4,20 @@ import GreyCard from "@/components/gray-card";
 
 import Carousel from "@/components/carousel";
 
-import { useState } from "react";
-import DarkerBackground from "@/components/background-escurecida";
 
 import NavMain from "@/components/nav-main";
 // import ImgInstrumento from "@/app/assets/images/instruments-2.png";
+import { useVisibility } from "@/components/VisibilityContext";
 
 const Main = () => {
-  const name = "";
-  console.log(name);
-  const [isVisible, setIsVisible] = useState(true);
-  function onHandleVisibibility() {
-    setIsVisible(!isVisible);
-  }
+  const { isVisible, onHandleVisibility } = useVisibility();
+
   return (
     <>
-      {!isVisible && (
-        <DarkerBackground onClick={() => onHandleVisibibility()} />
-      )}
-
-      <div className="h-auto min-h-screen w-auto bg-[#ececec]">
+      <div className="h-auto min-h-screen w-auto">
         <NavMain
           isVisible={isVisible}
-          onHandleVisibibility={onHandleVisibibility}
+          onHandleVisibility={onHandleVisibility}
         />
 
         <Carousel />

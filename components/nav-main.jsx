@@ -3,7 +3,6 @@
 import Image from "next/image";
 import logoGold from "@/public/img/logo-gold.png";
 
-
 import { Search } from "lucide-react";
 
 import Link from "next/link";
@@ -12,7 +11,7 @@ import { useEffect, useState } from "react";
 
 import IconBag from "@/components/icon-bag";
 
-const NavMain = ({ isVisible, onHandleVisibibility }) => {
+const NavMain = ({ isVisible, onHandleVisibility }) => {
   const [bg, setBg] = useState("bg-transparent");
   const [bgBtnNav, setBgBtnNav] = useState("");
 
@@ -35,7 +34,7 @@ const NavMain = ({ isVisible, onHandleVisibibility }) => {
   return (
     <nav className={`sticky top-0 z-10 transition-all duration-300 ${bg}`}>
       <AppSidebar
-        mudarVisibilidade={onHandleVisibibility}
+        mudarVisibilidade={onHandleVisibility}
         isVisible={isVisible}
         btnSideNav={`${bgBtnNav}`}
         fillbtn={`${bgBtnNav}`}
