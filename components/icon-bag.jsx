@@ -1,4 +1,4 @@
-const IconBag = ({ colorIcon }) => {
+const IconBag = ({ colorIcon, opacidade }) => {
   return (
     <div className="z-10 mt-8">
       <a href="#">
@@ -7,7 +7,8 @@ const IconBag = ({ colorIcon }) => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 476.000000 323.000000"
           preserveAspectRatio="xMidYMid meet"
-          style={{ width: "7rem", height: "7rem" }}
+          className={`${opacidade}`}
+          style={{ width: "7rem", height: "7rem"}}
           fill={colorIcon}
           stroke="none"
         >

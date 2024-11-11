@@ -1,7 +1,9 @@
-export default function Title({children}){
-  return(
+export default function Title({ children }) {
+  return (
     <>
-     <h1 className="text-5xl mb-20 text-center font-bold titleFont text-slate-800">{children}</h1>
+      <h1 className="titleFont mb-20 text-center text-5xl font-bold text-slate-800">
+        {children}
+      </h1>
     </>
-  )
+  );
 }

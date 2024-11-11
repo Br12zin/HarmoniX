@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import GreyCard from "@/components/gray-card";
 
@@ -35,8 +35,8 @@ const Main = () => {
             imagem="/img/instruments-2.png"
             titulo="Instrumentos"
             paragrafo="Encontre os melhores instrumentos musicais, 
-com o melhor preço e as melhores recomendações"
-          />
+            com o melhor preço e as melhores recomendações"
+            />
           <GreyCard
             imagem="/img/brand-1.png"
             titulo="Marcas"

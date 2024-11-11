@@ -4,7 +4,7 @@ import Link from "next/link";
 const GreyCard = ({ imagem, titulo, paragrafo }) => {
   return (
     <Link
-      href={"#"}
+      href={"/pages/CategoriaMarcas"}
       className="flex w-[31.25rem] flex-col items-center rounded-[3rem] border border-[#7070703d] bg-slate-500/35 shadow-xl"
     >
       <Image

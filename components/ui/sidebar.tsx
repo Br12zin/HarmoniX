@@ -10,7 +10,7 @@ import { useIsMobile } from "@/app/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Button } from "./buttonsidebar";
 import { Input } from "./inputsidebar";
-import { Separator } from "./separator";
+import { Separator } from "./separatorum";
 import { Sheet, SheetContent } from "./sheet";
 import { Skeleton } from "./skeleton";
 import {

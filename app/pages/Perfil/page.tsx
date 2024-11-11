@@ -1,11 +1,18 @@
-"use client";
+"use client"
+import Link from "next/link";
 import Image from "next/image";
 import Input from "@/components/Input";
-import { Button } from "@/components/button";
+import Buttonshadcn from "@/components/button";
+import BackBtnSearch from "@/components/BackBtnSearch";
+
 
 const Perfil = () => {
   return (
     <div className="bg-{#ECECEC}">
+      
+      <Link href="/pages/main">
+        <BackBtnSearch btns="iconBack"/>
+      </Link>
       <div className="flex justify-center p-6">
         <Image src="/logo-gold.png" width={110} height={110} alt="Imagem" />
       </div>
@@ -51,12 +58,12 @@ const Perfil = () => {
           >
             Celular
           </Input>
-          <Button
+          <Buttonshadcn
             variant="outline"
             className="mt-4 rounded-full p-6 text-xl text-[#ECECEC]"
           >
             Salvar alterações
-          </Button>
+          </Buttonshadcn>
         </div>
       </div>
     </div>

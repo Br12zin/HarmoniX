@@ -52,12 +52,12 @@ import Image from "next/image";
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/pages/main",
     image: casa,
   },
   {
     title: "Perfil",
-    url: "#",
+    url: "/pages/Perfil",
     image: perfil,
   },
   {
