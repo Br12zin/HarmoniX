@@ -4,54 +4,59 @@
 
 @font-face {
   font-family: 'QuicheSans';
-  src: url('/public/fonts/Fontspring-DEMO-quichesans-black.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-blackitalic.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-bold.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-bolditalic.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-extrabold.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-extrabolditalic.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-italic.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-light.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-lightitalic.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-medium.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-mediumitalic.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-regular.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-thin.otf') format('otf'),
-      url('/public/fonts/Fontspring-DEMO-quichesans-thinitalic.otf') format('otf');
+  src:
+    url("/public/fonts/Fontspring-DEMO-quichesans-black.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-blackitalic.otf")
+      format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-bold.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-bolditalic.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-extrabold.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-extrabolditalic.otf")
+      format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-italic.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-light.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-lightitalic.otf")
+      format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-medium.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-mediumitalic.otf")
+      format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-regular.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-thin.otf") format("otf"),
+    url("/public/fonts/Fontspring-DEMO-quichesans-thinitalic.otf") format("otf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'NotoSerif';
-  src: url('/public/fonts/NotoSerifDisplay-SemiCondensedItalic.ttf') format('otf');
+  src: url("/public/fonts/NotoSerifDisplay-SemiCondensedItalic.ttf")
+    format("otf");
 
   font-style: normal;
   font-style: normal;
 }
 
-  :root {
-    --background: 48 80.9% 43.1%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
+:root {
+  --background: 48 80.9% 43.1%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+}
 
 @layer base {
   * {
@@ -62,24 +67,24 @@
   }
 }
 
-
 .icon-transition {
-    transition: transform 0.5 ease; /* Transição suave para o ícone */
+  transition: transform 0.5 ease; /* Transição suave para o ícone */
 }
 
 .icon-up {
-    transform: translateY(-15px); /* Ajuste a altura do deslocamento conforme necessário */
+  transform: translateY(
+    -15px
+  ); /* Ajuste a altura do deslocamento conforme necessário */
 }
 
-
 .video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Ou a altura desejada */
-    overflow: hidden;
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Ou a altura desejada */
+  overflow: hidden;
+  z-index: -1;
 }
 
 .video {
@@ -88,15 +93,15 @@
   object-fit: cover;
 }
 
-.footer{
+.footer {
   z-index: -1;
 }
 
-.rotacao{
+.rotacao {
   transform: rotate(180deg);
 }
 
-.oculto{
+.oculto {
   display: flex;
   justify-content: space-evenly;
 }
@@ -145,7 +150,7 @@ body{
 }
 
 .font-quiche {
-  font-family: "quiche-sans", sans-serif;
+  font-family: 'quiche-sans', sans-serif;
 }
 .video-background {
   position: fixed;
@@ -162,34 +167,38 @@ body{
   height: 100%;
   object-fit: cover; /* Mantém a proporção do vídeo */
 }
-.iconBack{
-  background-image: url('../public/img/de-volta.png');
+.iconBack {
+  background-image: url("../public/img/de-volta.png");
   background-size: contain;
   background-position: center;
   width: 30px;
   height: 30px;
-  
 }
-.centralizador{
+.centralizador {
   display: flex;
   justify-content: space-evenly;
 }
-.imgc{
+.imgc {
   background-image: url(../public/img/chat.png);
-  background-size:auto;
-  background-position:top;
+  background-size: auto;
+  background-position: top;
   background-repeat: no-repeat;
 }
-.imgt{
+.imgt {
   background-image: url(../public/img/telefone_colorido.png);
   background-size: auto;
   background-position: top;
   background-repeat: no-repeat;
 }
-.imge{
+.imge {
   background-image: url(../public/img/icons/icone\ email.png);
   background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
 }
-
+.circulofundo {
+  background-image: url(../public/img/Elipse\ 22.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
