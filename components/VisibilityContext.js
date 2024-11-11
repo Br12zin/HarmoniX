@@ -2,7 +2,8 @@
 
 // src/context/SidebarContext.js
 import { createContext, useContext, useState } from "react";
-import DarkerBackground from "./background-escurecida";
+// import DarkerBackground from "./background-escurecida";
+
 // Cria o contexto
 const VisibilityContext = createContext();
 
@@ -15,7 +16,8 @@ export const VisibilityProvider = ({ children }) => {
 
   return (
     <VisibilityContext.Provider value={{ isVisible, onHandleVisibility }}>
-      {!isVisible && <DarkerBackground onClick={() => onHandleVisibility()} />}
+      {/* {!isVisible && <DarkerBackground onClick={() => onHandleVisibility()} />} */}
+
       {children}
     </VisibilityContext.Provider>
   );
