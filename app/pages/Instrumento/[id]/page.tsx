@@ -2,30 +2,25 @@
 
 import Image from "next/image";
 import { CreditCard, Star, Barcode } from "lucide-react";
+import { teclado, violao } from "@/components/Produto/data";
 import Input from "@/components/Input";
 import Button from "@/components/button";
 
-interface InstrumentItemProps {
-  instrumento: {
+interface InstrumentsItemProps {
+  params: {
     id: string;
-    namecard: string;
-    nome: string;
-    oldPrice: string;
-    newPrice: string;
-    image: string;
-    informacoes: string;
-    marca: string;
-    modelo: string;
-    teclasnum: string;
-    sobreMarca: string;
   };
 }
 
+export default function InstrumentsItem({
+  params: { id },
+}: InstrumentsItemProps) {
+  const instrumento = [...violao, ...teclado].find((item) => item.id === id);
 
+  if (!instrumento) {
+    return <p>Instrumento não encontrado</p>;
+  }
 
-
-
-export default function InstrumentsItem({ instrumento }: InstrumentItemProps) {
   const parcelado = (parseFloat(instrumento.newPrice) / 10).toFixed(2);
 
   return (
@@ -102,7 +97,7 @@ export default function InstrumentsItem({ instrumento }: InstrumentItemProps) {
               <span className="font-medium">Modelo:</span> {instrumento.modelo}
             </li>
             <li>
-              <span className="font-medium">Tampo:</span> {instrumento.tampo}
+              <span className="font-medium">Tampo:</span> {instrumento.teclasnum}
             </li>
           </ul>
           <h2 className="mb-2 mt-6 text-xl font-semibold">Sobre a Marca</h2>

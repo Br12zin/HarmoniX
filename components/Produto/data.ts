@@ -13,86 +13,86 @@ const violao = [
       "A série GEWA STUDENT representa a entrada perfeita no mundo dos violões acústicos com uma excelente relação entre preço e desempenho. Fatores como o perfil do braço e a ação das cordas, que são cruciais para a tocabilidade, estão perfeitamente ajustados. Os violões são leves e bem equilibradas. Um papel importante é desempenhado pelo braço feito de madeira okoumé, cujo reforço interno de carbono estabiliza essa área sensível. O verniz eco-mate à base de água proporciona uma sensação agradável e contribui significativamente para o caráter sonoro aberto dos instrumentos, pois o tratamento de poros abertos permite que a madeira vibre com mais liberdade. Cordas Hannabach 815HT feitas na Alemanha são instaladas na fábrica e complementam perfeitamente o conceito sonoro desta série.",
     marca: "GEWA",
     modelo: "VG500.140",
-    tampo: " Spruce",
+    teclasnum: " Spruce",
     sobreMarca:
       "A GEWA foi fundada em 1925 por Georg Walther na “Vogtländische Musikwinkel” em Adorf. Desde então, a melhoria constante dos produtos e serviços, bem como a orientação para as necessidades individuais dos clientes, têm como prioridade máxima. A linha GEWA Pure oferece Violões para iniciantes, estudantes e profissionais. É por isso que a GEWA Pure torna a entrada no mundo da música o mais fácil e acessível possível para os músicos de amanhã.",
   },
-    {
-      id: "2",
-      namecard: "Violão Clássico C-40 II",
-      nome: "Violão Clássico Yamaha Acústico Nylon C-40 II - Natural",
-      oldPrice: "899,00",
-      newPrice: "809,10",
-      image: "/img/violãoYamaha.png",
-      informacoes:
-        "Os violões acústicos de cordas de nylon C40 tornam o processo de aprendizado o mais fácil e agradável possível. Além de seu som e tocabilidade excepcionais, esses instrumentos são realmente bonitos, e é por isso que foram escolhidos por vários iniciantes no mundo todo. Vários dos melhores professores recomendam os violões de cordas de nylon C40 para seus alunos devido à excelente combinação de alta qualidade e preço acessível.Embora seja verdade que os violões C40 são excelentes instrumentos para iniciantes, sua estrutura, som e tocabilidade impressionantes, garantem que eles continuarão a atendê-lo durante toda a sua jornada musical. Além disso, foram desenvolvidos usando o know-how e a experiência adquiridos ao projetar e construir nossos instrumentos profissionais premium, incluindo a escolha de madeiras extraordinárias que resultam em som excelente e durabilidade incrível.",
-      marca: "Yamaha",
-      modelo: " C-40 II",
-      tampo: " Spruce",
-      sobreMarca:
-        "As mãos habilidosas de Torakusu Yamaha deram início à maior fábrica de instrumentos musicais do mundo. Tudo começou em 1887, quando ele criou o primeiro órgão de bambu do Japão. O desenvolvimento da arte de criar instrumentos musicais veio como uma consequência natural. Torakusu criou, anos mais tarde, a Nippon Gakki Co. Ltda, responsável pela idealização do primeiro piano japonês. Em 1904, o piano e o órgão Yamaha receberam reconhecimento mundial ao ganhar o grande prêmio na Feira Mundial de St. Louis. Atualmente, a Yamaha Musical se firmou como a maior fabricante de instrumentos musicais do mundo, somando 26 mil funcionários no total, 89 subsidiárias. Desde o ano de 1900 a empresa já vendeu 6,15 milhões de pianos. Além da liderança no mercado de instrumentos musicais, a empresa está no topo dos mercados de áudio e vídeo, equipamentos de tecnologia da informação, entre outros. A filosofia de negócios da corporação é totalmente voltada para o consumidor, por isso a criação dos produtos é detalhadamente pensada para preencher lacunas existentes nos diversos segmentos. A busca pela excelência é alcançada por meio da proximidade entre os produtos Yamaha e o potencial cliente. Dentro de uma estratégia mundial de desenvolvimento, a Yamaha apóia diversas atividades musicais, incluindo parcerias com escolas de música, realização de workshops, entre outras atividades. A idéia principal é dar suporte para a educação e popularização da música universal e local. Essa interação com o público consumidor, somada à constante incorporação de novas tecnologias, resulta em soluções que oferecem grande satisfação ao usuário, respeitando sua individualidade, criatividade e iniciativa.",
-    },
-    {
-      id: "3",
-      namecard: "Violão Giannini GN-15",
-      nome: "Violão Giannini Acústico Nylon Estudante GN-15 - Tobacco Sunburst",
-      oldPrice: "679,00",
-      newPrice: "611,10",
-      image: "/img/violãoGianinni.png",
-      informacoes:
-        "Esta série intermediária é para quem já tem alguma familiaridade com violões e busca se aprimorar. Superiores à série Start, mas extremamente acessíveis para os músicos novatos.",
-      marca: "Giannini",
-      modelo: " GN-15 TS",
-      tampo: " Spruce",
-      sobreMarca:
-        "A Giannini é uma das marcas de instrumentos musicais mais tradicionais e respeitadas do Brasil. Conhecida pela qualidade e inovação, a empresa combina técnicas artesanais com tecnologias modernas para produzir uma ampla gama de instrumentos, incluindo violões, guitarras, baixos e ukuleles. Além de fabricar instrumentos de alta qualidade, a Giannini apoia a cultura musical no Brasil por meio de projetos sociais e educacionais. Reconhecida internacionalmente, a marca é sinônimo de excelência e paixão pela música, sendo a escolha de muitos músicos renomados ao redor do mundo.",
-    },
-    {
-      id: "4",
-      namecard: "Violão Giannini GN-15 Preto",
-      nome: "Violão Giannini Acústico Nylon Estudo GN-15 - Preto",
-      oldPrice: "679,00",
-      newPrice: "611,10",
-      image: "/img/violãoGianinniBlack.png",
-      informacoes:
-        "Esta série intermediária é para quem já tem alguma familiaridade com violões e busca se aprimorar. Superiores à série Start, mas extremamente acessíveis para os músicos novatos.",
-      marca: "Giannini",
-      modelo: " GN-15 BK",
-      tampo: " Spruce",
-      sobreMarca:
-        "A Giannini é uma das marcas de instrumentos musicais mais tradicionais e respeitadas do Brasil. Conhecida pela qualidade e inovação, a empresa combina técnicas artesanais com tecnologias modernas para produzir uma ampla gama de instrumentos, incluindo violões, guitarras, baixos e ukuleles. Além de fabricar instrumentos de alta qualidade, a Giannini apoia a cultura musical no Brasil por meio de projetos sociais e educacionais. Reconhecida internacionalmente, a marca é sinônimo de excelência e paixão pela música, sendo a escolha de muitos músicos renomados ao redor do mundo.",
-    },
-    {
-      id: "5",
-      namecard: "Violão Rozini RX205",
-      nome: "Violão Rozini Mini Acústico Nylon Baby 3/4 RX205 ACFI Estudante",
-      oldPrice: "999,00",
-      newPrice: "899,10",
-      image: "/img/violãoRozini.png",
-      informacoes:
-        "O Violão Rozini RX205 é um excelente instrumento, possuindo um corpo no tamanho reduzido, o que facilita no transporte e na tocabilidade, podendo até ser um ótimo presente para crianças. Feito com tampo em marfim, laterais e fundo laminado em imbuia e braço em cedro, o que traz leveza e facilidade ao toque do instrumento, além de oferecer sons firmes e timbre encorpado.",
-      marca: "Rozini",
-      modelo: " RX205.AC.F.I",
-      tampo: " Spruce",
-      sobreMarca:
-        "A Rozini produz de forma artesanal Violões, Violas Caipira, Cavacos, Banjos e Bandolins, Percussão, Pandeiros e o exclusivo Tanajura, além de distribuir acessórios musicais como Tarraxas, Equalizadores, Cases, etc. É uma marca nacional, criada em meados da década de 90, por José Roberto Rozini com seu grande tino comercial, acompanhado de José Pereira, experiente Luthier, aposentado depois de 30 anos de trabalho.",
-    },
-    {
-      id: "6",
-      namecard: "Violão Fender CC 60s",
-      nome: "Violão Fender Concert Acústico Aço CC 60s - All Mahogany",
-      oldPrice: "3.290,00",
-      newPrice: "2.961,00",
-      image: "/img/violãoFender.png",
-      informacoes:
-        "Compacto e confortável, o CC-60S é ideal para músicos iniciantes. O corpo menor do tamanho de um concerto é fácil de manobrar em qualquer posição de execução, com uma voz articulada que é ótima para tocar com os dedos. Seu tampo em mahogany sólido melodioso, braço fácil de tocar e fundo e laterais em mahogany fazem do CC-60S a escolha perfeita para a praia, o pátio ou o café.",
-      marca: "Fender",
-      modelo: " CC-60s All-Mahogany Concert",
-      tampo: "Mahogany",
-      sobreMarca:
-        "Os instrumentos Icônicos da Fender como a Telecaster, Stratocaster, Precision Bass e Jazz Bass são conhecidos mundialmente como os instrumentos que iniciaram a revolução do rock, e continuam a ser altamente valorizados pelos músicos e colecionadores atuais. Com uma história ilustre que antecede 1946, a Fender tem marcado e transformado a música em todo o mundo e em quase todos os gêneros musicais: rock 'n' roll, country e western, jazz, rhythm and blues e muitos outros. Todos, de iniciantes e amadores até artistas e intérpretes mais aclamados do mundo têm usado instrumentos e amplificadores Fender, tornando a empresa não só um nome de referencia na indústria da música, como também um ícone cultural.",
-    },
-  ];
+  {
+    id: "2",
+    namecard: "Violão Clássico C-40 II",
+    nome: "Violão Clássico Yamaha Acústico Nylon C-40 II - Natural",
+    oldPrice: "899,00",
+    newPrice: "809,10",
+    image: "/img/violãoYamaha.png",
+    informacoes:
+      "Os violões acústicos de cordas de nylon C40 tornam o processo de aprendizado o mais fácil e agradável possível. Além de seu som e tocabilidade excepcionais, esses instrumentos são realmente bonitos, e é por isso que foram escolhidos por vários iniciantes no mundo todo. Vários dos melhores professores recomendam os violões de cordas de nylon C40 para seus alunos devido à excelente combinação de alta qualidade e preço acessível.Embora seja verdade que os violões C40 são excelentes instrumentos para iniciantes, sua estrutura, som e tocabilidade impressionantes, garantem que eles continuarão a atendê-lo durante toda a sua jornada musical. Além disso, foram desenvolvidos usando o know-how e a experiência adquiridos ao projetar e construir nossos instrumentos profissionais premium, incluindo a escolha de madeiras extraordinárias que resultam em som excelente e durabilidade incrível.",
+    marca: "Yamaha",
+    modelo: " C-40 II",
+    teclasnum: " Spruce",
+    sobreMarca:
+      "As mãos habilidosas de Torakusu Yamaha deram início à maior fábrica de instrumentos musicais do mundo. Tudo começou em 1887, quando ele criou o primeiro órgão de bambu do Japão. O desenvolvimento da arte de criar instrumentos musicais veio como uma consequência natural. Torakusu criou, anos mais tarde, a Nippon Gakki Co. Ltda, responsável pela idealização do primeiro piano japonês. Em 1904, o piano e o órgão Yamaha receberam reconhecimento mundial ao ganhar o grande prêmio na Feira Mundial de St. Louis. Atualmente, a Yamaha Musical se firmou como a maior fabricante de instrumentos musicais do mundo, somando 26 mil funcionários no total, 89 subsidiárias. Desde o ano de 1900 a empresa já vendeu 6,15 milhões de pianos. Além da liderança no mercado de instrumentos musicais, a empresa está no topo dos mercados de áudio e vídeo, equipamentos de tecnologia da informação, entre outros. A filosofia de negócios da corporação é totalmente voltada para o consumidor, por isso a criação dos produtos é detalhadamente pensada para preencher lacunas existentes nos diversos segmentos. A busca pela excelência é alcançada por meio da proximidade entre os produtos Yamaha e o potencial cliente. Dentro de uma estratégia mundial de desenvolvimento, a Yamaha apóia diversas atividades musicais, incluindo parcerias com escolas de música, realização de workshops, entre outras atividades. A idéia principal é dar suporte para a educação e popularização da música universal e local. Essa interação com o público consumidor, somada à constante incorporação de novas tecnologias, resulta em soluções que oferecem grande satisfação ao usuário, respeitando sua individualidade, criatividade e iniciativa.",
+  },
+  {
+    id: "3",
+    namecard: "Violão Giannini GN-15",
+    nome: "Violão Giannini Acústico Nylon Estudante GN-15 - Tobacco Sunburst",
+    oldPrice: "679,00",
+    newPrice: "611,10",
+    image: "/img/violãoGianinni.png",
+    informacoes:
+      "Esta série intermediária é para quem já tem alguma familiaridade com violões e busca se aprimorar. Superiores à série Start, mas extremamente acessíveis para os músicos novatos.",
+    marca: "Giannini",
+    modelo: " GN-15 TS",
+    teclasnum: " Spruce",
+    sobreMarca:
+      "A Giannini é uma das marcas de instrumentos musicais mais tradicionais e respeitadas do Brasil. Conhecida pela qualidade e inovação, a empresa combina técnicas artesanais com tecnologias modernas para produzir uma ampla gama de instrumentos, incluindo violões, guitarras, baixos e ukuleles. Além de fabricar instrumentos de alta qualidade, a Giannini apoia a cultura musical no Brasil por meio de projetos sociais e educacionais. Reconhecida internacionalmente, a marca é sinônimo de excelência e paixão pela música, sendo a escolha de muitos músicos renomados ao redor do mundo.",
+  },
+  {
+    id: "4",
+    namecard: "Violão Giannini GN-15 Preto",
+    nome: "Violão Giannini Acústico Nylon Estudo GN-15 - Preto",
+    oldPrice: "679,00",
+    newPrice: "611,10",
+    image: "/img/violãoGianinniBlack.png",
+    informacoes:
+      "Esta série intermediária é para quem já tem alguma familiaridade com violões e busca se aprimorar. Superiores à série Start, mas extremamente acessíveis para os músicos novatos.",
+    marca: "Giannini",
+    modelo: " GN-15 BK",
+    teclasnum: " Spruce",
+    sobreMarca:
+      "A Giannini é uma das marcas de instrumentos musicais mais tradicionais e respeitadas do Brasil. Conhecida pela qualidade e inovação, a empresa combina técnicas artesanais com tecnologias modernas para produzir uma ampla gama de instrumentos, incluindo violões, guitarras, baixos e ukuleles. Além de fabricar instrumentos de alta qualidade, a Giannini apoia a cultura musical no Brasil por meio de projetos sociais e educacionais. Reconhecida internacionalmente, a marca é sinônimo de excelência e paixão pela música, sendo a escolha de muitos músicos renomados ao redor do mundo.",
+  },
+  {
+    id: "5",
+    namecard: "Violão Rozini RX205",
+    nome: "Violão Rozini Mini Acústico Nylon Baby 3/4 RX205 ACFI Estudante",
+    oldPrice: "999,00",
+    newPrice: "899,10",
+    image: "/img/violãoRozini.png",
+    informacoes:
+      "O Violão Rozini RX205 é um excelente instrumento, possuindo um corpo no tamanho reduzido, o que facilita no transporte e na tocabilidade, podendo até ser um ótimo presente para crianças. Feito com tampo em marfim, laterais e fundo laminado em imbuia e braço em cedro, o que traz leveza e facilidade ao toque do instrumento, além de oferecer sons firmes e timbre encorpado.",
+    marca: "Rozini",
+    modelo: " RX205.AC.F.I",
+    teclasnum: " Spruce",
+    sobreMarca:
+      "A Rozini produz de forma artesanal Violões, Violas Caipira, Cavacos, Banjos e Bandolins, Percussão, Pandeiros e o exclusivo Tanajura, além de distribuir acessórios musicais como Tarraxas, Equalizadores, Cases, etc. É uma marca nacional, criada em meados da década de 90, por José Roberto Rozini com seu grande tino comercial, acompanhado de José Pereira, experiente Luthier, aposentado depois de 30 anos de trabalho.",
+  },
+  {
+    id: "6",
+    namecard: "Violão Fender CC 60s",
+    nome: "Violão Fender Concert Acústico Aço CC 60s - All Mahogany",
+    oldPrice: "3.290,00",
+    newPrice: "2.961,00",
+    image: "/img/violãoFender.png",
+    informacoes:
+      "Compacto e confortável, o CC-60S é ideal para músicos iniciantes. O corpo menor do tamanho de um concerto é fácil de manobrar em qualquer posição de execução, com uma voz articulada que é ótima para tocar com os dedos. Seu tampo em mahogany sólido melodioso, braço fácil de tocar e fundo e laterais em mahogany fazem do CC-60S a escolha perfeita para a praia, o pátio ou o café.",
+    marca: "Fender",
+    modelo: " CC-60s All-Mahogany Concert",
+    teclasnum: "Mahogany",
+    sobreMarca:
+      "Os instrumentos Icônicos da Fender como a Telecaster, Stratocaster, Precision Bass e Jazz Bass são conhecidos mundialmente como os instrumentos que iniciaram a revolução do rock, e continuam a ser altamente valorizados pelos músicos e colecionadores atuais. Com uma história ilustre que antecede 1946, a Fender tem marcado e transformado a música em todo o mundo e em quase todos os gêneros musicais: rock 'n' roll, country e western, jazz, rhythm and blues e muitos outros. Todos, de iniciantes e amadores até artistas e intérpretes mais aclamados do mundo têm usado instrumentos e amplificadores Fender, tornando a empresa não só um nome de referencia na indústria da música, como também um ícone cultural.",
+  },
+];
 
   const teclado = [
     {
