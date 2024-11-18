@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { DropDawn } from "@/components/DropDawn";
 import NavMain from "@/components/nav-main";
-import { useVisibility } from "@/components/VisibilityContext";0
+import { useVisibility } from "@/components/VisibilityContext";
 
 export default function CategoriaMarcas() {
   const { isVisible, onHandleVisibility } = useVisibility();

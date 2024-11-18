@@ -99,7 +99,7 @@ export default function CadastreSe() {
           </div>
         </div>
 
-        <Button>Cadastrar-se</Button>
+        <Button caminho="/pages/Login">Cadastrar-se</Button>
       </div>
     </div>
   );
