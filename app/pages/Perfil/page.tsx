@@ -1,23 +1,21 @@
 "use client"
-import Link from "next/link";
-import Image from "next/image";
 import Input from "@/components/Input";
-import Buttonshadcn from "@/components/button";
-import BackBtnSearch from "@/components/BackBtnSearch";
+import Button from "@/components/button";
+import NavMain from "@/components/nav-main";
+import { useVisibility } from "@/components/VisibilityContext";
 
 
 const Perfil = () => {
+  const { isVisible, onHandleVisibility } = useVisibility();
   return (
     <div className="bg-{#ECECEC}">
-      
-      <Link href="/pages/main">
-        <BackBtnSearch btns="iconBack"/>
-      </Link>
-      <div className="flex justify-center p-6">
-        <Image src="/logo-gold.png" width={110} height={110} alt="Imagem" />
-      </div>
+      <NavMain
+        apagar="hidden"
+        isVisible={isVisible}
+        onHandleVisibility={onHandleVisibility}
+      />
       <div className="flex justify-center text-6xl">
-        <h1 className="mb-20">Olá, User</h1>
+        <h1 className="mb-16 mt-20">Olá, User</h1>
       </div>
       <div className="align-items-center flex w-full justify-center">
         <div className="me-40">
@@ -36,9 +34,11 @@ const Perfil = () => {
             E-mail
           </Input>
           <Input
+            className="text-center"
             formLogin="min-w-[20%]"
             placeholder={"Digite sua senha"}
             variantText="text-xl"
+            tipo="password"
           >
             Senha
           </Input>
@@ -58,12 +58,7 @@ const Perfil = () => {
           >
             Celular
           </Input>
-          <Buttonshadcn
-            variant="outline"
-            className="mt-4 rounded-full p-6 text-xl text-[#ECECEC]"
-          >
-            Salvar alterações
-          </Buttonshadcn>
+          <Button caminho="/pages/main">Salvar alterações</Button>
         </div>
       </div>
     </div>
