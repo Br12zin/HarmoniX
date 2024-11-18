@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'QuicheSans';
+  font-family: "QuicheSans";
   src:
     url("/public/fonts/Fontspring-DEMO-quichesans-black.otf") format("otf"),
     url("/public/fonts/Fontspring-DEMO-quichesans-blackitalic.otf")
@@ -27,7 +27,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: 'NotoSerif';
+  font-family: "NotoSerif";
   src: url("/public/fonts/NotoSerifDisplay-SemiCondensedItalic.ttf")
     format("otf");
 
@@ -150,7 +150,7 @@
 }
 
 .font-quiche {
-  font-family: 'quiche-sans', sans-serif;
+  font-family: "quiche-sans", sans-serif;
 }
 .video-background {
   position: fixed;
@@ -193,6 +193,12 @@
 .imge {
   background-image: url(../public/img/icons/icone\ email.png);
   background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.circulofundo {
+  background-image: url(../public/img/Elipse\ 22.png);
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }

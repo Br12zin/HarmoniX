@@ -1,11 +1,9 @@
 import Button from "../../../components/button";
 import Title from "../../../components/Title";
 import Input from "../../../components/Input";
-import { CirclePlus} from "lucide-react";
+import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 import BackBtn from "@/components/BackButton";
-
-
 
 //const categoria1:string = ""
 
@@ -41,25 +39,19 @@ export default function CadastreSe() {
               className="mb-0 w-[130%]"
               formLogin="me-36"
               placeholder="***********"
-              tipo="password"
-              >
+            >
               Senha
             </Input>
             <Input
               className="mb-0 w-[130%]"
               formLogin="me-36"
               placeholder="***********"
-              tipo="password"
             >
               Confirmar Senha
             </Input>
           </div>
-          
-          <div className="flex flex-col">
-            <Input className="mb-0" placeholder="Nome" formLogin="me-4">
-              Nome
-            </Input>
 
+          <div className="flex flex-col">
             <div className="flex items-center">
               <Input
                 className="mb-0"
@@ -68,38 +60,26 @@ export default function CadastreSe() {
               >
                 Telefone
               </Input>
-              <button>
-                <CirclePlus />
-              </button>
+              <CirclePlus />
             </div>
             <div className="flex">
-              <Input
-                className="mb-0 w-[100%]"
-                formLogin="me-6"
-                placeholder="Rua..."
-              >
+              <Input className="mb-0 w-[100%]" formLogin="me-6">
                 Endereço
               </Input>
-              <Input className="mb-0" formLogin="w-[36%]" placeholder="123...">
+              <Input className="mb-0" formLogin="w-[36%]">
                 Número
               </Input>
             </div>
             <div className="flex">
-              <Input
-                className="mb-0"
-                formLogin="w-[30%] me-6"
-                placeholder="00000-000"
-              >
+              <Input className="mb-0" formLogin="w-[30%] me-6">
                 CEP
               </Input>
-              <Input className="mb-0" placeholder="Casa/Ap/Cond">
-                Complemento
-              </Input>
+              <Input className="mb-0">Complemento</Input>
             </div>
           </div>
         </div>
 
-        <Button>Cadastrar-se</Button>
+        <Button>Entrar</Button>
       </div>
     </div>
   );

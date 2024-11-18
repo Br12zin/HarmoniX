@@ -8,6 +8,7 @@ import NavMain from "@/components/nav-main";
 // import ImgInstrumento from "@/app/assets/images/instruments-2.png";
 import { useVisibility } from "@/components/VisibilityContext";
 
+
 const Main = () => {
   const { isVisible, onHandleVisibility } = useVisibility();
 
@@ -25,9 +26,12 @@ const Main = () => {
             imagem="/img/instruments-2.png"
             titulo="Instrumentos"
             paragrafo="Encontre os melhores instrumentos musicais, 
-            com o melhor preço e as melhores recomendações"
+com o melhor preço e as melhores recomendações"
+            link="/pages/Instrumentos"
           />
+
           <GreyCard
+            link="/pages/Marcas"
             imagem="/img/brand-1.png"
             titulo="Marcas"
             paragrafo="Encontre as principais marcas fornecedoras 

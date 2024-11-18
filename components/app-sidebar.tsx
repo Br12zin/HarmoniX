@@ -52,19 +52,19 @@ import Image from "next/image";
 const items = [
   {
     title: "Home",
-    url: "/pages/main",
+    url: "#",
     image: casa,
   },
   {
     title: "Perfil",
-    url: "/pages/Perfil",
+    url: "#",
     image: perfil,
   },
-  // {
-  //   title: "Configurações",
-  //   url: "#",
-  //   image: configuracao,
-  // },
+  {
+    title: "Configurações",
+    url: "#",
+    image: configuracao,
+  },
   {
     title: "Favoritos",
     url: "#",
@@ -77,12 +77,12 @@ const items = [
   },
   {
     title: "Meus Pedidos",
-    url: "/pages/Carrinho",
+    url: "#",
     image: carrinho,
   },
   {
     title: "Fale Conosco",
-    url: "/pages/FaleConosco",
+    url: "#",
     image: telefone,
   },
 ];

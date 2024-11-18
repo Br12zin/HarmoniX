@@ -1,10 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images:{
-    domains:[
-      "picsum.photos/150"
-    ]
-  }
-};
+const nextConfig = {};
 
 export default nextConfig;

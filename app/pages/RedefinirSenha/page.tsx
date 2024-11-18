@@ -17,7 +17,8 @@ export default function RedefinirSenha() {
         </Link>
         <Title>Redefinir Senha</Title>
         <Input placeholder="">Email/Telefone</Input>
-        <Button caminho="/pages/Login">Enviar</Button>
+
+        <Button>Enviar</Button>
       </div>
     </div>
   );

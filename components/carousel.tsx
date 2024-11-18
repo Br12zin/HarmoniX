@@ -35,6 +35,7 @@ const Carousel = () => {
           "--swiper-pagination-color": "#C7A315",
         }}
         cssMode={true}
+        loop={true}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
@@ -52,13 +53,19 @@ const Carousel = () => {
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Image src={banner2} alt="banner 2"></Image>
+          <Link href="#">
+            <Image src={banner2} alt="banner 2"></Image>
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Image src={banner3} alt="banner 3"></Image>
+          <Link href="#">
+            <Image src={banner3} alt="banner 3"></Image>
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Image src={banner4} alt="banner 4"></Image>
+          <Link href="#">
+            <Image src={banner4} alt="banner 4"></Image>
+          </Link>
         </SwiperSlide>
       </Swiper>
     </>
