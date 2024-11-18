@@ -4,6 +4,8 @@ import { Trash } from "lucide-react";
 import Image from "next/image";
 import MaxMinus from "./MaxMinus"; // Componente para aumentar e diminuir a quantidade
 import Button from "./button";
+import { violao,teclado } from "./Produto/data";
+import InstrumentItemCard from "./Produto/InstrumentItemCard";
 
 // Função para adicionar um item ao carrinho
 const adicionarAoCarrinho = (setItensCarrinho, itensCarrinho, produto) => {
@@ -14,13 +16,22 @@ const adicionarAoCarrinho = (setItensCarrinho, itensCarrinho, produto) => {
 const removerDoCarrinho = (index, itensCarrinho, setItensCarrinho) => {
   const novosItens = [...itensCarrinho];
   novosItens.splice(index, 1); // Remove o item no índice especificado
-  setItensCarrinho(novosItens); // Atualiza o estado
+  setItensCarrinho(novosItens,); // Atualiza o estado
 };
 
 // Componente CarrinhoComp
-export default function CarrinhoComp() {
+export default function CarrinhoComp({instrumento, position}) {
+  const price = parseFloat(violao[0].newPrice)
   // Estado para armazenar os itens do carrinho
-  const [itensCarrinho, setItensCarrinho] = useState([]);
+  const [itensCarrinho, setItensCarrinho] = useState([
+    {
+    nome:violao[0].nome,
+    preco: price,
+    quantidade: 1,
+    imagem: violao[0].image,
+  }]);
+  console.log(typeof(violao[0].newPrice))
+  
 
   // Função para incrementar a quantidade de um item no carrinho
   const incrementarQuantidade = (index) => {
@@ -40,11 +51,12 @@ export default function CarrinhoComp() {
 
   // Produto fixo para adicionar ao carrinho
   const produtoExemplo = {
-    nome: "Saxofone Yamaha",
-    preco: 1500,
+    nome: violao[0].nome,
+    preco: price,
     quantidade: 1,
-    imagem: "/img/saxofoneteste.png",
+    imagem: violao[0].image,
   };
+  
 
   return (
     <div className="container mx-auto flex flex-col items-center">

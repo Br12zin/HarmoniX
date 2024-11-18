@@ -39,6 +39,7 @@ export default function CadastreSe() {
               className="mb-0 w-[130%]"
               formLogin="me-36"
               placeholder="***********"
+              tipo="password"
             >
               Senha
             </Input>
@@ -46,12 +47,17 @@ export default function CadastreSe() {
               className="mb-0 w-[130%]"
               formLogin="me-36"
               placeholder="***********"
+              tipo="password"
             >
               Confirmar Senha
             </Input>
           </div>
 
           <div className="flex flex-col">
+            <Input className="mb-0" placeholder="Nome" formLogin="me-4">
+              Nome
+            </Input>
+
             <div className="flex items-center">
               <Input
                 className="mb-0"
@@ -60,21 +66,33 @@ export default function CadastreSe() {
               >
                 Telefone
               </Input>
-              <CirclePlus />
+              <button>
+                <CirclePlus />
+              </button>
             </div>
             <div className="flex">
-              <Input className="mb-0 w-[100%]" formLogin="me-6">
+              <Input
+                className="mb-0 w-[100%]"
+                formLogin="me-6"
+                placeholder="Rua..."
+              >
                 Endereço
               </Input>
-              <Input className="mb-0" formLogin="w-[36%]">
+              <Input className="mb-0" formLogin="w-[36%]" placeholder="123...">
                 Número
               </Input>
             </div>
             <div className="flex">
-              <Input className="mb-0" formLogin="w-[30%] me-6">
+              <Input
+                className="mb-0"
+                formLogin="w-[30%] me-6"
+                placeholder="00000-000"
+              >
                 CEP
               </Input>
-              <Input className="mb-0">Complemento</Input>
+              <Input className="mb-0" placeholder="Casa/Ap/Cond">
+                Complemento
+              </Input>
             </div>
           </div>
         </div>

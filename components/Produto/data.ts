@@ -6,9 +6,10 @@ const violao = [
     id: "1",
     namecard: "Violão Clássico VG500",
     nome: "Violão GEWA Clássico Acústico Nylon Student VG500.140",
-    oldPrice: "1.609,00",
-    newPrice: "801,00",
+    oldPrice: "1.609.00",
+    newPrice: "801.00",
     image: "/img/violãoGewa.png",
+    quantidade: 1,
     informacoes:
       "A série GEWA STUDENT representa a entrada perfeita no mundo dos violões acústicos com uma excelente relação entre preço e desempenho. Fatores como o perfil do braço e a ação das cordas, que são cruciais para a tocabilidade, estão perfeitamente ajustados. Os violões são leves e bem equilibradas. Um papel importante é desempenhado pelo braço feito de madeira okoumé, cujo reforço interno de carbono estabiliza essa área sensível. O verniz eco-mate à base de água proporciona uma sensação agradável e contribui significativamente para o caráter sonoro aberto dos instrumentos, pois o tratamento de poros abertos permite que a madeira vibre com mais liberdade. Cordas Hannabach 815HT feitas na Alemanha são instaladas na fábrica e complementam perfeitamente o conceito sonoro desta série.",
     marca: "GEWA",
@@ -21,8 +22,8 @@ const violao = [
     id: "2",
     namecard: "Violão Clássico C-40 II",
     nome: "Violão Clássico Yamaha Acústico Nylon C-40 II - Natural",
-    oldPrice: "899,00",
-    newPrice: "809,10",
+    oldPrice: "899.00",
+    newPrice: "809.10",
     image: "/img/violãoYamaha.png",
     informacoes:
       "Os violões acústicos de cordas de nylon C40 tornam o processo de aprendizado o mais fácil e agradável possível. Além de seu som e tocabilidade excepcionais, esses instrumentos são realmente bonitos, e é por isso que foram escolhidos por vários iniciantes no mundo todo. Vários dos melhores professores recomendam os violões de cordas de nylon C40 para seus alunos devido à excelente combinação de alta qualidade e preço acessível.Embora seja verdade que os violões C40 são excelentes instrumentos para iniciantes, sua estrutura, som e tocabilidade impressionantes, garantem que eles continuarão a atendê-lo durante toda a sua jornada musical. Além disso, foram desenvolvidos usando o know-how e a experiência adquiridos ao projetar e construir nossos instrumentos profissionais premium, incluindo a escolha de madeiras extraordinárias que resultam em som excelente e durabilidade incrível.",

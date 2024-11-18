@@ -65,7 +65,8 @@ const instrumento = violao
               <Input className="m-0" />
               <Button btn="mt-0 mb-5 ms-4">Calcular Frete</Button>
             </div>
-            <Button btn="mt-0 mb-3 ms-4 w-screen text-xl font-bold mx-auto">
+            
+            <Button btn="mt-0 mb-3 ms-4 w-screen text-xl font-bold mx-auto" caminho="/pages/Carrinho">
               Comprar
             </Button>
           </div>
