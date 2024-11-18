@@ -1,13 +1,11 @@
 "use client";
-import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
-import Card from "./card";
 import { violao, teclado } from "./Produto/data";
 import InstrumentItemCard from "./Produto/InstrumentItemCard";
-import InstrumentsList from "./Produto/InstrumentsList";
+
 
 export default function CarouselProduto() {
   return (
@@ -27,7 +25,28 @@ export default function CarouselProduto() {
         className="mySwiper"
       >
         <SwiperSlide className="mb-10 rounded-3xl">
-          <InstrumentsList />
+          <InstrumentItemCard position={0} instrumento={violao} />
+        </SwiperSlide>
+        <SwiperSlide className="mb-10 rounded-3xl">
+          <InstrumentItemCard position={3} instrumento={violao} />
+        </SwiperSlide>
+        <SwiperSlide className="mb-10 rounded-3xl">
+          <InstrumentItemCard position={2} instrumento={teclado} />
+        </SwiperSlide>
+        <SwiperSlide className="mb-10 rounded-3xl">
+          <InstrumentItemCard position={1} instrumento={violao} />
+        </SwiperSlide>
+        <SwiperSlide className="mb-10 rounded-3xl">
+          <InstrumentItemCard position={0} instrumento={teclado} />
+        </SwiperSlide>
+        <SwiperSlide className="mb-10 rounded-3xl">
+          <InstrumentItemCard position={2} instrumento={violao} />
+        </SwiperSlide>
+        <SwiperSlide className="mb-10 rounded-3xl">
+          <InstrumentItemCard position={1} instrumento={teclado} />
+        </SwiperSlide>
+        <SwiperSlide className="mb-10 rounded-3xl">
+          <InstrumentItemCard position={5} instrumento={violao} />
         </SwiperSlide>
       </Swiper>
     </>

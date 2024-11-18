@@ -2,40 +2,25 @@
 
 import Image from "next/image";
 import Button from "../button";
-// import { Link } from "lucide-react";
-import Link from "next/link";
+import { violao, teclado } from "./data";
+import InstrumentsItem from "./InstrumentsItem";
 
-interface InstrumentItemProps {
-  instrument: {
-    id: string;
-    namecard: string;
-    nome: string;
-    oldPrice: string;
-    newPrice: string;
-    image: string;
-    informacoes: string;
-    marca: string;
-    modelo: string;
-    teclasnum: string;
-    sobreMarca: string;
-  };
-}
 
-const InstrumentItemCard = ({instrument}:InstrumentItemProps) => {
+
+const InstrumentItemCard = ({position, instrumento}) => {
 
    
   return (
     <>
-      <Link href={`/Instrumento/${instrument.id}`}>
-        <div className="mt-4 cursor-pointer">
+      <div className="mt-4 cursor-pointer">
           <button
             onClick={() => {
               console.log("aqui vai mandar as info pra pagina");
             }}
           >
             <Image
-              src={instrument.image}
-              alt={instrument.nome}
+              src={instrumento[position].image}
+              alt={instrumento[position].nome}
               width={300}
               height={200}
               objectFit="contain"
@@ -43,18 +28,17 @@ const InstrumentItemCard = ({instrument}:InstrumentItemProps) => {
             />
           </button>
           <h3 className="mt-5 text-2xl font-bold text-[#C7A315]">
-            {instrument.namecard}
+            {instrumento[position].namecard}
           </h3>
           <div className="m-5 flex items-baseline justify-center gap-4">
             <p className="text-2xl text-slate-400 line-through">
-              R${instrument.oldPrice}
+              R${instrumento[position].oldPrice}
             </p>
             <p className="text-4xl font-semibold text-[#C7A315]">
-              R${instrument.newPrice}
+              R${instrumento[position].newPrice}
             </p>
           </div>
         </div>
-      </Link>
       <div>
         <Button
           onClick={() => {
