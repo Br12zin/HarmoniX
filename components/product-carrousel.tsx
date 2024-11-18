@@ -12,6 +12,7 @@ import estilos from "./product-carousel.module.css";
 
 // import required modules
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
+import Link from "next/link";
 
 export default function ProductCarrousel() {
   return (
@@ -21,29 +22,34 @@ export default function ProductCarrousel() {
           "--swiper-navigation-color": "#C7A315",
           "--swiper-pagination-color": "#C7A315",
         }}
-        slidesPerView={5}
         centeredSlides={false}
-        slidesPerGroupSkip={1}
         grabCursor={true}
+        loop={true}
+        slidesPerView={4}
+        spaceBetween={40}
         keyboard={{
           enabled: true,
         }}
-        breakpoints={{
-          769: {
-            slidesPerView: 5,
-            slidesPerGroup: 1,
-          },
-        }}
+        // breakpoints={{
+        //   769: {
+        //     slidesPerView: 5,
+        //   },
+        // }}
         scrollbar={false}
         navigation={true}
         modules={[Keyboard, Scrollbar, Navigation, Pagination]}
         className={estilos.swiper}
       >
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <Link href={"#"}>
+            <div>123</div>
+          </Link>
         </SwiperSlide>
+
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <Link href={"#"}>
+            <div>123</div>
+          </Link>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
           <div>abc</div>

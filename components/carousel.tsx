@@ -35,6 +35,7 @@ const Carousel = () => {
           "--swiper-pagination-color": "#C7A315",
         }}
         cssMode={true}
+        loop={true}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,

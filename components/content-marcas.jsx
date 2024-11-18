@@ -5,19 +5,14 @@ const ContentMarcas = (props) => {
   return (
     <div>
       <div className="flex">
-        <div className="mx-11 flex h-[17.5rem] w-[17.5rem] items-center justify-center rounded-full border-8 border-black bg-white">
+        <div className="absolute mx-11 flex h-[280px] w-[280px] items-center justify-center rounded-full border-8 border-black bg-white">
           <Image src={props.source} width={200} height={200} alt="Logo Marca" />
         </div>
 
-        <div className="h-[17.5625rem] w-[75.625rem] rounded-[5rem] border border-[#707070] bg-white text-center shadow-lg">
-          <h1 className="py-7 text-4xl">CASIO</h1>
+        <div className="me-[23rem] ms-[23rem] min-h-[17.5625rem] w-auto rounded-[5rem] border border-[#707070] bg-white text-center shadow-lg">
+          <h1 className="py-7 text-4xl">{props.cardTitle}</h1>
           <p className="font mx-20 text-xl font-medium">
-            Essa é uma importante marca japonesa que assume o posto de uma das
-            líderes do mercado mundial. Um fato importante é que seus
-            instrumentos têm como proposta um bom custo-benefício, além da
-            qualidade. A marca surgiu em 1946 em Tóquio, pelas mãos de Tadao
-            Kashio. Curiosamente, ele não era músico, mas, sim, um engenheiro
-            especializado em produções tecnológicas.
+            {props.cardDescription}
           </p>
         </div>
       </div>

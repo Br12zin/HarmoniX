@@ -4,10 +4,10 @@ import GreyCard from "@/components/gray-card";
 
 import Carousel from "@/components/carousel";
 
-
 import NavMain from "@/components/nav-main";
 // import ImgInstrumento from "@/app/assets/images/instruments-2.png";
 import { useVisibility } from "@/components/VisibilityContext";
+import Link from "next/link";
 
 const Main = () => {
   const { isVisible, onHandleVisibility } = useVisibility();
@@ -27,8 +27,11 @@ const Main = () => {
             titulo="Instrumentos"
             paragrafo="Encontre os melhores instrumentos musicais, 
 com o melhor preço e as melhores recomendações"
+            link="/pages/Instrumentos"
           />
+
           <GreyCard
+            link="/pages/Marcas"
             imagem="/img/brand-1.png"
             titulo="Marcas"
             paragrafo="Encontre as principais marcas fornecedoras 
