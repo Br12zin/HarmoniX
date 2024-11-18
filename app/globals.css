@@ -108,6 +108,9 @@
 .no-scroll {
   overflow: hidden;
 }
+.no-scroll-x{
+  overflow: hidden;
+}
 
 .bg-main {
   background-color: #ececec;

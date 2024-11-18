@@ -14,7 +14,7 @@ const Main = () => {
 
   return (
     <>
-      <div className="h-auto min-h-screen w-auto">
+      <div className="no-scroll-x h-auto min-h-screen w-auto">
         <NavMain
           isVisible={isVisible}
           onHandleVisibility={onHandleVisibility}
