@@ -105,7 +105,7 @@
   display: flex;
   justify-content: space-evenly;
 }
-body{
+.no-scroll {
   overflow: hidden;
 }
 
@@ -193,12 +193,6 @@ body{
 .imge {
   background-image: url(../public/img/icons/icone\ email.png);
   background-size: auto;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.circulofundo {
-  background-image: url(../public/img/Elipse\ 22.png);
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }

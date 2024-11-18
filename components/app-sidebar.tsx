@@ -60,11 +60,11 @@ const items = [
     url: "/pages/Perfil",
     image: perfil,
   },
-  {
-    title: "Configurações",
-    url: "#",
-    image: configuracao,
-  },
+  // {
+  //   title: "Configurações",
+  //   url: "#",
+  //   image: configuracao,
+  // },
   {
     title: "Favoritos",
     url: "#",
@@ -77,12 +77,12 @@ const items = [
   },
   {
     title: "Meus Pedidos",
-    url: "#",
+    url: "/pages/Carrinho",
     image: carrinho,
   },
   {
     title: "Fale Conosco",
-    url: "#",
+    url: "/pages/FaleConosco",
     image: telefone,
   },
 ];

@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
 import GreyCard from "@/components/gray-card";
 
 import Carousel from "@/components/carousel";
-
 
 import NavMain from "@/components/nav-main";
 // import ImgInstrumento from "@/app/assets/images/instruments-2.png";
@@ -27,7 +26,7 @@ const Main = () => {
             titulo="Instrumentos"
             paragrafo="Encontre os melhores instrumentos musicais, 
             com o melhor preço e as melhores recomendações"
-            />
+          />
           <GreyCard
             imagem="/img/brand-1.png"
             titulo="Marcas"
