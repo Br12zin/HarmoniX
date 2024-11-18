@@ -5,7 +5,7 @@ const GreyCard = ({ imagem, titulo, paragrafo, link }) => {
   return (
     <Link
       href={link}
-      className="mb-3 flex w-[31.25rem] flex-col items-center rounded-[3rem] border border-[#7070703d] bg-slate-500/35 shadow-xl"
+      className="flex w-[31.25rem] flex-col items-center rounded-[3rem] border border-[#7070703d] bg-slate-500/35 text-center shadow-xl"
     >
       <Image
         className="mt-5"
@@ -14,12 +14,10 @@ const GreyCard = ({ imagem, titulo, paragrafo, link }) => {
         width={115}
         height={115}
       />
-      <h1 className="font-quiche mt-6 px-[5.3rem] text-lg font-medium text-white">
+      <h1 className="mt-6 px-[5.3rem] text-lg font-medium text-white">
         {titulo}
       </h1>
-      <p className="mt-2 px-[5.3rem] text-center font-medium text-card">
-        {paragrafo}
-      </p>
+      <p className="mt-2 px-[4.2rem] font-medium text-card">{paragrafo}</p>
     </Link>
   );
 };

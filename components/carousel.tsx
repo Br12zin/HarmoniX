@@ -48,7 +48,7 @@ const Carousel = () => {
         className="mySwiper rounded-[3rem] shadow-md"
       >
         <SwiperSlide>
-          <Link href="#">
+          <Link href="/pages/Marcas/Yamaha">
             <Image src={banner1} alt="banner 1"></Image>
           </Link>
         </SwiperSlide>

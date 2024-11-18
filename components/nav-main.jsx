@@ -53,9 +53,11 @@ const NavMain = ({ isVisible, onHandleVisibility, opacity, apagar }) => {
         btnSideNav={bgBtnNav}
         fillbtn={bgBtnNav}
       />
-      <div className="flex h-[6.3rem] w-screen items-center justify-between">
+      <div className="flex h-[6.3rem] w-full items-center justify-between">
         <div className="ms-[6rem] flex flex-grow justify-center">
-          <Image src={logoGold} alt="Logo Harmonix" className="h-20 w-20" />
+          <Link href="/pages/main">
+            <Image src={logoGold} alt="Logo Harmonix" className="h-20 w-20" />
+          </Link>
         </div>
         <Link href="/pages/Carrinho">
           <div>

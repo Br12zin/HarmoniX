@@ -17,7 +17,9 @@ const ContentMarcas = (props) => {
         </div>
       </div>
       <div className="mx-14 mt-28 text-xl font-medium text-[#6A6868]">
-        <h3>ACOMPANHE ABAIXO OS PRINCIPAIS PRODUTOS FORNECIDOS PELA MARCA</h3>
+        <h3 className="fontQuiche">
+          ACOMPANHE ABAIXO OS PRINCIPAIS PRODUTOS FORNECIDOS PELA MARCA
+        </h3>
         <span>
           Clique no produto para conhece-lo melhor e adquirir uma experiência
           única ao interagir com ele

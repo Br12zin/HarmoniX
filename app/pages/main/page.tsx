@@ -8,13 +8,12 @@ import NavMain from "@/components/nav-main";
 // import ImgInstrumento from "@/app/assets/images/instruments-2.png";
 import { useVisibility } from "@/components/VisibilityContext";
 
-
 const Main = () => {
   const { isVisible, onHandleVisibility } = useVisibility();
 
   return (
     <>
-      <div className="h-auto min-h-screen w-auto">
+      <div className="h-auto min-h-screen">
         <NavMain
           isVisible={isVisible}
           onHandleVisibility={onHandleVisibility}

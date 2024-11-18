@@ -52,19 +52,19 @@ import Image from "next/image";
 const items = [
   {
     title: "Home",
-    url: "#",
+    url: "/pages/main",
     image: casa,
   },
   {
     title: "Perfil",
-    url: "#",
+    url: "/pages/Perfil",
     image: perfil,
   },
-  {
-    title: "Configurações",
-    url: "#",
-    image: configuracao,
-  },
+  // {
+  //   title: "Configurações",
+  //   url: "#",
+  //   image: configuracao,
+  // },
   {
     title: "Favoritos",
     url: "#",
@@ -77,12 +77,12 @@ const items = [
   },
   {
     title: "Meus Pedidos",
-    url: "#",
+    url: "/pages/Carrinho",
     image: carrinho,
   },
   {
     title: "Fale Conosco",
-    url: "#",
+    url: "/pages/FaleConosco",
     image: telefone,
   },
 ];
@@ -135,7 +135,7 @@ export function AppSidebar({
                               // ajuste a largura conforme necessário
                               // ajuste a altura conforme necessário
                             />
-                            <span className="font-jeanne py-2 text-[2.5rem]">
+                            <span className="fontJeanne py-2 text-[2.5rem]">
                               {item.title}
                             </span>
                           </div>
