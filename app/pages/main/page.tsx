@@ -7,7 +7,7 @@ import Carousel from "@/components/carousel";
 import NavMain from "@/components/nav-main";
 // import ImgInstrumento from "@/app/assets/images/instruments-2.png";
 import { useVisibility } from "@/components/VisibilityContext";
-import Link from "next/link";
+
 
 const Main = () => {
   const { isVisible, onHandleVisibility } = useVisibility();
