@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { ChevronUp, Facebook, Instagram, Phone, Youtube } from "lucide-react";
 import {Whatsapp} from 'react-bootstrap-icons';
 
+
 function Footer() {
 const [heightClass, setHeightClass] = useState("h-[3vh]");
 const [isExpanded, setIsExpanded] = useState(false);
@@ -36,10 +37,10 @@ return (
         <div>
             <ul className="items-center text-left text-[#ECECEC]">
             <li className="flex content-around justify-center">
-                <Phone className="mr-2 text-xs" />( ) xxxxx-xxxx
+                <Phone className="mr-2 text-xs" />( ) 98352-2837
             </li>
             <li className="flex content-around justify-center">
-                <Phone className="mr-2 text-xs" />( ) xxxx-xxxx
+                <Phone className="mr-2 text-xs" />( ) 3424-0038
             </li>
             </ul>
         </div>
@@ -55,10 +56,10 @@ return (
         </div>
         <div className="ms-20 flex h-full w-60 items-center justify-center text-black">
             
-            <button><a href="https://www.instagram.com/" target="_blank"><Instagram className="me-2 size-8 text-[#ECECEC]" /></a></button>
-            <button><a href="https://www.facebook.com/" target="_blank"><Facebook className="me-2 ms-2 size-8 text-[#ECECEC]" /></a></button>
-            <button><a href="https://www.youtube.com/" target="_blank"><Youtube className="me-2 ms-2 size-8 text-[#ECECEC]" /></a></button>
-            <button><a href="https://web.whatsapp.com/" target="_blank"><Whatsapp className="ms-2 size-8 text-[#ECECEC]" /></a></button>
+            <button><a href="https://www.instagram.com/" target="_blank"><Instagram className="me-2 size-8 " /></a></button>
+            <button><a href="https://www.facebook.com/" target="_blank"><Facebook className="me-2 ms-2 size-8 " /></a></button>
+            <button><a href="https://www.youtube.com/" target="_blank"><Youtube className="me-2 ms-2 size-8 " /></a></button>
+            <button><a href="https://web.whatsapp.com/" target="_blank"><Whatsapp className="ms-2 size-8 " /></a></button>
             
         
         </div>

@@ -3,7 +3,9 @@ import BackBtnSearch from "@/components/BackBtnSearch";
 import InputPage from "@/components/InputPage";
 import Link from "next/link";
 import Image from "next/image";
-import DropDawn from "@/components/DropDawn";
+import { DropDawn } from "@/components/DropDawn";
+import NavMain from "@/components/nav-main";
+import { useVisibility } from "@/components/VisibilityContext";
 
 export default function CategoriaMarcas() {
     return (
