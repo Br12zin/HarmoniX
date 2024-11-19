@@ -1,17 +1,19 @@
 "use client";
 
+import TiposIntrumentos from "@/components/Instrumentos-Tipos";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
-import ContentMarcas from "@/components/content-marcas";
+import { violao } from "@/components/Produto/data";
 
-const Casio = () => {
+const Violao = () => {
   const { isVisible, onHandleVisibility } = useVisibility();
+
   return (
-    <div className="h-auto min-h-screen w-auto">
+    <>
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
-      <ContentMarcas source={"/img/casio-logo.png"}></ContentMarcas>
-    </div>
+      <TiposIntrumentos titulo="Violões" instrumentoObj={violao} />
+    </>
   );
 };
 
-export default Casio;
+export default Violao;

@@ -26,7 +26,7 @@ const Main = () => {
             titulo="Instrumentos"
             paragrafo="Encontre os melhores instrumentos musicais, 
 com o melhor preço e as melhores recomendações"
-            link="/pages/Instrumentos"
+            link="/pages/CategoriaMarcas"
           />
 
           <GreyCard

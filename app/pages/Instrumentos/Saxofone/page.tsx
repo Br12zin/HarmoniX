@@ -10,7 +10,7 @@ const Violao = () => {
   return (
     <>
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
-      <TiposIntrumentos titulo="Saxofone" nome="Nome"></TiposIntrumentos>
+      <TiposIntrumentos titulo="Saxofones" nome="Nome"></TiposIntrumentos>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import perfil from "@/public/img/icons/icone-rosto-de-pessoa-ouvindo-musica-com-auriculares.png";
-import configuracao from "@/public/img/icons/icone-configuracao.png";
+// import configuracao from "@/public/img/icons/icone-configuracao.png";
 import favoritos from "@/public/img/icons/icone-favorito.png";
 import avaliacoes from "@/public/img/icons/icone-estrela.png";
 import carrinho from "@/public/img/icons/carrinho.png";
@@ -53,6 +53,7 @@ const items = [
   {
     title: "Home",
     url: "/pages/main",
+    url: "/pages/main",
     image: casa,
   },
   {
@@ -78,12 +79,19 @@ const items = [
   {
     title: "Meus Pedidos",
     url: "/pages/Carrinho",
+    url: "/pages/Carrinho",
     image: carrinho,
   },
   {
     title: "Fale Conosco",
     url: "/pages/FaleConosco",
+    url: "/pages/FaleConosco",
     image: telefone,
+  },
+  {
+    title: "Produto",
+    url: "/pages/Produto",
+    image: avaliacoes,
   },
 ];
 

@@ -5,6 +5,10 @@ import { CreditCard, Star, Barcode } from "lucide-react";
 import { teclado, violao } from "@/components/Produto/data";
 import Input from "@/components/Input";
 import Button from "@/components/button";
+import NavMain from "@/components/nav-main";
+import { useVisibility } from "@/components/VisibilityContext";
+import CarouselProduto from "@/components/carouselProduto";
+import { useRouter } from "next/navigation";
 
 interface InstrumentsItemProps {
   params: {
@@ -17,14 +21,26 @@ export default function InstrumentsItem({
 }: InstrumentsItemProps) {
   const instrumento = [...violao, ...teclado].find((item) => item.id === id);
 
+  const { isVisible, onHandleVisibility } = useVisibility();
+
   if (!instrumento) {
     return <p>Instrumento não encontrado</p>;
   }
 
   const parcelado = (parseFloat(instrumento.newPrice) / 10).toFixed(2);
 
+  const router = useRouter();
+
+  const handleEnviar = () => {
+    localStorage.setItem("position", id);
+    if (typeof window !== "undefined") {
+      router.push(`/pages/Carrinho`);
+    }
+  };
+
   return (
     <>
+      <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
       <div className="mt-14">
         <div className="container mx-auto flex">
           <div className="mx-auto max-w-[50em]">
@@ -75,7 +91,10 @@ export default function InstrumentsItem({
               <Input className="m-0" />
               <Button btn="mt-0 mb-5 ms-4">Calcular Frete</Button>
             </div>
-            <Button btn="mt-0 mb-3 ms-4 w-screen text-xl font-bold mx-auto">
+            <Button
+              onClick={handleEnviar}
+              btn="mt-0 mb-3 ms-4 w-screen text-xl font-bold mx-auto"
+            >
               Comprar
             </Button>
           </div>
@@ -83,7 +102,7 @@ export default function InstrumentsItem({
       </div>
       <div className="container mx-auto mb-10 mt-20 border-t-2 border-[#C7A315]">
         <h1 className="mt-4 text-center text-4xl text-[#C7A315]"></h1>
-        <div className="bg-gray-50 p-6 font-sans text-gray-900">
+        <div className="mb-10 bg-gray-50 p-6 font-sans text-gray-900">
           <h1 className="mb-4 text-2xl font-bold">{instrumento.nome}</h1>
           <p className="mb-4">{instrumento.informacoes}</p>
           <h2 className="mb-2 mt-6 text-xl font-semibold">
@@ -97,13 +116,15 @@ export default function InstrumentsItem({
               <span className="font-medium">Modelo:</span> {instrumento.modelo}
             </li>
             <li>
-              <span className="font-medium">Tampo:</span> {instrumento.teclasnum}
+              <span className="font-medium">Tampo:</span>{" "}
+              {instrumento.teclasnum}
             </li>
           </ul>
           <h2 className="mb-2 mt-6 text-xl font-semibold">Sobre a Marca</h2>
           <p className="mb-4">{instrumento.sobreMarca}</p>
         </div>
       </div>
+      <CarouselProduto />
     </>
   );
 }

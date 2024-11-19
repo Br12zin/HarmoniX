@@ -1,14 +1,20 @@
 "use client";
 import Image from "next/image";
 import Input from "@/components/Input";
-import { Button } from "@/components/button";
+import Button from "@/components/button";
+import NavMain from "@/components/nav-main";
+import { useVisibility } from "@/components/VisibilityContext";
 
 const Perfil = () => {
+  const {onHandleVisibility, isVisible} = useVisibility()
   return (
     <div className="bg-{#ECECEC}">
-      <div className="flex justify-center p-6">
-        <Image src="/logo-gold.png" width={110} height={110} alt="Imagem" />
-      </div>
+      <NavMain
+      isVisible={isVisible}
+      onHandleVisibility={onHandleVisibility}
+      apagar="hidden"
+
+      />
       <div className="flex justify-center text-6xl">
         <h1 className="mb-20">Olá, User</h1>
       </div>

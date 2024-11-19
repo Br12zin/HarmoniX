@@ -13,6 +13,8 @@ import estilos from "./product-carousel.module.css";
 // import required modules
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
 import Link from "next/link";
+import Image from "next/image";
+import CardInstrumentos from "./cardInstrumentos";
 
 export default function ProductCarrousel() {
   return (
@@ -41,36 +43,86 @@ export default function ProductCarrousel() {
         className={estilos.swiper}
       >
         <SwiperSlide className={estilos.swiper_slide}>
-          <Link href={"#"}>
-            <div>123</div>
-          </Link>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
 
         <SwiperSlide className={estilos.swiper_slide}>
-          <Link href={"#"}>
-            <div>123</div>
-          </Link>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
         <SwiperSlide className={estilos.swiper_slide}>
-          <div>abc</div>
+          <CardInstrumentos
+            image="/img/violãoGianinniBlack.png"
+            namecard="Violão Giannini GN-15 Preto"
+            oldPrice="679"
+            newPrice=" 611,10"
+            id="4"
+          ></CardInstrumentos>
         </SwiperSlide>
       </Swiper>
     </>
