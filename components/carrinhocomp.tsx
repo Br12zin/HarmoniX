@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TitleCarrinho from "./TitleCarrinho";
 import { Trash } from "lucide-react";
 import Image from "next/image";
 import MaxMinus from "./MaxMinus"; // Componente para aumentar e diminuir a quantidade
 import Button from "./button";
-import { violao,teclado } from "./Produto/data";
+import { violao, teclado } from "./Produto/data";
 import InstrumentItemCard from "./Produto/InstrumentItemCard";
+import { useRouter } from "next/navigation";
 
 // Função para adicionar um item ao carrinho
 const adicionarAoCarrinho = (setItensCarrinho, itensCarrinho, produto) => {
@@ -16,22 +17,43 @@ const adicionarAoCarrinho = (setItensCarrinho, itensCarrinho, produto) => {
 const removerDoCarrinho = (index, itensCarrinho, setItensCarrinho) => {
   const novosItens = [...itensCarrinho];
   novosItens.splice(index, 1); // Remove o item no índice especificado
-  setItensCarrinho(novosItens,); // Atualiza o estado
+  setItensCarrinho(novosItens); // Atualiza o estado
 };
 
 // Componente CarrinhoComp
-export default function CarrinhoComp({instrumento, position}) {
-  const price = parseFloat(violao[0].newPrice)
+export default function CarrinhoComp({ instrumento }) {
+  const [itensCarrinho, setItensCarrinho] = useState([]);
+  useEffect(() => {
+    // Obter a posição do localStorage
+    const position = localStorage.getItem("position");
+
+    // Verificar se a posição foi salva e se é um número válido
+    if (position !== null) {
+      const positionIndex = parseInt(position) - 1;
+
+      if (!isNaN(positionIndex)) {
+        console.log("Position recebido:", positionIndex);
+
+        // Aqui você pode usar a posição para acessar o item no array violao
+        const price = parseFloat(violao[positionIndex].newPrice);
+
+        // Atualizar o estado de itensCarrinho
+        setItensCarrinho([
+          {
+            nome: violao[positionIndex].nome,
+            preco: price,
+            quantidade: 1,
+            imagem: violao[positionIndex].image,
+          },
+        ]);
+      } else {
+        console.error("Valor de position inválido:", position);
+      }
+    }
+  }, []);
+
+  const price = parseFloat(violao[0].newPrice);
   // Estado para armazenar os itens do carrinho
-  const [itensCarrinho, setItensCarrinho] = useState([
-    {
-    nome:violao[0].nome,
-    preco: price,
-    quantidade: 1,
-    imagem: violao[0].image,
-  }]);
-  console.log(typeof(violao[0].newPrice))
-  
 
   // Função para incrementar a quantidade de um item no carrinho
   const incrementarQuantidade = (index) => {
@@ -56,7 +78,6 @@ export default function CarrinhoComp({instrumento, position}) {
     quantidade: 1,
     imagem: violao[0].image,
   };
-  
 
   return (
     <div className="container mx-auto flex flex-col items-center">
@@ -132,7 +153,7 @@ export default function CarrinhoComp({instrumento, position}) {
       {/* Rodapé */}
       <div className="mt-8 flex w-full items-center justify-end border-t-2 border-black">
         {/* Total */}
-        <div className="flex items-center space-x-4 ">
+        <div className="flex items-center space-x-4">
           <TitleCarrinho>Total:</TitleCarrinho>
           <TitleCarrinho>
             R$

@@ -4,14 +4,14 @@ import Image from "next/image";
 import { CreditCard, Star, Barcode } from "lucide-react";
 import Input from "@/components/Input";
 import Button from "@/components/button";
-import { violao,teclado } from "./data";
-
-
+import { violao, teclado } from "./data";
 
 export default function InstrumentsItem() {
-const position = 1
-const instrumento = violao
-  const parcelado = (parseFloat(instrumento[position].newPrice) / 10).toFixed(2);
+  const position = 1;
+  const instrumento = violao;
+  const parcelado = (parseFloat(instrumento[position].newPrice) / 10).toFixed(
+    2,
+  );
 
   return (
     <>
@@ -65,8 +65,11 @@ const instrumento = violao
               <Input className="m-0" />
               <Button btn="mt-0 mb-5 ms-4">Calcular Frete</Button>
             </div>
-            
-            <Button btn="mt-0 mb-3 ms-4 w-screen text-xl font-bold mx-auto" caminho="/pages/Carrinho">
+
+            <Button
+              btn="mt-0 mb-3 ms-4 w-screen text-xl font-bold mx-auto"
+              caminho="/pages/Carrinho"
+            >
               Comprar
             </Button>
           </div>
@@ -82,13 +85,16 @@ const instrumento = violao
           </h2>
           <ul className="mb-4 space-y-1">
             <li>
-              <span className="font-medium">Marca:</span> {instrumento[position].marca}
+              <span className="font-medium">Marca:</span>{" "}
+              {instrumento[position].marca}
             </li>
             <li>
-              <span className="font-medium">Modelo:</span> {instrumento[position].modelo}
+              <span className="font-medium">Modelo:</span>{" "}
+              {instrumento[position].modelo}
             </li>
             <li>
-              <span className="font-medium">Tampo:</span> {instrumento[position].tampo}
+              <span className="font-medium">Tampo:</span>{" "}
+              {instrumento[position].tampo}
             </li>
           </ul>
           <h2 className="mb-2 mt-6 text-xl font-semibold">Sobre a Marca</h2>
