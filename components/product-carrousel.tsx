@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -12,8 +12,7 @@ import estilos from "./product-carousel.module.css";
 
 // import required modules
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper/modules";
-import Link from "next/link";
-import Image from "next/image";
+
 import CardInstrumentos from "./cardInstrumentos";
 
 export default function ProductCarrousel() {

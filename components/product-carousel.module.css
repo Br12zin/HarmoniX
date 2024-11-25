@@ -10,6 +10,11 @@
 .swiper_slide {
   background: none;
 }
+
+.swiper_slide img {
+  height: 150px;
+  width: 150px;
+}
 /* .swiper_slide {
   background: #fff;
   width: 21rem;

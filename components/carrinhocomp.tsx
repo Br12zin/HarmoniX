@@ -90,14 +90,14 @@ export default function CarrinhoComp({ instrumento }) {
       </div>
 
       {/* Botão de adicionar ao carrinho */}
-      <button
+      {/* <button
         onClick={() =>
           adicionarAoCarrinho(setItensCarrinho, itensCarrinho, produtoExemplo)
         }
         className="mb-4 rounded-lg bg-blue-500 p-2 text-white"
       >
         Adicionar ao Carrinho
-      </button>
+      </button> */}
 
       {/* Renderiza os itens no carrinho */}
       {itensCarrinho.length === 0 ? (
@@ -123,7 +123,9 @@ export default function CarrinhoComp({ instrumento }) {
               </div>
 
               {/* Preço do produto */}
-              <TitleCarrinho>R${item.preco} </TitleCarrinho>
+              <TitleCarrinho>
+                <span className="font-light">R$ </span> {item.preco}{" "}
+              </TitleCarrinho>
 
               {/* MaxMinus - Botões de incremento e decremento */}
               <MaxMinus
@@ -133,7 +135,9 @@ export default function CarrinhoComp({ instrumento }) {
               />
 
               {/* Subtotal */}
-              <TitleCarrinho>R${subtotal} </TitleCarrinho>
+              <TitleCarrinho>
+                <span className="font-light">R$ </span> {subtotal}{" "}
+              </TitleCarrinho>
 
               {/* Botão de remoção */}
               <div className="flex justify-center text-2xl">
@@ -156,7 +160,7 @@ export default function CarrinhoComp({ instrumento }) {
         <div className="flex items-center space-x-4">
           <TitleCarrinho>Total:</TitleCarrinho>
           <TitleCarrinho>
-            R$
+            <span className="font-light">R$ </span>
             {itensCarrinho.reduce(
               (acc, item) => acc + item.preco * item.quantidade,
               0,

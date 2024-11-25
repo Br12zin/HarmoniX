@@ -9,6 +9,7 @@ import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
 import CarouselProduto from "@/components/carouselProduto";
 import { useRouter } from "next/navigation";
+import React from "react";
 
 interface InstrumentsItemProps {
   params: {
@@ -16,9 +17,8 @@ interface InstrumentsItemProps {
   };
 }
 
-export default function InstrumentsItem({
-  params: { id },
-}: InstrumentsItemProps) {
+export default function InstrumentsItem({ params }: InstrumentsItemProps) {
+  const { id } = React.use(params);
   const instrumento = [...violao, ...teclado].find((item) => item.id === id);
 
   const { isVisible, onHandleVisibility } = useVisibility();

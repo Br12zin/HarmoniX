@@ -39,14 +39,14 @@ const CardInstrumentos = (props) => {
                 </p>
               </div>
               <h2 className="py-1 text-lg text-[#C7A315]">{props.namecard}</h2>
-              <span className="text-xs font-medium line-through">
+              <span className="text-xs font-medium text-gray-500 line-through">
                 R${props.oldPrice}
               </span>
               <p className="text-2xl text-[#C7A315]">R${props.newPrice}</p>
             </div>
           </Link>
           <Button onClick={handleEnviar}>
-            <span className="">Comprar</span>
+            <span>Comprar</span>
           </Button>
         </div>
       </div>

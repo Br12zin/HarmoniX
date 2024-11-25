@@ -53,7 +53,7 @@ const items = [
   {
     title: "Home",
     url: "/pages/main",
-    url: "/pages/main",
+
     image: casa,
   },
   {
@@ -79,19 +79,14 @@ const items = [
   {
     title: "Meus Pedidos",
     url: "/pages/Carrinho",
-    url: "/pages/Carrinho",
+
     image: carrinho,
   },
   {
     title: "Fale Conosco",
     url: "/pages/FaleConosco",
-    url: "/pages/FaleConosco",
+
     image: telefone,
-  },
-  {
-    title: "Produto",
-    url: "/pages/Produto",
-    image: avaliacoes,
   },
 ];
 

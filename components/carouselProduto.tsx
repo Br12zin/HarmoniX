@@ -6,7 +6,6 @@ import { Pagination, Autoplay, Navigation } from "swiper/modules";
 import { violao, teclado } from "./Produto/data";
 import InstrumentItemCard from "./Produto/InstrumentItemCard";
 
-
 export default function CarouselProduto() {
   return (
     <>
@@ -20,7 +19,7 @@ export default function CarouselProduto() {
         pagination={{
           clickable: true,
         }}
-        navigation={true}
+        navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
@@ -28,7 +27,7 @@ export default function CarouselProduto() {
           <InstrumentItemCard position={0} instrumento={violao} />
         </SwiperSlide>
         <SwiperSlide className="mb-10 rounded-3xl">
-          <InstrumentItemCard position={3} instrumento={violao} />
+          <InstrumentItemCard position={3} instrumento={violao} props="p-10" />
         </SwiperSlide>
         <SwiperSlide className="mb-10 rounded-3xl">
           <InstrumentItemCard position={2} instrumento={teclado} />

@@ -5,10 +5,10 @@ import Button from "../button";
 import { violao, teclado } from "./data";
 import InstrumentsItem from "./InstrumentsItem";
 
-const InstrumentItemCard = ({ position, instrumento }) => {
+const InstrumentItemCard = ({ position, instrumento , props}) => {
   return (
     <>
-      <div className="mt-4 cursor-pointer">
+      <div className="mt-4 cursor-pointer  ">
         <button
           onClick={() => {
             console.log("aqui vai mandar as info pra pagina");
@@ -20,7 +20,7 @@ const InstrumentItemCard = ({ position, instrumento }) => {
             width={300}
             height={200}
             objectFit="contain"
-            className="rounded-3xl"
+            className={`rounded-3xl${props}`}
           />
         </button>
         <h3 className="mt-5 text-2xl font-bold text-[#C7A315]">

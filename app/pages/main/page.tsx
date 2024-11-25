@@ -20,7 +20,7 @@ const Main = () => {
         />
 
         <Carousel />
-        <div className="mt-16 flex h-[17.43rem] justify-center gap-20">
+        <div className="my-16 flex h-[17.43rem] justify-center gap-20">
           <GreyCard
             imagem="/img/instruments-2.png"
             titulo="Instrumentos"
