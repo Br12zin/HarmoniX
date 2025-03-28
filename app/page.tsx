@@ -15,15 +15,17 @@ const Home = () => {
         <Button
           caminho="/pages/Login"
           btn="me-4 bg-opacity-0 hover:bg-opacity-70 hover:text-black"
+          onClick={undefined}
         >
           entrar
         </Button>
 
         <Button
+          onClick={undefined}
           caminho="/pages/CadastreSe"
           btn="me-16 bg-opacity-0 hover:bg-opacity-70 hover:text-black"
         >
-          <span>cadastrar-se</span>
+          {"cadastrar-se"}
         </Button>
       </div>
       <div>

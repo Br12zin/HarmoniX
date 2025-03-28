@@ -16,7 +16,7 @@ const Marcas = () => {
       </h3>
       <div className="me-12 mt-10 grid grid-cols-4">
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Casio"
+          linkMarca="/pages/Marcas/Casio"
           image="/img/casio-logo.png"
           Height={100}
           Width={250}
@@ -26,7 +26,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Crafter"
+          linkMarca="/pages/Marcas/Crafter"
           image="/img/crafter-logo.png"
           Height={200}
           Width={200}
@@ -36,7 +36,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Fender"
+          linkMarca="/pages/Marcas/Fender"
           Height={76}
           Width={200}
           image="/img/Fender_logo.png"
@@ -46,7 +46,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Gibson"
+          linkMarca="/pages/Marcas/Gibson"
           MarginT={20}
           Height={200}
           Width={140}
@@ -56,7 +56,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Ibanez"
+          linkMarca="/pages/Marcas/Ibanez"
           Height={250}
           Width={250}
           image="/img/ibanez-logo.png"
@@ -66,7 +66,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Korg"
+          linkMarca="/pages/Marcas/Korg"
           Height={200}
           Width={200}
           image="/img/Korg_logo.png"
@@ -76,7 +76,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Roland"
+          linkMarca="/pages/Marcas/Roland"
           Height={200}
           Width={250}
           image="/img/roland-logo.png"
@@ -86,7 +86,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Selmer"
+          linkMarca="/pages/Marcas/Selmer"
           MarginT={20}
           Height={200}
           Width={120}
@@ -96,7 +96,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Steinway&Sons"
+          linkMarca="/pages/Marcas/Steinway&Sons"
           MarginT={20}
           Height={200}
           Width={300}
@@ -107,7 +107,7 @@ const Marcas = () => {
           muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Tagima"
+          linkMarca="/pages/Marcas/Tagima"
           MarginT={20}
           Height={200}
           Width={200}
@@ -117,7 +117,7 @@ const Marcas = () => {
           essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Takamine"
+          linkMarca="/pages/Marcas/Takamine"
           MarginT={20}
           Height={200}
           Width={200}
@@ -127,7 +127,7 @@ const Marcas = () => {
           que essa marca produz, veja recomendações, tire dúvidas e muito mais!
         </CardMarca>
         <CardMarca
-          linkMarca="http://localhost:3000/pages/Marcas/Yamaha"
+          linkMarca="/pages/Marcas/Yamaha"
           MarginT={-10}
           Height={250}
           Width={250}

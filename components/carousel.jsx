@@ -31,7 +31,7 @@ const Carousel = () => {
     <>
       <Swiper
         style={{
-          "--swiper-navigation-color": "#C7A315",
+          // "--swiper-navigation-color": "#C7A315",
           "--swiper-pagination-color": "#C7A315",
         }}
         cssMode={true}

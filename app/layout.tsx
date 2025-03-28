@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+// import localFont from "next/font/local";
 import "./globals.css";
 import { VisibilityProvider } from "@/components/VisibilityContext";
-import Head from "next/head";
+// import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Create Next App",

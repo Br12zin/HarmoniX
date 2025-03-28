@@ -6,7 +6,15 @@ import { Star } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 
-const CardInstrumentos = (props) => {
+interface CardInstrumentosProps {
+  id: string;
+  image: string;
+  namecard: string;
+  oldPrice: string;
+  newPrice: string;
+}
+
+const CardInstrumentos = (props: CardInstrumentosProps) => {
   const router = useRouter();
 
   const handleEnviar = () => {
@@ -45,9 +53,7 @@ const CardInstrumentos = (props) => {
               <p className="text-2xl text-[#C7A315]">R${props.newPrice}</p>
             </div>
           </Link>
-          <Button onClick={handleEnviar}>
-            <span>Comprar</span>
-          </Button>
+          <Button onClick={handleEnviar}>{"Comprar"}</Button>
         </div>
       </div>
     </>

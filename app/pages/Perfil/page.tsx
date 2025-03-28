@@ -1,19 +1,18 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import Input from "@/components/Input";
 import Button from "@/components/button";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
 
 const Perfil = () => {
-  const {onHandleVisibility, isVisible} = useVisibility()
+  const { onHandleVisibility, isVisible } = useVisibility();
   return (
     <div className="bg-{#ECECEC}">
       <NavMain
-      isVisible={isVisible}
-      onHandleVisibility={onHandleVisibility}
-      apagar="hidden"
-
+        isVisible={isVisible}
+        onHandleVisibility={onHandleVisibility}
+        apagar="hidden"
       />
       <div className="flex justify-center text-6xl">
         <h1 className="mb-20">Olá, User</h1>
@@ -57,12 +56,7 @@ const Perfil = () => {
           >
             Celular
           </Input>
-          <Button
-            variant="outline"
-            className="mt-4 rounded-full p-6 text-xl text-[#ECECEC]"
-          >
-            Salvar alterações
-          </Button>
+          <Button>Salvar alterações</Button>
         </div>
       </div>
     </div>

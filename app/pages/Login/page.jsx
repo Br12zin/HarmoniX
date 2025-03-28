@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // Next.js router
@@ -24,16 +24,16 @@ export default function Login() {
     } else {
       alert("Email ou senha inválidos!");
 
-      console.log("oiiii")
-      console.log(email, password)
+      console.log("oiiii");
+      console.log(email, password);
     }
   };
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#ECECEC]">
       <div className="min-h-[25rem] w-[30%] rounded-xl border-[1px] border-slate-300 bg-[#FFFFFF] px-10 py-10">
-        <Link rel="stylesheet" href="/">
-        <BackBtn btn="iconBack" />
+        <Link href="/">
+          <BackBtn />
         </Link>
 
         <Title>Login</Title>

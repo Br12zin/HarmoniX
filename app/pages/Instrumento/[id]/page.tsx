@@ -18,7 +18,8 @@ interface InstrumentsItemProps {
 }
 
 export default function InstrumentsItem({ params }: InstrumentsItemProps) {
-  const { id } = React.use(params);
+  const { id } = params;
+  const router = useRouter();
   const instrumento = [...violao, ...teclado].find((item) => item.id === id);
 
   const { isVisible, onHandleVisibility } = useVisibility();
@@ -28,8 +29,6 @@ export default function InstrumentsItem({ params }: InstrumentsItemProps) {
   }
 
   const parcelado = (parseFloat(instrumento.newPrice) / 10).toFixed(2);
-
-  const router = useRouter();
 
   const handleEnviar = () => {
     localStorage.setItem("position", id);

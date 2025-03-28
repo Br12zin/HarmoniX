@@ -1,3 +1,4 @@
+"use client";
 import Button from "../../../components/button";
 import Title from "../../../components/Title";
 import Input from "../../../components/Input";
@@ -15,8 +16,9 @@ export default function CadastreSe() {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#ECECEC]">
       <div className="min-h-[25em] min-w-[30%] rounded-xl border-[1px] border-slate-300 bg-[#FFFFFF] px-10 py-10">
-        <Link rel="stylesheet" href="/">
-          <BackBtn btn="iconBack" />
+        <Link href="/">
+          <BackBtn />
+          {/* <BackBtn btn="iconBack" /> */}
         </Link>
         <Title>Cadastre-se</Title>
         <div className="flex">

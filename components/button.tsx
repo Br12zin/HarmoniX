@@ -1,6 +1,13 @@
 import Link from "next/link";
 
-export default function Button({ children, caminho, btn, onClick }) {
+interface ButtonProps {
+  children: string;
+  caminho?: string;
+  btn?: string;
+  onClick?: () => void;
+}
+
+export default function Button({ children, caminho, btn, onClick }: ButtonProps) {
   return (
     <>
       <div className="flex justify-center">

@@ -1,12 +1,12 @@
 export default function Input({
-  placeholder,
-  children,
-  className,
-  variantText,
-  formLogin,
-  tipo,
-  onChange,
-  value
+  placeholder = "",
+  children = "",
+  className = "",
+  variantText = "",
+  formLogin = "",
+  tipo = "",
+  onChange = () => {},
+  value = "",
 }) {
   return (
     <div className={`flex flex-col ${formLogin}`}>

@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -22,9 +18,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     },
     "target": "ES2017"
   },
@@ -32,9 +26,17 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "components/Input.tsx",
+    "app/pages/Login/page.jsx",
+    "components/Produto/InstrumentsItem.jsx",
+    "components/app-sidebar.jsx",
+    "components/cardInstrumentos.tsx",
+    "components/cardMarca.jsx",
+    "components/carousel.jsx",
+    "components/carouselProduto.jsx",
+    "components/DropDawn.jsx",
+    "components/product-carrousel.jsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

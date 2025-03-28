@@ -129,7 +129,7 @@ h6 {
 .no-scroll {
   overflow: hidden;
 }
-.no-scroll-x{
+.no-scroll-x {
   overflow: hidden;
 }
 
@@ -140,7 +140,7 @@ h6 {
 /* Swiper */
 
 .swiper {
-  width: 99.25rem;
+  max-width: 99.25rem;
   /* height: 29.125rem; */
 }
 

@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const GreyCard = ({ imagem, titulo, paragrafo, link }) => {
+interface GreyCardProps {
+  imagem: string;
+  titulo: string;
+  paragrafo: string;
+  link: string;
+}
+
+const GreyCard = ({ imagem, titulo, paragrafo, link }: GreyCardProps) => {
   return (
     <Link
       href={link}

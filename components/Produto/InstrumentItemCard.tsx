@@ -2,13 +2,25 @@
 
 import Image from "next/image";
 import Button from "../button";
-import { violao, teclado } from "./data";
-import InstrumentsItem from "./InstrumentsItem";
+// import { violao, teclado } from "./data";
+// import InstrumentsItem from "./InstrumentsItem";
 
-const InstrumentItemCard = ({ position, instrumento , props}) => {
+interface InstrumentItemCardProps {
+  position: number;
+  instrumento: Array<{
+    image: string;
+    nome: string;
+    namecard: string;
+    oldPrice: number;
+    newPrice: number;
+  }>;
+  props?: string;
+}
+
+const InstrumentItemCard = ({ position, instrumento, props }: InstrumentItemCardProps) => {
   return (
     <>
-      <div className="mt-4 cursor-pointer  ">
+      <div className="mt-4 cursor-pointer">
         <button
           onClick={() => {
             console.log("aqui vai mandar as info pra pagina");

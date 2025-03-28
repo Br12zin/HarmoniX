@@ -4,7 +4,7 @@ import Image from "next/image";
 import { CreditCard, Star, Barcode } from "lucide-react";
 import Input from "@/components/Input";
 import Button from "@/components/button";
-import { violao, teclado } from "./data";
+import { violao } from "./data";
 
 export default function InstrumentsItem() {
   const position = 1;
@@ -78,7 +78,9 @@ export default function InstrumentsItem() {
       <div className="container mx-auto mb-10 mt-20 border-t-2 border-[#C7A315]">
         <h1 className="mt-4 text-center text-4xl text-[#C7A315]"></h1>
         <div className="bg-gray-50 p-6 font-sans text-gray-900">
-          <h1 className="mb-4 text-2xl font-bold">{instrumento.nome}</h1>
+          <h1 className="mb-4 text-2xl font-bold">
+            {instrumento[position].nome}
+          </h1>
           <p className="mb-4">{instrumento[position].informacoes}</p>
           <h2 className="mb-2 mt-6 text-xl font-semibold">
             Especificações Técnicas

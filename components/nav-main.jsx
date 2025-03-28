@@ -11,7 +11,12 @@ import { useEffect, useState } from "react";
 
 import IconBag from "@/components/icon-bag";
 
-const NavMain = ({ isVisible, onHandleVisibility, opacity, apagar }) => {
+const NavMain = ({
+  isVisible,
+  onHandleVisibility,
+  opacity = "0",
+  apagar = "0",
+}) => {
   const [bg, setBg] = useState("bg-transparent");
   const [bgBtnNav, setBgBtnNav] = useState("");
   const [isClient, setIsClient] = useState(false); // Flag para verificar se o código está sendo executado no cliente

@@ -275,8 +275,8 @@ Sidebar.displayName = "Sidebar";
 //  //
 const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
-  React.ComponentProps<typeof Button>
->(({ className, onClick, fillbtnnav, ...props }, ref) => {
+  React.ComponentProps<typeof Button> & { fillbtnnav?: string }
+>(({ className, onClick, fillbtnnav = "currentColor", ...props }, ref) => {
   const { toggleSidebar } = useSidebar();
   //
 
@@ -288,7 +288,6 @@ const SidebarTrigger = React.forwardRef<
           data-sidebar="trigger"
           variant="link"
           size="icon"
-          // fill={fillbtnnav}
           className={cn(`ms-10 mt-7 flex h-10 w-10 items-center`, className)}
           onClick={(event) => {
             onClick?.(event);

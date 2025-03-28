@@ -1,6 +1,12 @@
 import { Minus, Plus } from "lucide-react";
 
-export default function MaxMinus({ incrementar, decrementar, quantidade }) {
+interface MaxMinusProps {
+  incrementar: () => void;
+  decrementar: () => void;
+  quantidade: number;
+}
+
+export default function MaxMinus({ incrementar, decrementar, quantidade }: MaxMinusProps) {
   return (
     <div className="flex justify-center items-center">
       <button

@@ -4,7 +4,8 @@ import Button from "./button";
 
 interface CardProps {
   posicao: number;
-  instrumentos: violao | teclado; // Ou o tipo específico do objeto de instrumento que deseja
+  // instrumentos: violao | teclado; // Ou o tipo específico do objeto de instrumento que deseja
+  instrumentos: typeof violao | typeof teclado; // Ou o tipo específico do objeto de instrumento que deseja
 }
 
 const Card: React.FC<CardProps> = ({ posicao, instrumentos }) => {

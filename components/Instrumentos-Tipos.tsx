@@ -1,6 +1,20 @@
 import CardInstrumentos from "./cardInstrumentos";
 
-const TiposIntrumentos = ({ titulo, instrumentoObj }) => {
+interface TiposInstrumentosProps {
+  titulo: string;
+  instrumentoObj: {
+    id: string;
+    namecard: string;
+    image: string;
+    oldPrice: string;
+    newPrice: string;
+  }[];
+}
+
+const TiposIntrumentos = ({
+  titulo,
+  instrumentoObj,
+}: TiposInstrumentosProps) => {
   return (
     <>
       <h1 className="flex justify-center text-4xl font-medium">{titulo}</h1>

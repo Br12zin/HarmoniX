@@ -1,8 +1,8 @@
 "use client";
-import BackBtn from "@/components/BackButton";
+// import BackBtn from "@/components/BackButton";
 import Buttonfale from "@/components/buttonfale";
-import Link from "next/link";
-import Image from "next/image";
+// import Link from "next/link";
+// import Image from "next/image";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
 
