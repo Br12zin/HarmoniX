@@ -288,7 +288,7 @@ const SidebarTrigger = React.forwardRef<
           data-sidebar="trigger"
           variant="link"
           size="icon"
-          className={cn(`ms-10 mt-7 flex h-10 w-10 items-center`, className)}
+          className={cn(`ms-10`, className)}
           onClick={(event) => {
             onClick?.(event);
             toggleSidebar();
@@ -300,7 +300,7 @@ const SidebarTrigger = React.forwardRef<
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512.000000 512.000000"
             preserveAspectRatio="xMidYMid meet"
-            style={{ width: "100%", height: "100%" }}
+            className="h-10 w-10"
           >
             <g
               transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"

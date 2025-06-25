@@ -45,7 +45,7 @@ const Carousel = () => {
         mousewheel={true}
         keyboard={true}
         modules={[Autoplay, Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper rounded-[3rem] shadow-md"
+        className="mySwiper rounded-2xl shadow-md sm:rounded-[3rem]"
       >
         <SwiperSlide>
           <Link href="/pages/Marcas/Yamaha">

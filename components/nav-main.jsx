@@ -51,34 +51,46 @@ const NavMain = ({
   }
 
   return (
-    <nav className={`sticky top-0 z-10 transition-all duration-300 ${bg}`}>
-      <AppSidebar
-        mudarVisibilidade={onHandleVisibility}
-        isVisible={isVisible}
-        btnSideNav={bgBtnNav}
-        fillbtn={bgBtnNav}
-      />
-      <div className="flex h-[6.3rem] w-full items-center justify-between">
-        <div className="ms-[6rem] flex flex-grow justify-center">
-          <Link href="/pages/main">
-            <Image src={logoGold} alt="Logo Harmonix" className="h-20 w-20" />
-          </Link>
-        </div>
-        <Link href="/pages/Carrinho">
-          <div>
-            <IconBag colorIcon={bgBtnNav} opacidade={opacity} />
-          </div>
+    <nav
+      className={`sticky top-0 z-10 transition-all duration-300 ${bg} w-full pb-2`}
+    >
+      <div className="absolute mt-12">
+        <AppSidebar
+          mudarVisibilidade={onHandleVisibility}
+          isVisible={isVisible}
+          btnSideNav={bgBtnNav}
+          fillbtn={bgBtnNav}
+        />
+      </div>
+      <div className="grid h-[6.3rem] grid-cols-3 items-center px-4 sm:px-8">
+        <div></div>
+        <Link href="/pages/main" className="justify-self-center">
+          <Image
+            src={logoGold}
+            alt="Logo Harmonix"
+            className="h-20 w-20"
+            priority
+          />
+        </Link>
+
+        <Link href="/pages/Carrinho" className="justify-self-end">
+          <IconBag colorIcon={bgBtnNav} opacidade={opacity} />
         </Link>
       </div>
-      <div className={`relative my-2 flex justify-center pb-8 ${apagar}`}>
+      <div
+        className={`relative mx-auto my-10 w-full max-w-full px-4 sm:max-w-[800px] ${apagar}`}
+      >
         <input
-          className="font-quiche mx-auto flex w-[800px] rounded-full border border-black border-opacity-30 px-4 py-3 text-sm placeholder-[slate-500] placeholder-opacity-60 shadow-sm shadow-[#00000044] outline-gray-500"
+          className="font-quiche w-full rounded-full border border-black border-opacity-30 px-10 py-2 text-sm placeholder-slate-500 placeholder-opacity-60 shadow-sm shadow-[#00000044] outline-gray-500 sm:px-12 sm:py-3"
           type="text"
           placeholder="Pesquise Aqui o que você procura"
           style={{ background: "#F2F1F1" }}
         />
-        <Link href={"#"} className="absolute top-[0.4rem] ms-[46rem] mt-1 h-4">
-          <Search />
+        <Link
+          href={"#"}
+          className="absolute right-6 top-1/2 -translate-y-1/2 text-gray-500"
+        >
+          <Search className="h-5 w-5" />
         </Link>
       </div>
     </nav>

@@ -3,6 +3,7 @@ import NavMain from "@/components/nav-main";
 // import { AppSidebar } from "@/components/app-sidebar";
 import { useVisibility } from "@/components/VisibilityContext";
 import CardMarca from "@/components/cardMarca";
+import marcas from "@/app/pages/Marcas/marcas";
 
 const Marcas = () => {
   const { isVisible, onHandleVisibility } = useVisibility();
@@ -10,133 +11,28 @@ const Marcas = () => {
   return (
     <>
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
-      <h3 className="text-center text-3xl">
+      <h3 className="mt-6 px-4 text-center text-2xl sm:text-3xl">
         Encontre as principais marcas fornecedoras de instrumentos musicais do
         mercado
       </h3>
-      <div className="me-12 mt-10 grid grid-cols-4">
-        <CardMarca
-          linkMarca="/pages/Marcas/Casio"
-          image="/img/casio-logo.png"
-          Height={100}
-          Width={250}
-          MarginT={30}
-        >
-          Conheça mais sobre a marca Casio, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Crafter"
-          image="/img/crafter-logo.png"
-          Height={200}
-          Width={200}
-          MarginT={20}
-        >
-          Conheça mais sobre a marca Crafter, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Fender"
-          Height={76}
-          Width={200}
-          image="/img/Fender_logo.png"
-          MarginT={20}
-        >
-          Conheça mais sobre a marca Fender, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Gibson"
-          MarginT={20}
-          Height={200}
-          Width={140}
-          image="/img/Gibson_Guitar_logo.svg.png"
-        >
-          Conheça mais sobre a marca Gibson, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Ibanez"
-          Height={250}
-          Width={250}
-          image="/img/ibanez-logo.png"
-          MarginT={25}
-        >
-          Conheça mais sobre a marca Ibanez, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Korg"
-          Height={200}
-          Width={200}
-          image="/img/Korg_logo.png"
-          MarginT={25}
-        >
-          Conheça mais sobre a marca Korg, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Roland"
-          Height={200}
-          Width={250}
-          image="/img/roland-logo.png"
-          MarginT={-20}
-        >
-          Conheça mais sobre a marca Roland, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Selmer"
-          MarginT={20}
-          Height={200}
-          Width={120}
-          image="/img/henri-selmer-paris-logo.png"
-        >
-          Conheça mais sobre a marca Selmer, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Steinway&Sons"
-          MarginT={20}
-          Height={200}
-          Width={300}
-          image="/img/Steinway_and_Sons_logo.svg.png"
-        >
-          Conheça mais sobre a marca Steinway e Sons, encontre todos os
-          instrumentos que essa marca produz, veja recomendações, tire dúvidas e
-          muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Tagima"
-          MarginT={20}
-          Height={200}
-          Width={200}
-          image="/img/tagima-logo.png"
-        >
-          Conheça mais sobre a marca Tagima, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Takamine"
-          MarginT={20}
-          Height={200}
-          Width={200}
-          image="/img/Takamine_guitar_logo.png"
-        >
-          Conheça mais sobre a marca Takamine, encontre todos os instrumentos
-          que essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-        <CardMarca
-          linkMarca="/pages/Marcas/Yamaha"
-          MarginT={-10}
-          Height={250}
-          Width={250}
-          image="/img/logo_yamaha.png"
-        >
-          Conheça mais sobre a marca Yamaha, encontre todos os instrumentos que
-          essa marca produz, veja recomendações, tire dúvidas e muito mais!
-        </CardMarca>
-      </div>
+      <main className="mx-auto my-20 mt-6 grid grid-cols-1 gap-8 px-5 sm:grid-cols-2 sm:px-16 md:grid-cols-3 md:px-4 lg:grid-cols-4 2xl:px-16">
+        {marcas.map((marca, index) => (
+          <CardMarca
+            key={index}
+            linkMarca={marca.link}
+            image={marca.image}
+            Height={marca.height}
+            Width={marca.width}
+            MarginT={
+              typeof marca.marginTop === "string"
+                ? Number(marca.marginTop)
+                : marca.marginTop
+            }
+          >
+            {marca.texto}
+          </CardMarca>
+        ))}
+      </main>
     </>
   );
 };

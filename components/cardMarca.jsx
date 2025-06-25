@@ -1,26 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const CardMarca = ({ image, children, Height, Width, MarginT, linkMarca }) => {
-  console.log("margin" + MarginT + Width);
+const CardMarca = ({
+  image,
+  children,
+  Height,
+  Width,
+  MarginT = 0,
+  linkMarca,
+}) => {
   return (
     <Link
       href={linkMarca}
-      className="mb-10 ms-12 h-[12.5rem] w-[26.25rem] rounded-[3.2rem] border border-[#707070] bg-white shadow-md"
+      className="relative flex min-h-[220px] w-full max-w-md flex-col items-center justify-between overflow-hidden rounded-[3.2rem] border border-[#707070] bg-white p-6 px-10 text-center shadow-md sm:px-6 2xl:px-16"
     >
-      <div className="flex flex-col items-center px-16 text-center">
+      {/* Imagem no topo */}
+      <div className="relative z-0 mt-4">
         <Image
-          style={{ margin: MarginT }}
-          className={`absolute h-auto w-[${Width}] z-0`}
           src={image}
           alt="LogoMarca"
           width={Width}
           height={Height}
-        ></Image>
-        <p className="pt-28 text-sm font-medium leading-tight text-[#6A6868]">
-          {children}
-        </p>
+          className={MarginT}
+        />
       </div>
+
+      {/* Texto no rodapé */}
+      <p className="mt-4 text-sm font-medium leading-tight text-[#6A6868]">
+        {children}
+      </p>
     </Link>
   );
 };
