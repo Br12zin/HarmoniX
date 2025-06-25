@@ -68,9 +68,9 @@ export default function CategoriaMarcas() {
             alt=""
             width={30}
             height={30}
-            className="ms-2 box-content rounded-full border-[1px] border-slate-800 p-1"
+            className="box-content rounded-full border-[1px] border-slate-800 p-1"
           />
-          <p className="items-center text-3xl">Percussão</p>
+          <p className="flex items-center text-3xl">Percussão</p>
           <DropDawn
             Item1="Teclado"
             Item2="Bateria"
@@ -88,4 +88,3 @@ export default function CategoriaMarcas() {
     </div>
   );
 }
-

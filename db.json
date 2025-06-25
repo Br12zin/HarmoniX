@@ -1,0 +1,25 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Produto 1",
+      "descricao": "Descrição do Produto 1",
+      "preco": 100.0,
+      "imagem": "https://as2.ftcdn.net/v2/jpg/01/01/85/71/1000_F_101857173_6Pz6HWIZHpKhJdu53eT74i9xG2YbvrZs.jpg"
+    },
+    {
+      "id": "2",
+      "nome": "Produto 2",
+      "descricao": "Descrição do Produto 2",
+      "preco": 100.0,
+      "imagem": "https://as2.ftcdn.net/v2/jpg/02/38/20/31/1000_F_238203139_aHnKVip8dNgBgAeHk6UArg5zLPxH0gJQ.jpg"
+    },
+    {
+      "id": "3",
+      "nome": "Produto 3",
+      "descricao": "Descrição do Produto 3",
+      "preco": 100.0,
+      "imagem": "https://as2.ftcdn.net/v2/jpg/00/30/66/59/1000_F_30665978_gAeruMySZXWBWpcL2D3aN9JAlgntEbKk.jpg"
+    }
+  ]
+}
