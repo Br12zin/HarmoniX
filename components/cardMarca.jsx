@@ -6,7 +6,7 @@ const CardMarca = ({
   children,
   Height,
   Width,
-  MarginT = 0,
+  MarginT = "",
   linkMarca,
 }) => {
   return (

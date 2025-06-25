@@ -23,11 +23,7 @@ const Marcas = () => {
             image={marca.image}
             Height={marca.height}
             Width={marca.width}
-            MarginT={
-              typeof marca.marginTop === "string"
-                ? Number(marca.marginTop)
-                : marca.marginTop
-            }
+            MarginT={marca.marginTop !== undefined ? String(marca.marginTop) : undefined}
           >
             {marca.texto}
           </CardMarca>
