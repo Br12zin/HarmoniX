@@ -20,6 +20,7 @@ export default function Login() {
   // Função de login
   const handleLogin = () => {
     if (email === predefinedEmail && password === predefinedPassword) {
+      window.localStorage.setItem("user", email); // Armazenar o email no localStorage
       router.push("/pages/main"); // Navegar para a página 'main'
     } else {
       alert("Email ou senha inválidos!");
@@ -46,7 +47,7 @@ export default function Login() {
         </Input>
         <Input
           tipo="password"
-          className="bg mb-0 text-center"
+          className="bg mb-0 text-left"
           placeholder="***********"
           onChange={(e) => setPassword(e.target.value)}
           value={password}

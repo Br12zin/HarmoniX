@@ -3,6 +3,7 @@ import perfil from "@/public/img/icons/icone-rosto-de-pessoa-ouvindo-musica-com-
 import favoritos from "@/public/img/icons/icone-favorito.png";
 import avaliacoes from "@/public/img/icons/icone-estrela.png";
 import carrinho from "@/public/img/icons/carrinho.png";
+import fazerlogout from "@/public/img/icons/fazerlogout.png";
 import telefone from "@/public/img/icons/icone-telefone.png";
 import { CustomTrigger, SidebarProvider, SidebarTrigger } from "./ui/sidebar";
 
@@ -146,6 +147,16 @@ export function AppSidebar({
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   ))}
+                  <div className="flex">
+                    <h2 className="fontJeanne py-2 text-[1rem]">Fazer Logout</h2>
+                  <a href="http://localhost:3000" className="mt-2 ml-2">
+                  <Image
+                className="h-4 w-7"
+                src={fazerlogout}
+                alt="Logout"
+                  />
+                  </a>
+                  </div>
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
