@@ -1,7 +1,9 @@
+// interface/produto.ts
 export interface Produto {
-  id: number;
+  id: string;
   nome: string;
   descricao: string;
-  preco: number;
+  preco: number; 
   imagem: string;
+  data: string; // data/hora da criação
 }
