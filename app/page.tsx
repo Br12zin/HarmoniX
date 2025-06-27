@@ -2,7 +2,7 @@
 import Footer from "@/components/Footer";
 import Button from "@/components/button";
 import { ChevronRight } from "lucide-react";
-import Video from "@/components/Video";
+import Video from "@/app/components/Video";
 import Link from "next/link";
 
 // import { Ghost } from "lucide-react";
@@ -25,7 +25,7 @@ const Home = () => {
           caminho="/pages/CadastreSe"
           btn="me-16 bg-opacity-0 hover:bg-opacity-70 hover:text-black"
         >
-          {"cadastrar-se"}
+          cadastrar-se
         </Button>
       </div>
       <div>

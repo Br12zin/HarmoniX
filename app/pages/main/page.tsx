@@ -1,8 +1,8 @@
 "use client";
 
-import GreyCard from "@/components/gray-card";
+import GreyCard from "@/app/pages/main/components/gray-card";
 
-import Carousel from "@/components/carousel";
+import Carousel from "@/app/pages/main/components/carousel";
 
 import NavMain from "@/components/nav-main";
 // import ImgInstrumento from "@/app/assets/images/instruments-2.png";
