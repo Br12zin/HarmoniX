@@ -6,7 +6,7 @@ import logoGold from "@/public/img/logo-gold.png";
 import { Search } from "lucide-react";
 
 import Link from "next/link";
-import { AppSidebar } from "@/components/navbar/app-sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 import { useEffect, useState } from "react";
 
 import IconBag from "@/components/icon-bag";
