@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { DropDawn } from "@/components/DropDawn";
+import { DropDawn } from "./components/DropDawn";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
+import { sopros, cordas, percussao } from "./data/items-dropdawn";
 
 export default function CategoriaMarcas() {
   const { isVisible, onHandleVisibility } = useVisibility();
@@ -25,18 +26,7 @@ export default function CategoriaMarcas() {
             className="box-content rounded-full border-[1px] border-slate-800 p-1"
           />
           <p className="flex items-center text-3xl">Cordas</p>
-          <DropDawn
-            Item1="Violão"
-            Item2="Guitarra"
-            Item3="Harpa"
-            Item4="Baixo"
-            Item5="Cavaquinho"
-            Item6="Ukulelê"
-            Item7="Violino"
-            Item8="Bandolim"
-            Item9="Violoncelo"
-            mg=""
-          />
+          <DropDawn itens={cordas} mg="" />
         </div>
 
         <div className="mb-12 flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-white">
@@ -48,18 +38,7 @@ export default function CategoriaMarcas() {
             className="box-content rounded-full border-[1px] border-slate-800 p-1"
           />
           <p className="flex items-center text-3xl">Sopros</p>
-          <DropDawn
-            Item1="Saxofone"
-            Item2="Trompete"
-            Item3="Trombone"
-            Item4="Tuba"
-            Item5="Flauta"
-            Item6="Clarinete"
-            Item7="Clarone"
-            Item8="Oboé"
-            Item9="Trompa"
-            mg=""
-          />
+          <DropDawn itens={sopros} mg="" />
         </div>
 
         <div className="flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-white">
@@ -71,18 +50,7 @@ export default function CategoriaMarcas() {
             className="box-content rounded-full border-[1px] border-slate-800 p-1"
           />
           <p className="flex items-center text-3xl">Percussão</p>
-          <DropDawn
-            Item1="Teclado"
-            Item2="Bateria"
-            Item3="Tambor"
-            Item4="Triângulo"
-            Item5="Chocalho"
-            Item6="Cajon"
-            Item7="Pandeiro"
-            Item8="Tímoanos"
-            Item9="Agogô"
-            mg="me-3"
-          />
+          <DropDawn itens={percussao} mg="me-3" />
         </div>
       </div>
     </div>
