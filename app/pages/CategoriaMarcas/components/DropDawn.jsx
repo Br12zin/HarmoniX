@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { Button } from "./ui/buttonshadcn";
+import { Button } from "@/components/ui/buttonshadcn";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -10,21 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import { ScrollArea } from "./ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
-export function DropDawn({
-  Item1,
-  Item2,
-  Item3,
-  Item4,
-  Item5,
-  Item6,
-  Item7,
-  Item8,
-  Item9,
-  mg,
-}) {
+export function DropDawn({ itens, mg }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -37,9 +26,13 @@ export function DropDawn({
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <ScrollArea className="h-56 overflow-y-auto">
-          <Link href="/pages/Instrumentos/Violoes" className="font-semibold">
-            <DropdownMenuCheckboxItem>{Item1}</DropdownMenuCheckboxItem>
-          </Link>
+          {itens.map((item, index) => (
+            <Link key={index} href={item.link} className="font-semibold">
+              <DropdownMenuCheckboxItem>{item.nome}</DropdownMenuCheckboxItem>
+            </Link>
+          ))}
+
+          {/* ; /*{" "}
           <DropdownMenuCheckboxItem>
             <p className="font-semibold">{Item2}</p>
           </DropdownMenuCheckboxItem>
@@ -63,7 +56,8 @@ export function DropDawn({
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem>
             <p className="font-semibold">{Item9}</p>
-          </DropdownMenuCheckboxItem>
+          </DropdownMenuCheckboxItem>{" "}
+          */}
         </ScrollArea>
       </DropdownMenuContent>
     </DropdownMenu>
