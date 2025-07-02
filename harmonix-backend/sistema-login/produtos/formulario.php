@@ -55,6 +55,7 @@ if (isset($_GET["key"])) {
                                 </div>
                             </div>
 
+
                             <div class="row">
                                 <div class="mb-3 col-md-4">
                                     <label for="id_marca" class="form-label">Marca</label>
@@ -131,7 +132,20 @@ if (isset($_GET["key"])) {
                                     <input type="number" class="form-control" id="quantidade" name="quantidade" required value="<?php echo isset($produto) ? $produto["quantidade"] : ""; ?>">
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="mb-3 col-md-3">
+                                    <label for="teclasnum" class="form-label">Teclas Num</label>
+                                    <input type="number" class="form-control" id="teclasnum" name="teclasnum" required value="<?php echo isset($produto) ? $produto["teclasnum"] : ""; ?>">
+                                </div>
+                                <div class="mb-3 col-md-3">
+                                    <label for="modelo" class="form-label">Modelo</label>
+                                    <input type="number" class="form-control" id="modelo" name="modelo" required value="<?php echo isset($produto) ? $produto["modelo"] : ""; ?>">
+                                </div>
+                                <div class="mb-3 col-md-3">
+                                    <label for="tampo" class="form-label">Tampo</label>
+                                    <input type="number" class="form-control" id="tampo" name="tampo" value="<?php echo isset($produto) ? $produto["tampo"] : ""; ?>">
+                                </div>
+                            </div>
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">Descrição</label>
                                 <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite uma descrição detalhada do produto..." rows="3" maxlength="500" required><?php echo isset($produto) ? $produto["descricao"] : ""; ?></textarea>
