@@ -92,20 +92,10 @@ if (isset($_GET["key"])) {
                                     </select>
                                 </div>
                                 <div class="mb-3 col-md-4">
-                                    <label for="imagem" class="form-label">Imagem</label>
-                                    <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*">
-                                    <!-- Preview da imagem -->
-                                    <img id="preview" src="#" alt="Prévia da imagem" class="img-thumbnail mt-2 d-none" style="width: 120px; height: 120px; object-fit: cover;">
+                                    <label for="modelo" class="form-label">Modelo</label>
+                                    <input type="number" class="form-control" id="modelo" name="modelo" required value="<?php echo isset($produto) ? $produto["modelo"] : ""; ?>">
                                 </div>
 
-
-                                <?php if (isset($produto["imagem"])): ?>
-                                    <div class="mb-3 col-md-4 text-center">
-                                        <input type="hidden" name="currentImage" value="<?php echo $produto["imagem"]; ?>">
-                                        <img src="/produtos/imagens/<?php echo $produto["imagem"]; ?>" class="img-thumbnail rounded" style="width: 120px; height: 120px; object-fit: cover;">
-                                        <p class="small text-muted mt-1">Imagem atual</p>
-                                    </div>
-                                <?php endif; ?>
                             </div>
 
                             <div class="row">
@@ -116,6 +106,7 @@ if (isset($_GET["key"])) {
                                         <input type="number" step="0.01" class="form-control" id="preco" name="preco" required value="<?php echo isset($produto) ? $produto["preco"] : ""; ?>">
                                     </div>
                                 </div>
+
                                 <div class="mb-3 col-md-3">
                                     <label for="desconto" class="form-label">Desconto</label>
                                     <div class="input-group">
@@ -133,33 +124,44 @@ if (isset($_GET["key"])) {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="mb-3 col-md-3">
-                                    <label for="teclasnum" class="form-label">Teclas Num</label>
-                                    <input type="number" class="form-control" id="teclasnum" name="teclasnum" required value="<?php echo isset($produto) ? $produto["teclasnum"] : ""; ?>">
+                                <div class="mb-3 col-md">
+                                    <label for="imagem" class="form-label">Imagem</label>
+                                    <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*">
+                                    <!-- Preview da imagem -->
+                                    <img id="preview" src="#" alt="Prévia da imagem" class="img-thumbnail mt-2 d-none" style="width: 120px; height: 120px; object-fit: cover;">
                                 </div>
-                                <div class="mb-3 col-md-3">
-                                    <label for="modelo" class="form-label">Modelo</label>
-                                    <input type="number" class="form-control" id="modelo" name="modelo" required value="<?php echo isset($produto) ? $produto["modelo"] : ""; ?>">
-                                </div>
-                                <div class="mb-3 col-md-3">
-                                    <label for="tampo" class="form-label">Tampo</label>
-                                    <input type="number" class="form-control" id="tampo" name="tampo" value="<?php echo isset($produto) ? $produto["tampo"] : ""; ?>">
-                                </div>
+
+
+                                <?php if (isset($produto["imagem"])): ?>
+                                    <div class="mb-3 col-md-4 text-center">
+                                        <input type="hidden" name="currentImage" value="<?php echo $produto["imagem"]; ?>">
+                                        <img src="/produtos/imagens/<?php echo $produto["imagem"]; ?>" class="img-thumbnail rounded" style="width: 120px; height: 120px; object-fit: cover;">
+                                        <p class="small text-muted mt-1">Imagem atual</p>
+                                    </div>
+                                <?php endif; ?>
                             </div>
+                            <div class="mb-3">
+                                <label for="especificacoes_tecnicas" class="form-label">Especificações Técnicas</label>
+                                <textarea class="form-control" id="especificacoes_tecnicas" name="especificacoes_tecnicas" placeholder="Digite as especificações tecnicas do produto..." rows="3" maxlength="500" required><?php echo isset($produto) ? $produto["especificacoes_tecnicas"] : ""; ?></textarea>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">Descrição</label>
                                 <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite uma descrição detalhada do produto..." rows="3" maxlength="500" required><?php echo isset($produto) ? $produto["descricao"] : ""; ?></textarea>
                             </div>
-
-                            <div class="card-footer text-end">
-                                <a href="./" class="btn btn-secondary">Cancelar</a>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                            </div>
-                        </form>
                     </div>
+
+
+
+                    <div class="card-footer text-end">
+                        <a href="./" class="btn btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Scripts -->
