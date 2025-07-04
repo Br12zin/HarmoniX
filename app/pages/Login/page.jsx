@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import Button from "@/components/button";
 import Title from "@/components/Title";
 import Input from "@/components/Input";
@@ -7,15 +10,33 @@ import Link from "next/link";
 import BackBtn from "@/components/BackButton";
 
 export default function Login() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
-  // Função de login
-  const handleLogin = async() => {
-    try{
+  const handleLogin = async () => {
+  try {
+    const res = await fetch("http://localhost:8080/api-backend/clientes/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, senha }),
+    });
 
-    }catch (error) {
-      console.error("Erro ao fazer login:", error);
+    const data = await res.json();
+
+    if (res.ok && data.status === "success") {
+      router.push("/pages/main");
+    } else {
+      alert(data.message || "Email ou senha inválidos.");
     }
-  };
+  } catch (error) {
+    console.error("Erro no login:", error);
+    alert("Erro na conexão com o servidor.");
+  }
+};
+
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#ECECEC]">
@@ -25,27 +46,32 @@ export default function Login() {
         </Link>
 
         <Title>Login</Title>
+
         <Input
+        tipo="email"
           placeholder="seuemail@email.com"
-          onChange={(e) => setEmail(e.target.value)}
           value={email}
+          onChange={(e) => setEmail(e.target.value)}
         >
           Email
         </Input>
+
         <Input
           tipo="password"
-          className="bg mb-0 text-left"
+          className="mb-0"
           placeholder="***********"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
         >
           Senha
         </Input>
+
         <div className="flex justify-center">
           <Link href="/pages/RedefinirSenha" className="text-[75%]">
             Esqueci minha senha
           </Link>
         </div>
+
         <Button onClick={handleLogin}>Entrar</Button>
       </div>
     </div>

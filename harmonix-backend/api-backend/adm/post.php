@@ -33,7 +33,7 @@ try {
 
         $result = array(
             'status' => 'success',
-            'message' => 'Usuário cadastrado com sucesso!'
+            'message' => 'Administrador cadastrado com sucesso!'
         );
 
 

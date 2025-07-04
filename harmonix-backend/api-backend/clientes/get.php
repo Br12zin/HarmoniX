@@ -9,7 +9,7 @@ try {
         $sql = "
             SELECT * 
             FROM clientes
-            WHERE id_cliente = :id
+            WHERE cliente_id = :id
         ";
 
         // Preparar a sintaxe SQL
@@ -18,44 +18,27 @@ try {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     }
     // Verifica se há um NOME na URL para consulta
-    elseif (isset($_GET["cliente"]) && is_string($_GET["cliente"])) {
-        $cliente = $_GET["cliente"];
+    elseif (isset($_GET["nome"]) && is_string($_GET["nome"])) {
+        $cliente = $_GET["nome"];
 
         // Monta a sintaxe SQL de busca
         $sql = "
             SELECT * 
             FROM clientes
-            WHERE cliente LIKE :cliente
-            ORDER BY cliente
+            WHERE nome LIKE :nome
+            ORDER BY nome
         ";
 
         // Preparar a sintaxe SQL
         $stmt = $conn->prepare($sql);
         // Vincular o parâmetro :nome com o valor da variável $nome
-        $stmt->bindValue(':cliente', '%' . $cliente . '%', PDO::PARAM_STR);
-    }
-    // Verifica se há uma Cidade na URL para consulta
-    elseif (isset($_GET["cidade"]) && is_string($_GET["cidade"])) {
-        $cidade = $_GET["cidade"];
-
-        // Monta a sintaxe SQL de busca
-        $sql = "
-            SELECT * 
-            FROM clientes
-            WHERE cidade LIKE :cidade
-            ORDER BY cliente
-        ";
-
-        // Preparar a sintaxe SQL
-        $stmt = $conn->prepare($sql);
-        // Vincular o parâmetro :cidade com o valor da variável $cidade
-        $stmt->bindValue(':cidade', '%' . $cidade . '%', PDO::PARAM_STR);
+        $stmt->bindValue(':nome', '%' . $cliente . '%', PDO::PARAM_STR);
     } else {
         // Monta a sintaxe SQL de busca
         $sql = "
             SELECT * 
             FROM clientes
-            ORDER BY cliente
+            ORDER BY nome
         ";
 
         // Preparar a sintaxe SQL
@@ -76,7 +59,7 @@ try {
         // Organizar o endereço como objeto
         foreach ($data as $key => $cliente) {
             $data[$key]->endereco = array(
-                'logradouro' => $cliente->logradouro,
+                'endereco' => $cliente->endereco,
                 'numero' => $cliente->numero,
                 'complemento' => $cliente->complemento,
                 'bairro' => $cliente->bairro,
@@ -85,7 +68,7 @@ try {
                 'cep' => $cliente->cep
             );
             // Remove os campos que não são mais necessários
-            unset($data[$key]->logradouro);
+            unset($data[$key]->endereco);
             unset($data[$key]->numero);
             unset($data[$key]->complemento);
             unset($data[$key]->bairro);

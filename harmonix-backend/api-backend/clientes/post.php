@@ -1,4 +1,5 @@
 <?php
+include"../verificar-autenticacao.php";
 
 try {
     // Recuperar informações de formulário vindo do Frontend
@@ -6,15 +7,7 @@ try {
 
     // Verificar se existe informações de formulário
     if (!empty($postfields)) {
-        // VER DEPOIS
-        // RG? SENHA?(ARRUMAR CRIPTOGRAFIA?) IMAGEM?
         $cliente = $postfields['cliente'] ?? null;
-        $cpf = $postfields['cpf'] ?? null;
-        $rg = $postfields['rg'] ?? null;
-        // $cpf = preg_replace('/\D/', '', $cpf); // Remove caracteres não numéricos do CPF
-        $data_nascimento = $postfields['data_nascimento'] ?? null;
-        $sexo = $postfields['sexo'] ?? null;
-        $imagem = $postfields['imagem'] ?? null;
         $email = $postfields['email'] ?? null;
         $senha = $postfields['senha'] ?? null;
         $telefone = $postfields['telefone'] ?? null;
@@ -28,26 +21,21 @@ try {
         $cep = $postfields['endereco']['cep'] ?? null;
 
         // Verifica campos obrigatórios
-        if (empty($cliente) || empty($postfields['endereco'])) {
+        if (empty($cliente)) {
             http_response_code(400);
-            throw new Exception('cliente e Endereço são obrigatórios');
+            throw new Exception('Nome, E-mail, Senha, Telefone e Endereço são obrigatórios');
         }
 
         $sql = "
-        INSERT INTO clientes (cliente, imagem, data_nascimento, sexo, cpf, rg, email, senha,  telefone, telefone_residencial, cep, logradouro, numero, cidade, estado, complemento, bairro) VALUES 
+        INSERT INTO clientes (nome, email, senha,  celular, telefone, telefone_residencial, cep, endereco, numero, cidade, estado, complemento, bairro) VALUES 
         (
             :cliente,
-            :imagem,
-            :data_nascimento,
-            :sexo,
-            :cpf,
-            :rg,
             :email,
             :senha,
             :telefone,
             :telefone_residencial,
             :cep,
-            :logradouro, 
+            :endereco, 
             :numero, 
             :cidade,
             :estado,
@@ -58,11 +46,6 @@ try {
         $stmt = $conn->prepare($sql);
 
         $stmt->bindParam(':cliente', $cliente, PDO::PARAM_STR);
-        $stmt->bindParam(':imagem', $imagem, is_null($imagem) ? PDO::PARAM_NULL : PDO::PARAM_STR);
-        $stmt->bindParam(':data_nascimento', $data_nascimento, PDO::PARAM_STR);
-        $stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
-        $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
-        $stmt->bindParam(':rg', $rg, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
         $stmt->bindParam(':telefone', $telefone, PDO::PARAM_STR);

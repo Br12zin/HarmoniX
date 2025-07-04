@@ -28,7 +28,7 @@ try {
             SELECT * 
             FROM produtos
             JOIN marcas ON produtos.id_marca = marcas.id_marca
-             JOIN categorias ON produtos.id_categoria = categorias.id_categoria
+            JOIN categorias ON produtos.id_categoria = categorias.id_categoria
             WHERE produto LIKE :produto
             ORDER BY produto
         ";

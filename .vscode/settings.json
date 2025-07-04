@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "sqltools.connections": [
         {
             "mysqlOptions": {
@@ -15,3 +16,21 @@
         }
     ]
 }
+=======
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "harmonix",
+      "database": "harmonix",
+      "username": "root"
+    }
+  ]
+}
+>>>>>>> 341a8b7d372e65f3ea12474fda1f6ef761f29ca5
