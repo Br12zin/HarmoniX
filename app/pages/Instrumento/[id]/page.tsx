@@ -2,14 +2,16 @@
 
 import Image from "next/image";
 import { CreditCard, Star, Barcode } from "lucide-react";
-import { teclado, violao } from "@/components/Produto/data";
+// import { teclado, violao } from "@/components/Produto/data";
 import Input from "@/components/Input";
 import Button from "@/components/button";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
 import CarouselProduto from "@/components/carouselProduto";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { IProduct } from "@/app/interfaces/IProduct";
+import { fetchProducts } from "@/app/services/get";
 
 interface InstrumentsItemProps {
   params: {
@@ -18,25 +20,48 @@ interface InstrumentsItemProps {
 }
 
 export default function InstrumentsItem({ params }: InstrumentsItemProps) {
-  const { id } = params;
+  const { id } = params || {};
   const router = useRouter();
-  const instrumento = [...violao, ...teclado].find((item) => item.id === id);
-
+  const [instrumento, setInstrumento] = useState<IProduct | null>(null);
+  const [quantity, setQuantity] = useState(1);
   const { isVisible, onHandleVisibility } = useVisibility();
+  const id_cliente = 3; // Hardcoded for testing; replace with dynamic client ID from auth
 
-  if (!instrumento) {
-    return <p>Instrumento não encontrado</p>;
-  }
+  useEffect(() => {
+    const loadProduct = async () => {
+      try {
+        const products = await fetchProducts();
+        const foundProduct = products.find(
+          (p: { id_produto: unknown }) => Number(p.id_produto) === Number(id),
+        );
+        setInstrumento(foundProduct || null);
+      } catch (err) {
+        setError("Erro ao carregar o produto.");
+        console.error(err);
+      }
+    };
+    loadProduct();
+  }, [id]);
+  const precoComDesconto: Number = Number(
+    instrumento.preco - instrumento.desconto,
+  );
+  const parcelado = ({ precoComDesconto } / 10).toFixed(2);
 
-  const parcelado = (parseFloat(instrumento.newPrice) / 10).toFixed(2);
-
-  const handleEnviar = () => {
-    localStorage.setItem("position", id);
-    if (typeof window !== "undefined") {
-      router.push(`/pages/Carrinho`);
+  const handleAddToCart = async () => {
+    if (instrumento) {
+      const success = await addToCart(instrumento, id_cliente, quantity);
+      if (success) {
+        alert("Produto adicionado ao carrinho!");
+      } else {
+        setError(
+          "Falha ao adicionar o produto ao carrinho. Verifique o console para detalhes.",
+        );
+      }
     }
   };
-
+  import(
+    `@/harmonix-backend/sistema-login/clientes/imagens/${instrumento.imagem}`
+  );
   return (
     <>
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
@@ -44,11 +69,14 @@ export default function InstrumentsItem({ params }: InstrumentsItemProps) {
         <div className="container mx-auto flex">
           <div className="mx-auto max-w-[50em]">
             <Image
-              src={instrumento.image}
+              src={``}
               alt={instrumento.nome}
               width={550}
               height={700}
               className="rounded-2xl border-2 border-slate-400 border-opacity-45 bg-white px-8"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = "/placeholder.jpg"; // Fallback image
+              }}
             />
           </div>
           <div className="mx-auto max-w-[35em] border-l-2 border-[#C7A315] border-opacity-50 ps-10">
@@ -65,11 +93,11 @@ export default function InstrumentsItem({ params }: InstrumentsItemProps) {
               </p>
             </div>
             <h3 className="mt-5 text-xl text-slate-400 line-through">
-              R$ {instrumento.oldPrice}
+              R$ {instrumento.preco}
             </h3>
             <div className="box-border flex flex-wrap items-baseline">
               <h2 className="mt-5 text-3xl font-semibold text-[#C7A315]">
-                R$ {instrumento.newPrice}
+                R$ {precoComDesconto}
               </h2>
               <p className="ms-2 font-bold text-slate-500">à vista</p>
               <p className="text-green-400">
@@ -126,4 +154,7 @@ export default function InstrumentsItem({ params }: InstrumentsItemProps) {
       <CarouselProduto />
     </>
   );
+}
+function setError(arg0: string) {
+  throw new Error("Function not implemented.");
 }
