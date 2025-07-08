@@ -35,7 +35,7 @@ try {
         // GERAR UM NOVO NOME PARA O ARQUIVO
         $novo_nome = md5(uniqid() . microtime()) . ".$extensao";
         // MOVER O ARQUIVO PARA A PASTA DE IMAGENS
-        move_uploaded_file($_FILES["imagem"]["tmp_name"], "../produtos/imagens/$novo_nome");
+        move_uploaded_file($_FILES["imagem"]["tmp_name"], "../../api-backend/produtos/imagens/$novo_nome");
         // ADICIONAR O NOME DO ARQUIVO NO POST
         $_POST["imagem"] = $novo_nome;
 
@@ -58,7 +58,9 @@ try {
             "descricao" => $_POST["descricao"],
             "id_marca" => $_POST["id_marca"],
             "id_categoria" => $_POST["id_categoria"],
+            "modelo" => $_POST["modelo"],
             "imagem" => $_POST["imagem"],
+            "especificacoes" => $_POST["especificacoes"],
             "quantidade" => $_POST["quantidade"],
             "preco" => $_POST["preco"],
             "desconto" => $_POST["desconto"]
@@ -70,8 +72,10 @@ try {
             "id_produto" => $_POST["productId"],
             "produto" => $_POST["produto"],
             "descricao" => $_POST["descricao"],
+            "especificacoes" => $_POST["especificacoes"],
             "id_marca" => $_POST["id_marca"],
             "id_categoria" => $_POST["id_categoria"],
+            "modelo" => $_POST["modelo"],
             "imagem" => $_POST["imagem"],
             "quantidade" => $_POST["quantidade"],
             "preco" => $_POST["preco"],

@@ -93,7 +93,7 @@ if (isset($_GET["key"])) {
                                 </div>
                                 <div class="mb-3 col-md-4">
                                     <label for="modelo" class="form-label">Modelo</label>
-                                    <input type="number" class="form-control" id="modelo" name="modelo" required value="<?php echo isset($produto) ? $produto["modelo"] : ""; ?>">
+                                    <input type="text" class="form-control" id="modelo" name="modelo" required value="<?php echo isset($produto) ? $produto["modelo"] : ""; ?>">
                                 </div>
 
                             </div>
@@ -135,19 +135,19 @@ if (isset($_GET["key"])) {
                                 <?php if (isset($produto["imagem"])): ?>
                                     <div class="mb-3 col-md-4 text-center">
                                         <input type="hidden" name="currentImage" value="<?php echo $produto["imagem"]; ?>">
-                                        <img src="/produtos/imagens/<?php echo $produto["imagem"]; ?>" class="img-thumbnail rounded" style="width: 120px; height: 120px; object-fit: cover;">
+                                        <img src="http://localhost:8080/produtos/imagens/<?php echo $produto["imagem"]; ?>" class="img-thumbnail rounded" style="width: 120px; height: 120px; object-fit: cover;">
                                         <p class="small text-muted mt-1">Imagem atual</p>
                                     </div>
                                 <?php endif; ?>
                             </div>
                             <div class="mb-3">
-                                <label for="especificacoes_tecnicas" class="form-label">Especificações Técnicas</label>
-                                <textarea class="form-control" id="especificacoes_tecnicas" name="especificacoes_tecnicas" placeholder="Digite as especificações tecnicas do produto..." rows="3" maxlength="500" required><?php echo isset($produto) ? $produto["especificacoes_tecnicas"] : ""; ?></textarea>
+                                <label for="especificacoes" class="form-label">Especificações Técnicas</label>
+                                <textarea class="form-control" id="especificacoes" name="especificacoes" placeholder="Digite as especificações tecnicas do produto..." rows="3" maxlength="500" required><?php echo isset($produto) ? $produto["especificacoes"] : ""; ?></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">Descrição</label>
-                                <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite uma descrição detalhada do produto..." rows="3" maxlength="500" required><?php echo isset($produto) ? $produto["descricao"] : ""; ?></textarea>
+                                <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite uma descrição detalhada do produto..." rows="3" maxlength="1300" required><?php echo isset($produto) ? $produto["descricao"] : ""; ?></textarea>
                             </div>
                     </div>
 

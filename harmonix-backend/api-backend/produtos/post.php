@@ -2,17 +2,21 @@
 
 
 try {
+
     $postfields = json_decode(file_get_contents('php://input'), true);
+
 
     if (!empty($postfields)) {
 
         $id_categoria = $postfields['id_categoria'] ?? null;
         $id_marca = $postfields['id_marca'] ?? null;
         $produto = $postfields['produto'] ?? null;
+        $modelo = $postfields['modelo'] ?? null; // Adicionando o campo modelo
         $descricao = $postfields['descricao'] ?? null;
         $preco = $postfields['preco'] ?? null;
         $desconto = $postfields['desconto'] ?? null;
         $quantidade = $postfields['quantidade'] ?? null;
+        $especificacoes = $postfields['especificacoes'] ?? null;
         $imagem = $postfields['imagem'] ?? null;
 
         // Verifica campos obrigatórios
@@ -21,8 +25,8 @@ try {
             throw new Exception('Todos os campos são obrigatórios');
         }
 
-        $sql = "INSERT INTO produtos (id_categoria, id_marca, produto, descricao, quantidade, preco, desconto,  imagem) VALUES
-        (:id_categoria, :id_marca, :produto, :descricao,:quantidade, :preco,  :desconto,  :imagem)
+        $sql = "INSERT INTO produtos (id_categoria, id_marca, produto, modelo, especificacoes, descricao, quantidade, preco, desconto,  imagem) VALUES
+        (:id_categoria, :id_marca, :produto, :modelo :especificacoes, :descricao,:quantidade, :preco,  :desconto,  :imagem)
        ";
 
 
@@ -31,7 +35,9 @@ try {
 
         $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
         $stmt->bindParam(':id_marca', $id_marca, PDO::PARAM_INT);
+        $stmt->bindParam(':especificacoes', $especificacoes, PDO::PARAM_STR);
         $stmt->bindParam(':produto', $produto, PDO::PARAM_STR);
+        $stmt->bindParam(':modelo', $modelo, PDO::PARAM_STR); // Vinculando o campo modelo
         $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
         $stmt->bindParam(':preco', $preco, PDO::PARAM_STR);
         $stmt->bindParam(':desconto', $desconto, PDO::PARAM_STR);

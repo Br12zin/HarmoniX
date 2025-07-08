@@ -42,11 +42,13 @@ if (isset($_GET["key"])) {
 
     <!-- Conteúdo principal -->
     <div class="container mt-5">
+
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h1 class="h5 mb-0">Produtos Cadastrados</h1>
+
                         <div>
                             <a href="/produtos/formulario.php" class="btn btn-primary btn-sm me-1">Novo Produto</a>
                             <a href="/produtos/exportar.php" class="btn btn-success btn-sm me-1">Excel</a>
@@ -70,6 +72,7 @@ if (isset($_GET["key"])) {
                                     <th>Preço Final</th>
                                     <th>Ações</th>
                                 </tr>
+
                             </thead>
                             <tbody id="produtoTableBody">
                                 <!-- Os clientes serão carregados aqui via PHP -->
@@ -82,7 +85,7 @@ if (isset($_GET["key"])) {
                                         echo '
 <tr>
     <th scope="row">' . $produto['id_produto'] . '</th>
-    <td><img width="60" src="../produtos/imagens/' . $produto["imagem"] . '"></td>
+    <td><img width="60" src="http://localhost:8080/produtos/imagens/' . $produto["imagem"] . '"></td>
 
     <td>' . $produto["produto"] . '</td>
     <td class="truncante" style="max-width: 150px;" title="' . htmlspecialchars($produto["descricao"]) . '">

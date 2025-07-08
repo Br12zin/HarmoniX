@@ -14,7 +14,7 @@ if (!empty($response)) {
         $lista .= '
  <tr>
                                     <th scope="row">' . $produto['id_produto'] . '</th>
-                                    <td><img width="60" src="../produtos/imagens/' . $produto["imagem"] . '"></td>
+                                    
 
                                     <td>' . $produto["produto"] . '</td>
                                     <td class="text-truncate" style="max-width: 150px;">' . $produto["descricao"] . '</td>
