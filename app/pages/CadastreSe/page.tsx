@@ -6,211 +6,234 @@ import { useRouter } from "next/navigation";
 import Button from "@/components/button";
 import Title from "@/components/Title";
 import Input from "@/components/Input";
-import { CirclePlus } from "lucide-react";
 import Link from "next/link";
 import BackBtn from "@/components/BackButton";
 
 export default function CadastreSe() {
   const router = useRouter();
 
-  // Estados dos inputs
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmSenha, setConfirmSenha] = useState("");
-  const [cliente, setCliente] = useState("");
+  const [nome, setNome] = useState("");
   const [telefone, setTelefone] = useState("");
   const [endereco, setEndereco] = useState("");
   const [numero, setNumero] = useState("");
   const [cep, setCep] = useState("");
+  const [bairro, setBairro] = useState("");
   const [complemento, setComplemento] = useState("");
   const [cidade, setCidade] = useState("");
   const [estado, setEstado] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  // Função para enviar o cadastro
   const handleCadastro = async () => {
-  if (email !== confirmEmail) {
-    alert("Os emails não coincidem!");
-    return;
-  }
+    if (!email || !senha || !nome || !telefone || !endereco || !numero || !cep || !bairro || !cidade || !estado) {
+  setError("Preencha todos os campos obrigatórios!");
+  return;
+}
 
-  if (senha !== confirmSenha) {
-    alert("As senhas não coincidem!");
-    return;
-  }
+    if (email !== confirmEmail) {
+      setError("Os e-mails não coincidem!");
+      return;
+    }
 
-  try {
-    const res = await fetch("http://localhost:8080/api-backend/clientes/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        senha,
-        cliente,
-        telefone,
-        endereco: {
-          logradouro: endereco,
-          numero,
-          cep,
-          complemento,
-          cidade,
-          estado,
-          bairro: "", // adicione um campo de bairro, se necessário
+    if (senha !== confirmSenha) {
+      setError("As senhas não coincidem!");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch("http://localhost:8080/clientes/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      }),
-    });
+        body: JSON.stringify({
+          nome,
+          email,
+          senha,
+          telefone,
+          endereco: {
+            endereco,
+            numero,
+            cep,
+            complemento,
+            cidade,
+            estado,
+            bairro,
+          },
+        }),
+      });
 
+      const data = await res.json();
 
-    if (res.ok) {
+      if (!res.ok) {
+        throw new Error(data.message || "Erro ao cadastrar");
+      }
+
       alert("Cadastro realizado com sucesso!");
       router.push("/pages/Login");
-    } else {
-      const data = await res.json();
-      alert(data.message || "Erro ao cadastrar.");
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+      setError("Erro ao cadastrar!");
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error("Erro:", error);
-    alert("Erro ao conectar com a API.");
-  }
-};
-
+  };
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#ECECEC]">
-      <div className="min-h-[25em] min-w-[30%] rounded-xl border-[1px] border-slate-300 bg-[#FFFFFF] px-10 py-10">
-        <Link href="/">
-          <BackBtn />
-        </Link>
+    <div className="flex min-h-screen w-full flex-col items-center bg-[#ECECEC] py-10">
+      <div className="w-[900px] rounded-xl border border-slate-300 bg-white px-10 py-8 shadow-md">
+        {/* Botão de voltar */}
+        <div className="mb-4">
+          <Link href="/">
+            <BackBtn />
+          </Link>
+        </div>
+
+        {/* Título */}
         <Title>Cadastre-se</Title>
-        <div className="flex">
-          <div className="flex flex-col">
+
+        {/* Mensagem de erro */}
+        {error && (
+          <div className="mb-4 text-red-500 text-center">
+            {error}
+          </div>
+        )}
+
+        {/* Formulário */}
+        <div className="grid">
+          <div className="grid grid-cols-3 gap-7">
+            <Input
+              placeholder="Seu nome completo"
+              formLogin="nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            >
+              Nome
+            </Input>
             <Input
               placeholder="seuemail@email.com"
-              formLogin="me-36"
-              className="w-[130%]"
+              tipo="email"
+              formLogin="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             >
               Email
             </Input>
             <Input
-              className="mb-0 w-[130%]"
-              formLogin="me-36"
-              placeholder="seuemail@email.com"
+              placeholder="Confirmar email"
+              tipo="email"
+              formLogin="confirmarEmail"
               value={confirmEmail}
               onChange={(e) => setConfirmEmail(e.target.value)}
             >
               Confirmar Email
             </Input>
             <Input
-              className="mb-0 w-[130%]"
-              formLogin="me-36"
               placeholder="***********"
               tipo="password"
+              formLogin="senha"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
             >
               Senha
             </Input>
             <Input
-              className="mb-0 w-[130%]"
-              formLogin="me-36"
               placeholder="***********"
               tipo="password"
+              formLogin="confirmarSenha"
               value={confirmSenha}
               onChange={(e) => setConfirmSenha(e.target.value)}
             >
               Confirmar Senha
             </Input>
-          </div>
-
-          <div className="flex flex-col">
-            <Input
-              className="mb-0"
-              placeholder="Nome"
-              formLogin="me-4"
-              value={cliente}
-              onChange={(e) => setCliente(e.target.value)}
-            >
-              Nome
-            </Input>
-
-            <div className="flex items-center">
+            <div className="grid gap-2">
               <Input
-                className="mb-0"
                 placeholder="(DDD) 91234-5678"
-                formLogin="me-4"
+                formLogin="telefone"
                 value={telefone}
                 onChange={(e) => setTelefone(e.target.value)}
               >
                 Telefone
               </Input>
-              <button>
-                <CirclePlus />
-              </button>
             </div>
-            <div className="flex">
+          </div>
+          <div className="grid grid-cols-3 gap-7">
+            <Input
+              placeholder="Rua Exemplo"
+              formLogin="endereco"
+              value={endereco}
+              onChange={(e) => setEndereco(e.target.value)}
+            >
+              Endereço
+            </Input>
+            <div className="flex gap-2">
               <Input
-                className="mb-0 w-[100%]"
-                formLogin="me-6"
-                placeholder="Rua..."
-                value={endereco}
-                onChange={(e) => setEndereco(e.target.value)}
-              >
-                Endereço
-              </Input>
-              <Input
-                className="mb-0"
-                formLogin="w-[36%]"
-                placeholder="123..."
+                placeholder="123"
+                className="w-[100px]"
+                formLogin="numero"
                 value={numero}
                 onChange={(e) => setNumero(e.target.value)}
               >
                 Número
               </Input>
-            </div>
-            <div className="flex">
               <Input
-                className="mb-0"
-                formLogin="w-[30%] me-6"
                 placeholder="00000-000"
+                className="w-[150px]"
+                formLogin="cep"
                 value={cep}
                 onChange={(e) => setCep(e.target.value)}
               >
                 CEP
               </Input>
-              <Input
-                className="mb-0"
-                placeholder="Casa/Ap/Cond"
-                value={complemento}
-                onChange={(e) => setComplemento(e.target.value)}
-              >
-                Complemento
-              </Input>
-              <Input
-                className="mb-0"
-                placeholder="Casa/Ap/Cond"
-                value={cidade}
-                onChange={(e) => setCidade(e.target.value)}
-              >
-                Cidade
-              </Input>
-              <Input
-                className="mb-0"
-                placeholder="Casa/Ap/Cond"
-                value={estado}
-                onChange={(e) => setEstado(e.target.value)}
-              >
-                Estado
-              </Input>
             </div>
+            <Input
+              placeholder="Bairro"
+              formLogin="bairro"
+              value={bairro}
+              onChange={(e) => setBairro(e.target.value)}
+            >
+              Bairro
+            </Input>
+            <Input
+              placeholder="Casa, Apto, etc."
+              formLogin="complemento"
+              value={complemento}
+              onChange={(e) => setComplemento(e.target.value)}
+            >
+              Complemento
+            </Input>
+            <Input
+              placeholder="SP, RJ..."
+              formLogin="estado"
+              value={estado}
+              onChange={(e) => setEstado(e.target.value)}
+            >
+              Estado
+            </Input>
+            <Input
+              placeholder="São Paulo"
+              formLogin="cidade"
+              value={cidade}
+              onChange={(e) => setCidade(e.target.value)}
+            >
+              Cidade
+            </Input>
           </div>
         </div>
 
-        <Button onClick={handleCadastro}>Cadastrar-se</Button>
-       
+        {/* Botão de envio */}
+        <div className="mt-10 text-center">
+          <Button onClick={handleCadastro} >
+            {loading ? "Cadastrando..." : "Cadastrar-se"}
+          </Button>
+        </div>
       </div>
     </div>
   );

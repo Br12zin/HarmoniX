@@ -6,7 +6,7 @@ if (
     !isset($_SESSION["autenticado"]) ||  // OU
     $_SESSION["autenticado"] == false
 ) {
-    header('Location: http://localhost:8080/pages/main');
+    header('Location: http://localhost:3000/pages/main');
     exit;
 }
 // VERIFICAR SE EXPIROU O TEMPO LIMITE DE INATIVIDADE

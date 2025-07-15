@@ -29,7 +29,7 @@ if ($_POST) {
             setcookie("remember");
         }
 
-        $_SESSION['url'] = "http://localhost:8080";
+        $_SESSION['url'] = "http://localhost:3000";
         header("Location: /pages/main");
     } else {
         $_SESSION['msg'] = "E-mail ou senha incorretos!";

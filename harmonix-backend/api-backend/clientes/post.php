@@ -1,18 +1,18 @@
 <?php
-include"../verificar-autenticacao.php";
+// include"../verificar-autenticacao.php";
+$conn = new PDO('mysql:host=localhost;dbname=harmonix', 'root', 'senha123');
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 try {
     // Recuperar informações de formulário vindo do Frontend
     $postfields = json_decode(file_get_contents('php://input'), true);
-
     // Verificar se existe informações de formulário
     if (!empty($postfields)) {
-        $cliente = $postfields['cliente'] ?? null;
+        $nome = $postfields['nome'] ?? null;
         $email = $postfields['email'] ?? null;
         $senha = $postfields['senha'] ?? null;
         $telefone = $postfields['telefone'] ?? null;
-        $telefone_residencial = $postfields['telefone_residencial'] ?? null;
-        $logradouro = $postfields['endereco']['logradouro'] ?? null;
+        $endereco = $postfields['endereco']['endereco'] ?? null;
         $numero = $postfields['endereco']['numero'] ?? null;
         $complemento = $postfields['endereco']['complemento'] ?? null;
         $bairro = $postfields['endereco']['bairro'] ?? null;
@@ -21,19 +21,18 @@ try {
         $cep = $postfields['endereco']['cep'] ?? null;
 
         // Verifica campos obrigatórios
-        if (empty($cliente)) {
-            http_response_code(400);
-            throw new Exception('Nome, E-mail, Senha, Telefone e Endereço são obrigatórios');
-        }
+        if (empty($nome) || empty($email) || empty($senha) || empty($telefone) || empty($endereco) || empty($numero) || empty($cep) || empty($bairro) || empty($cidade) || empty($estado)) {
+    http_response_code(400);
+    throw new Exception('Nome, E-mail, Senha, Telefone e Endereço são obrigatórios');
+    }
 
         $sql = "
-        INSERT INTO clientes (nome, email, senha,  celular, telefone, telefone_residencial, cep, endereco, numero, cidade, estado, complemento, bairro) VALUES 
+        INSERT INTO clientes (nome,email,senha, telefone, cep, endereco, numero, cidade, estado, complemento, bairro) VALUES 
         (
-            :cliente,
+            :nome,
             :email,
             :senha,
             :telefone,
-            :telefone_residencial,
             :cep,
             :endereco, 
             :numero, 
@@ -45,13 +44,12 @@ try {
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindParam(':cliente', $cliente, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, is_null($email) ? PDO::PARAM_NULL : PDO::PARAM_STR);
+        $stmt->bindParam(':senha', $senha, is_null($senha) ? PDO::PARAM_NULL : PDO::PARAM_STR);
         $stmt->bindParam(':telefone', $telefone, PDO::PARAM_STR);
-        $stmt->bindParam(':telefone_residencial', $telefone_residencial, is_null($telefone_residencial) ? PDO::PARAM_NULL : PDO::PARAM_STR);
         $stmt->bindParam(':cep', $cep);
-        $stmt->bindParam(':logradouro', $logradouro);
+        $stmt->bindParam(':endereco', $endereco);
         $stmt->bindParam(':numero', $numero);
         $stmt->bindParam(':cidade', $cidade);
         $stmt->bindParam(':estado', $estado);
