@@ -46,7 +46,7 @@ const NavMain = ({ isVisible, onHandleVisibility, opacity = "0"}) => {
         </div>
         <div></div>
         <Link href="/pages/main" className="justify-self-center">
-          <Image src={logoGold} alt="Logo Harmonix" className="h-16 w-16" priority />
+          <Image src={logoGold} alt="Logo Harmonix" className="h-20 w-20" priority />
         </Link>
         <Link href="/pages/Carrinho" className="justify-self-end">
           <IconBag colorIcon={bgBtnNav} opacidade={opacity} />

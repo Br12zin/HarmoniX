@@ -9,25 +9,28 @@ try {
         $nome = $postfields['nome'] ?? null;
         $email = $postfields['email'] ?? null;
         $senha = sha1($postfields['senha']) ?? null;
+        $imagem = $postfields['imagem'] ?? null;
 
         // Verifica campos obrigatórios
-        if (empty($nome) || empty($email) || empty($senha)) {
+        if (empty($nome) || empty($email) || empty($senha)){
             http_response_code(400);
             throw new Exception('Nome, E-mail e Senha são obrigatórios');
         }
 
         $sql = "
-        INSERT INTO usuarios (nome, email, senha) VALUES 
+        INSERT INTO usuarios (nome, email, senha, imagem) VALUES 
         (
             :nome, 
             :email, 
-            :senha
+            :senha,
+            :imagem
         )";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+        $stmt->bindParam(':imagem', $imagem, PDO::PARAM_STR);
 
         $stmt->execute();
 

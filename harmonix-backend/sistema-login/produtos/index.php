@@ -27,7 +27,7 @@ if (isset($_GET["key"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Cadastro de Produtos</title>
+    <title>HarmoniX - Cadastro de Produtos</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.min.css" rel="stylesheet">
@@ -60,7 +60,6 @@ if (isset($_GET["key"])) {
                         <table class="table table-striped table-hover table-bordered align-middle text-center" id="produtos">
                             <thead class="table-dark">
                                 <tr>
-                                    <th>#</th>
                                     <th>Imagem</th>
                                     <th class="text-center">Produto</th>
                                     <th class="text-center">Descrição</th>
@@ -70,7 +69,7 @@ if (isset($_GET["key"])) {
                                     <th class="text-center" style="min-width: 120px;">Preço</th>
                                     <th class="text-center">Desconto</th>
                                     <th class="text-center" style="min-width: 120px;">Preço Final</th>
-                                    <th>Ações</th>
+                                    
                                 </tr>
 
                             </thead>
@@ -109,13 +108,8 @@ if (isset($_GET["key"])) {
 </tr>
 ';
                                     }
-                                } else {
-                                    echo '
-<tr>
-<td colspan="7">Nenhum produto cadastrado</td>
-</tr>
-';
-                                }
+                                } 
+                                
                                 ?>
                             </tbody>
                         </table>
@@ -137,7 +131,7 @@ if (isset($_GET["key"])) {
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
 
     <script>
-        let table = new DataTable('#produtos', {
+        let table = new DataTable('#produtos', {    
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/pt-BR.json"
             }
