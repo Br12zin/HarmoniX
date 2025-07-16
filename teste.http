@@ -10,4 +10,35 @@ Content-Type: application/json
 }
 
 ###
-GET {{baseurl}}/imagens/produtos/00f44233b2553e9ac3dc05e2aa56ddc5.webp HTTP/1.1
+GET {{baseurl}}/clientes/ HTTP/1.1
+
+###
+POST {{baseurl}}/clientes/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "cliente": "345",
+  "email": "joao.sil45va@example.com",
+  "senha": "senhaS34523",
+  "telefone": "1134554321",
+  "telefone_residencial": "1134sdf890",
+  "endereco": {
+    "endereco": "Rusdfas Flores",
+    "numero": 123,
+    "cep": "01234-567",
+    "complemento": "Apto 45",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "bairro": "Jardins"
+  }
+}
+
+###
+POST {{baseurl}}/login/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "victor@email.com",
+    "senha": "12345"
+}
+

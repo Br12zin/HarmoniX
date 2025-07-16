@@ -14,14 +14,14 @@ try {
         $preco = $postfields['preco'] ?? null;
         $desconto = $postfields['desconto'] ?? null;
         $quantidade = $postfields['quantidade'] ?? null;
+        $especificacoes = $postfields['especificacoes'] ?? null;
         $imagem = $postfields['imagem'] ?? null;
-
 
 
         // Verifica campos obrigatórios
         if (empty($id)) {
             http_response_code(400);
-            throw new Exception('ID do cliente é obrigatório');
+            throw new Exception('ID do produto é obrigatório');
         }
         if (empty($produto) || empty($postfields['id_marca'])) {
             http_response_code(400);
@@ -29,19 +29,22 @@ try {
         }
 
         $sql = "
-        UPDATE produtos SET 
-            id_categoria = :id_categoria,
-            id_marca = :id_marca,
-            produto = :produto,
-            descricao = :descricao,
-            quantidade = :quantidade, 
-            preco = :preco,
-            desconto = :desconto,
-            imagem = :imagem
-        WHERE id_produto = :id
-        ";
+UPDATE produtos SET 
+    id_categoria = :id_categoria,
+    id_marca = :id_marca,
+    produto = :produto,
+    descricao = :descricao,
+    quantidade = :quantidade, 
+    preco = :preco,
+    desconto = :desconto
+";
 
+        // Se imagem veio no postfields, adiciona no SQL
+        if (!empty($imagem)) {
+            $sql .= ", imagem = :imagem";
+        }
 
+        $sql .= " WHERE id_produto = :id";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -52,14 +55,18 @@ try {
         $stmt->bindParam(':preco', $preco, PDO::PARAM_STR);
         $stmt->bindParam(':desconto', $desconto, PDO::PARAM_STR);
         $stmt->bindParam(':quantidade', $quantidade, PDO::PARAM_INT);
-        $stmt->bindParam(':imagem', $imagem, PDO::PARAM_STR);
 
+        // Só bind se imagem não estiver vazia
+        if (!empty($imagem)) {
+            $stmt->bindParam(':imagem', $imagem, PDO::PARAM_STR);
+        }
 
         $stmt->execute();
 
+
         $result = array(
             'status' => 'success',
-            'message' => 'Cliente alterado com sucesso!'
+            'message' => 'Produto alterado com sucesso!'
         );
     } else {
         http_response_code(400);

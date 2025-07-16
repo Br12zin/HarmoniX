@@ -57,7 +57,7 @@ if (isset($_GET["key"])) {
 
 
                             <div class="row">
-                                <div class="mb-3 col-md-4">
+                                <div class="mb-3 col-md-6">
                                     <label for="id_marca" class="form-label">Marca</label>
                                     <select class="form-select" id="id_marca" name="id_marca" required>
                                         <option value="" disabled selected>Selecione uma Marca...</option>
@@ -74,7 +74,7 @@ if (isset($_GET["key"])) {
                                         ?>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-md-4">
+                                <div class="mb-3 col-md-6">
                                     <label for="id_categoria" class="form-label">Categoria</label>
                                     <select class="form-select" id="id_categoria" name="id_categoria" required>
                                         <option value="" disabled selected>Selecione uma categoria...</option>
@@ -91,10 +91,10 @@ if (isset($_GET["key"])) {
                                         ?>
                                     </select>
                                 </div>
-                                <div class="mb-3 col-md-4">
+                                <!-- <div class="mb-3 col-md-4">
                                     <label for="modelo" class="form-label">Modelo</label>
                                     <input type="text" class="form-control" id="modelo" name="modelo" required value="<?php echo isset($produto) ? $produto["modelo"] : ""; ?>">
-                                </div>
+                                </div> -->
 
                             </div>
 

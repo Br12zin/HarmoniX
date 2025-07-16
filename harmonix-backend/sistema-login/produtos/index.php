@@ -62,19 +62,19 @@ if (isset($_GET["key"])) {
                                 <tr>
                                     <th>#</th>
                                     <th>Imagem</th>
-                                    <th>Produto</th>
-                                    <th>Descrição</th>
-                                    <th>Marca</th>
-                                    <th>Categoria</th>
-                                    <th>Qtd</th>
-                                    <th>Preço</th>
-                                    <th>Desconto</th>
-                                    <th>Preço Final</th>
+                                    <th class="text-center">Produto</th>
+                                    <th class="text-center">Descrição</th>
+                                    <th class="text-center" style="min-width: 150px;">Marca</th>
+                                    <th class="text-center">Categoria</th>
+                                    <th class="text-center">Qtd</th>
+                                    <th class="text-center" style="min-width: 120px;">Preço</th>
+                                    <th class="text-center">Desconto</th>
+                                    <th class="text-center" style="min-width: 120px;">Preço Final</th>
                                     <th>Ações</th>
                                 </tr>
 
                             </thead>
-                            <tbody id="produtoTableBody">
+                            <tbody id=" produtoTableBody">
                                 <!-- Os clientes serão carregados aqui via PHP -->
                                 <?php
 
@@ -87,16 +87,16 @@ if (isset($_GET["key"])) {
     <th scope="row">' . $produto['id_produto'] . '</th>
     <td><img width="60" src="http://localhost:8080/produtos/imagens/' . $produto["imagem"] . '"></td>
 
-    <td>' . $produto["produto"] . '</td>
-    <td class="truncante" style="max-width: 150px;" title="' . htmlspecialchars($produto["descricao"]) . '">
+    <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' . $produto["produto"] . '</td>
+    <td  style="min-width: 100px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="' . htmlspecialchars($produto["descricao"]) . '">
   ' . $produto["descricao"] . '
 </td>
     <td>' . $produto["marca"] . '</td>
                                         <td>' . $produto["categoria"] . '</td>
-    <td>' . $produto["quantidade"] . '</td>
-  <td>R$ ' . number_format($produto["preco"], 2, ',', '.') . '</td>
-<td>R$ ' . number_format($produto["desconto"], 2, ',', '.') . '</td>
-<td>R$ ' . number_format($produto["preco"] - $produto["desconto"], 2, ',', '.') . '</td>
+    <td class="text-center">' . $produto["quantidade"] . '</td>
+  <td class="text-center">R$ ' . number_format($produto["preco"], 2, ',', '.') . '</td>
+<td class="text-center">R$ ' . number_format($produto["desconto"], 2, ',', '.') . '</td>
+<td class="text-center">R$ ' . number_format($produto["preco"] - $produto["desconto"], 2, ',', '.') . '</td>
 
   <td>
   <a href="/produtos/formulario.php?key=' . $produto['id_produto'] . '" class="btn btn-warning btn-sm">

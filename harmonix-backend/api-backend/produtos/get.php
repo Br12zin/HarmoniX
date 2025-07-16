@@ -71,6 +71,44 @@ try {
         $stmt = $conn->prepare($sql);
 
         $stmt->bindValue(':id_categoria', '%' . $id_categoria . '%', PDO::PARAM_STR);
+    } elseif (isset($_GET["categoria"]) && is_string($_GET["categoria"])) {
+        $categoriaNome = $_GET["categoria"] ?? "";
+        if (empty($categoriaNome)) {
+            // Se a categoria estiver vazia, retorna um erro
+            $result = array(
+                'status' => 'error',
+                'message' => 'Categoria não informada.',
+                'categoria' => $categoriaNome
+            );
+        }
+
+        $sqlCategoria = "SELECT id_categoria FROM categorias WHERE categoria = :categoriaNome";
+        $stmtCategoria = $conn->prepare($sqlCategoria);
+        $stmtCategoria->bindValue(':categoriaNome', $categoriaNome, PDO::PARAM_STR);
+        $stmtCategoria->execute();
+
+        $categoria = $stmtCategoria->fetch(PDO::FETCH_ASSOC);
+
+        if (!$categoria) {
+            // Se a categoria não for encontrada, retorna um erro
+
+            $result = array(
+                'status' => 'error',
+                'message' => 'Categoria não encontrada.'
+            );
+        }
+
+        $idCategoria = $categoria["id_categoria"];
+        // Monta a sintaxe SQL de busca
+        $sqlProdutos = "
+            SELECT * 
+            FROM produtos
+            WHERE id_categoria = :idCategoria
+        ";
+
+        // Preparar a sintaxe SQL
+        $stmt = $conn->prepare($sqlProdutos);
+        $stmt->bindValue("idCategoria", $idCategoria, PDO::PARAM_INT);
     } else {
         // Monta a sintaxe SQL de busca
         $sql = "
