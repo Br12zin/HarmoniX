@@ -12,9 +12,9 @@ const GreyCard = ({ imagem, titulo, paragrafo, link }: GreyCardProps) => {
   return (
     <Link
       href={link}
-      className="flex w-[31.25rem] flex-col items-center rounded-[3rem] border border-[#7070703d] bg-slate-500/35 text-center shadow-xl"
+      className="flex w-[31.25rem] h-[17.43rem] flex-col items-center rounded-[3rem] border border-[#7070703d] bg-slate-500/35 text-center shadow-xl"
     >
-      <Image
+      <Image suppressHydrationWarning
         className="mt-5"
         src={imagem}
         alt="sdfsdf"

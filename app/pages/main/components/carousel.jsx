@@ -29,7 +29,7 @@ const Carousel = () => {
 
   return (
     <>
-      <Swiper
+      <Swiper suppressHydrationWarning
         style={{
           // "--swiper-navigation-color": "#C7A315",
           "--swiper-pagination-color": "#C7A315",
@@ -49,22 +49,22 @@ const Carousel = () => {
       >
         <SwiperSlide>
           <Link href="/pages/Marcas/Yamaha">
-            <Image src={banner1} alt="banner 1"></Image>
+            <Image suppressHydrationWarning src={banner1} alt="banner 1"></Image>
           </Link>
         </SwiperSlide>
         <SwiperSlide>
           <Link href="#">
-            <Image src={banner2} alt="banner 2"></Image>
+            <Image suppressHydrationWarning src={banner2} alt="banner 2"></Image>
           </Link>
         </SwiperSlide>
         <SwiperSlide>
           <Link href="#">
-            <Image src={banner3} alt="banner 3"></Image>
+            <Image suppressHydrationWarning src={banner3} alt="banner 3"></Image>
           </Link>
         </SwiperSlide>
         <SwiperSlide>
           <Link href="#">
-            <Image src={banner4} alt="banner 4"></Image>
+            <Image suppressHydrationWarning src={banner4} alt="banner 4"></Image>
           </Link>
         </SwiperSlide>
       </Swiper>

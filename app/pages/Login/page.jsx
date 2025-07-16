@@ -16,7 +16,7 @@ export default function Login() {
 
   const handleLogin = async () => {
   try {
-    const res = await fetch("http://localhost:8080/api-backend/clientes/", {
+    const res = await fetch("http://localhost:8080/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export default function Login() {
     });
 
     const data = await res.json();
-
+    
     if (res.ok && data.status === "success") {
       router.push("/pages/main");
     } else {
@@ -48,7 +48,8 @@ export default function Login() {
         <Title>Login</Title>
 
         <Input
-        tipo="email"
+          tipo="email"
+          
           placeholder="seuemail@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -58,8 +59,9 @@ export default function Login() {
 
         <Input
           tipo="password"
+          
           className="mb-0"
-          placeholder="***********"
+          placeholder="***"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         >
