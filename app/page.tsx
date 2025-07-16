@@ -34,11 +34,11 @@ const Home = () => {
           className="align-items-center me-24 flex justify-end text-center text-xs text-white hover:text-slate-300"
         >
           Continuar sem login
-          <ChevronRight className="align-items-center me-2 ms-1 size-4 rounded-full bg-background text-center"></ChevronRight>
+          <ChevronRight suppressHydrationWarning className="align-items-center me-2 ms-1 size-4 rounded-full bg-background text-center"></ChevronRight>
         </Link>
       </div>
       <div className="absolute inset-x-0 bottom-0 flex">
-        <Footer />
+        <Footer rodape="" txt="" />
       </div>
     </div>
   );

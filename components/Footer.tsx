@@ -28,15 +28,15 @@ function Footer({ rodape, txt }: { rodape: string; txt: string }) {
           />
         </button>
         <div className="oculto flex h-80 w-full">
-          <div className={`flex h-full w-44 items-center justify-center text-left text-xl text-[#ECECEC] ${txt}`}>
+          <div className={`flex h-full w-44 items-center justify-center text-left text-xl text-[#000000] ${txt}`}>
             <p>Atendimento: Segunda a sexta 09h às 18h30 Sábado 09h às 17h</p>
           </div>
           <div className="me-6 ms-6 flex h-full w-60 flex-col justify-center">
-            <h2 className={`${txt} mb-5 items-center text-2xl text-[#ECECEC]`}>
+            <h2 className={`${txt} mb-5 items-center text-2xl text-[#000000]`}>
               Telefones:
             </h2>
             <div>
-              <ul className={`items-center text-left text-[#ECECEC] ${txt}`}>
+              <ul className={`items-center text-left text-[#000000] ${txt}`}>
                 <li className="flex content-around justify-center">
                   <Phone suppressHydrationWarning className="mr-2 text-xs" />( ) 98352-2837
                 </li>
@@ -46,7 +46,7 @@ function Footer({ rodape, txt }: { rodape: string; txt: string }) {
               </ul>
             </div>
           </div>
-          <div className={`ms-20 flex h-full w-80 flex-col items-center justify-center text-left text-xl text-[#ECECEC] ${txt}`}>
+          <div className={`ms-20 flex h-full w-80 flex-col items-center justify-center text-left text-xl text-[#000000] ${txt}`}>
             <p>
               Loja vitual
               <br /> Formas de pagamento
