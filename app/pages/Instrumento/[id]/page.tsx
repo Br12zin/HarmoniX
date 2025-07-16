@@ -11,7 +11,7 @@ import CarouselProduto from "@/components/carouselProduto";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IProduct } from "@/app/interfaces/IProduct";
-import { fetchProducts } from "@/app/services/get";
+import { fetchProducts } from "@/app/services/produtos/get";
 
 interface InstrumentsItemProps {
   params: {
@@ -148,7 +148,7 @@ export default function InstrumentsItem() {
             <p className="mb-4">{instrumento.especificacoes}</p>
           </ul>
           <h2 className="mb-2 mt-6 text-xl font-semibold">Sobre a Marca</h2>
-          <p className="mb-4">{instrumento.especificacoes}</p>
+          <p className="mb-4"></p>
         </div>
       </div>
       <CarouselProduto />

@@ -81,6 +81,17 @@ try {
             "preco" => $_POST["preco"],
             "desconto" => $_POST["desconto"]
         );
+
+        $key = $_POST["productId"];
+        require("../requests/produtos/get.php");
+        if (!empty($response["data"][0]["imagem"]) && $_FILES["imagem"]["name"] != "") {
+            $imagem = $response["data"][0]["imagem"];
+            $path = '../../api-backend/produtos/imagens/' . $imagem;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
         // SENÃO, SIGNIFICA QUE É UM PRODUTO JÁ CADASTRADO
         require("../requests/produtos/put.php");
     }

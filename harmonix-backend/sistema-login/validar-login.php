@@ -33,9 +33,9 @@ if ($_POST) {
         header("Location: ./index.php");
     } else {
         $_SESSION['msg'] = "E-mail ou senha incorretos!";
-        header("Location: ");
+        header("Location: ./tela-login.php");
     }
 } else {
     // REDIRECIONA PARA A TELA DE LOGIN
-    header("Location: ");
+    header("Location: ./tela-login.php");
 }

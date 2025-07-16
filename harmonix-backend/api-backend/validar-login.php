@@ -12,7 +12,7 @@ if ($_POST) {
     $remember = $_POST["remember"] ?? "off";
 
     // VERIFICA SE O EMAIL E SENHA ESTÃO CORRETOS
-    require("requests/");
+    require("requests/login/get.php");
     // var_dump($response);exit;
     if ($response['status'] == "success") {
         $_SESSION["autenticado"] = true; // CRIA VARIÁVEL GLOBAL
@@ -29,13 +29,18 @@ if ($_POST) {
             setcookie("remember");
         }
 
+<<<<<<< HEAD
+        $_SESSION['url'] = "http://localhost:8080";
+        header("Location: ./index.php");
+=======
         $_SESSION['url'] = "http://localhost:3000";
         header("Location: /pages/main");
+>>>>>>> d415dfeecb561643d6e9ba650855d76dc14cd943
     } else {
         $_SESSION['msg'] = "E-mail ou senha incorretos!";
-        header("Location: /pages/login");
+        header("Location: ./tela-login.php");
     }
 } else {
     // REDIRECIONA PARA A TELA DE LOGIN
-    header("Location: /pages/login");
+    header("Location: ./tela-login.php");
 }
