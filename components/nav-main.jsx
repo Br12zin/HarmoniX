@@ -28,7 +28,8 @@ const NavMain = ({
       if (typeof window !== "undefined" && window.scrollY > 10) {
         setBg("bg-gradient-to-b from-[#111111] to-[#3f3e3e]");
         setBgBtnNav("#a7a725");
-      } else {
+      } 
+      else {
         setBg("bg-transparent");
         setBgBtnNav("");
       }
