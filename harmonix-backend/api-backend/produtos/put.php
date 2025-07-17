@@ -10,6 +10,7 @@ try {
         $id_categoria = $postfields['id_categoria'] ?? null;
         $id_marca = $postfields['id_marca'] ?? null;
         $produto = $postfields['produto'] ?? null;
+        $especificacoes = $postfields['especificacoes'] ?? null;
         $descricao = $postfields['descricao'] ?? null;
         $preco = $postfields['preco'] ?? null;
         $desconto = $postfields['desconto'] ?? null;
@@ -33,6 +34,7 @@ UPDATE produtos SET
     id_categoria = :id_categoria,
     id_marca = :id_marca,
     produto = :produto,
+    especificacoes = :especificacoes,
     descricao = :descricao,
     quantidade = :quantidade, 
     preco = :preco,
@@ -51,6 +53,7 @@ UPDATE produtos SET
         $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
         $stmt->bindParam(':id_marca', $id_marca, PDO::PARAM_INT);
         $stmt->bindParam(':produto', $produto, PDO::PARAM_STR);
+        $stmt->bindParam(':especificacoes', $especificacoes, PDO::PARAM_STR);
         $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
         $stmt->bindParam(':preco', $preco, PDO::PARAM_STR);
         $stmt->bindParam(':desconto', $desconto, PDO::PARAM_STR);

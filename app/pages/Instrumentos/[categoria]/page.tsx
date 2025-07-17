@@ -6,6 +6,7 @@ import { useVisibility } from "@/components/VisibilityContext";
 import { IProduct } from "@/app/interfaces/IProduct";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { fetchProducts } from "@/app/services/produtos/get";
 
 const Violoes = () => {
   const params = useParams();
@@ -19,26 +20,8 @@ const Violoes = () => {
     const loadProduct = async () => {
       try {
         if (!categoria) return;
+        const produtosCarregados = await fetchProducts(categoria);
 
-        const url = `http://localhost:8080/produtos/?categoria=${encodeURIComponent(categoria)}`;
-        console.log("URL da API:", url);
-
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log("Resultado da API:", result);
-
-        const produtosCarregados = result.data;
-        console.log("Produtos carregados:", produtosCarregados);
         setProdutos(produtosCarregados || []);
       } catch (error) {
         console.error("Erro ao buscar produtos:", error);
@@ -50,23 +33,29 @@ const Violoes = () => {
 
     loadProduct();
   }, [categoria]); // Adicionado categoria como dependência
+  const categoriaDecodificada = decodeURIComponent(categoria);
 
   console.log("Estado atual dos produtos:", produtos);
   useEffect(() => {
     console.log("products mudou:", produtos);
   }, [produtos]);
   if (loading) {
-    return <p>Carregando produtos da categoria {categoria}...</p>;
+    return <p>Carregando produtos da categoria {categoriaDecodificada}...</p>;
   }
 
   if (!produtos || produtos.length === 0) {
-    return <p>Não encontramos produtos para a categoria {categoria}.</p>;
+    return (
+      <p>Não encontramos produtos para a categoria {categoriaDecodificada}.</p>
+    );
   }
 
   return (
     <>
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
-      <TiposIntrumentos titulo={`${categoria}s`} instrumentoObj={produtos} />
+      <TiposIntrumentos
+        titulo="Confira nossas ofertas imperdíveis"
+        instrumentoObj={produtos}
+      />
     </>
   );
 };

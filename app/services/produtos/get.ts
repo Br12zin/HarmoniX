@@ -16,8 +16,11 @@ export const fetchProducts = async (
     },
   });
 
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
   const result = await response.json();
-  
 
   // Se no seu backend usar `result.data`, mantém isso
   return Array.isArray(result.data) ? result.data : [];
