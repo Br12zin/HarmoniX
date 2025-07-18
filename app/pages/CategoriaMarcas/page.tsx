@@ -9,7 +9,7 @@ import { sopros, cordas, percussao } from "./data/items-dropdawn";
 export default function CategoriaMarcas() {
   const { isVisible, onHandleVisibility } = useVisibility();
   return (
-    <div className="h-screen w-screen bg-[#ECECEC]">
+    <div className=" bg-[#ECECEC]">
       <div>
         <NavMain
           isVisible={isVisible}
