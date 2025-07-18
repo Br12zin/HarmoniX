@@ -140,13 +140,15 @@ export default function InstrumentsItem() {
         <h1 className="mt-4 text-center text-4xl text-[#C7A315]"></h1>
         <div className="mb-10 bg-gray-50 p-6 font-sans text-gray-900">
           <h1 className="mb-4 text-2xl font-bold">{instrumento.produto}</h1>
-          <p className="mb-4">{instrumento.descricao}</p>
+          <p className="mb-4 text-gray-600">{instrumento.descricao}</p>
           <h2 className="mb-2 mt-6 text-xl font-semibold">
             Especificações Técnicas
           </h2>
-          <ul className="mb-4 space-y-1">
-            <p className="mb-4">{instrumento.especificacoes}</p>
-          </ul>
+
+          <p className="mb-4 whitespace-pre-line leading-tight text-gray-600">
+            {instrumento.especificacoes}
+          </p>
+
           <h2 className="mb-2 mt-6 text-xl font-semibold">Sobre a Marca</h2>
           <p className="mb-4"></p>
         </div>

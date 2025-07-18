@@ -24,7 +24,7 @@ export function DropDawn({ itens, mg }) {
           </Button>
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-56 bg-white">
         <ScrollArea className="h-56 overflow-y-auto">
           {itens.map((item, index) => (
             <Link key={index} href={item.link} className="font-semibold">

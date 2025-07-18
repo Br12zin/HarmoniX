@@ -72,7 +72,8 @@ try {
 
         $stmt->bindValue(':id_categoria', '%' . $id_categoria . '%', PDO::PARAM_STR);
     } elseif (isset($_GET["categoria"]) && is_string($_GET["categoria"])) {
-        $categoriaNome = $_GET["categoria"] ?? "";
+        // Decodifica a url
+        $categoriaNome = urldecode($_GET["categoria"] ?? "");
         if (empty($categoriaNome)) {
             // Se a categoria estiver vazia, retorna um erro
             $result = array(
