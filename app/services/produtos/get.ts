@@ -2,12 +2,14 @@ import { IProduct } from "@/app/interfaces/IProduct";
 
 export const fetchProducts = async (
   categoria?: string,
+  marca?: string,
 ): Promise<IProduct[]> => {
-  let url = "http://localhost:8080/produtos/";
+  const params = new URLSearchParams();
 
-  if (categoria) {
-    url += `?categoria=${encodeURIComponent(categoria)}`;
-  }
+  if (categoria) params.append("categoria", categoria);
+  if (marca) params.append("marca", marca);
+
+  const url = `http://localhost:8080/produtos/?${params.toString()}`;
 
   const response = await fetch(url, {
     method: "GET",
@@ -22,6 +24,6 @@ export const fetchProducts = async (
 
   const result = await response.json();
 
-  // Se no seu backend usar `result.data`, mantém isso
   return Array.isArray(result.data) ? result.data : [];
 };
+

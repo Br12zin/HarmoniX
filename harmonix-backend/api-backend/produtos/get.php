@@ -70,7 +70,7 @@ try {
         // Preparar a sintaxe SQL
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindValue(':id_categoria', '%' . $id_categoria . '%', PDO::PARAM_STR);
+        $stmt->bindValue(':id_categoria',   $id_categoria, PDO::PARAM_STR);
     } elseif (isset($_GET["categoria"]) && is_string($_GET["categoria"])) {
         // Decodifica a url
         $categoriaNome = urldecode($_GET["categoria"] ?? "");
@@ -110,6 +110,74 @@ try {
         // Preparar a sintaxe SQL
         $stmt = $conn->prepare($sqlProdutos);
         $stmt->bindValue("idCategoria", $idCategoria, PDO::PARAM_INT);
+    } elseif (isset($_GET["marca"]) && is_string($_GET["marca"])) {
+        // Decodifica a URL
+        $marcaNome = urldecode($_GET["marca"] ?? "");
+
+        if (empty($marcaNome)) {
+            $result = array(
+                'status' => 'error',
+                'message' => 'Marca não informada.',
+                'marca' => $marcaNome
+            );
+            echo json_encode($result);
+            exit;
+        }
+
+        // Busca o ID da marca pelo nome
+        $sqlMarca = "SELECT id_marca FROM marcas WHERE marca = :marcaNome";
+        $stmtMarca = $conn->prepare($sqlMarca);
+        $stmtMarca->bindValue(':marcaNome', $marcaNome, PDO::PARAM_STR);
+        $stmtMarca->execute();
+
+        $marca = $stmtMarca->fetch(PDO::FETCH_ASSOC);
+
+        if (!$marca) {
+            $result = array(
+                'status' => 'error',
+                'message' => 'Marca não encontrada.'
+            );
+            echo json_encode($result);
+            exit;
+        }
+
+        $idMarca = $marca["id_marca"];
+
+        // Busca os produtos com a marca correspondente
+        $sqlProdutos = "
+        SELECT produtos.*, marcas.marca AS nome_marca
+        FROM produtos
+        JOIN marcas ON produtos.id_marca = marcas.id_marca
+        WHERE produtos.id_marca = :idMarca
+    ";
+
+        $stmt = $conn->prepare($sqlProdutos);
+        $stmt->bindValue(":idMarca", $idMarca, PDO::PARAM_INT);
+    } elseif (isset($_GET["q"])) {
+        $q = trim($_GET["q"]);
+
+        if (empty($q)) {
+            $result = array(
+                'status' => 'error',
+                'message' => 'Termo de busca vazio.'
+            );
+            echo json_encode($result);
+            exit;
+        }
+
+        $sql = "
+        SELECT produtos.*, marcas.marca AS nome_marca, categorias.categoria AS nome_categoria
+        FROM produtos
+        JOIN marcas ON produtos.id_marca = marcas.id_marca
+        JOIN categorias ON produtos.id_categoria = categorias.id_categoria
+        WHERE produtos.produto LIKE :q
+           OR marcas.marca LIKE :q
+           OR categorias.categoria LIKE :q
+        ORDER BY produtos.produto
+    ";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':q', '%' . $q . '%', PDO::PARAM_STR);
     } else {
         // Monta a sintaxe SQL de busca
         $sql = "

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Button from "./button";
 import { Star } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { formatter } from "@/app/utils/formatadorDeMoeda";
 
 interface CardInstrumentosProps {
   id: number;
@@ -15,12 +16,6 @@ interface CardInstrumentosProps {
 
 const CardInstrumentos = (props: CardInstrumentosProps) => {
   const router = useRouter();
-
-  const formatter = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    minimumFractionDigits: 2,
-  });
 
   const handleEnviar = () => {
     localStorage.setItem("position", props.id.toString());

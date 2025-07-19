@@ -25,7 +25,7 @@ const ContentMarcas = (props) => {
           única ao interagir com ele
         </span>
       </div>
-      <ProductCarrousel />
+      <ProductCarrousel marca={props.marca} />
       <div></div>
     </div>
   );
