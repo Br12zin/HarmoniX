@@ -89,7 +89,11 @@
   --radius: 0.5rem;
 }
 }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
 
+h2, h3, .title-font {
+  font-family: 'Playfair Display', serif;
+}
 @layer base {
   * {
     @apply box-border;
@@ -265,3 +269,5 @@ h6 {
 
   background-position: center;
 }
+
+

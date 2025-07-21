@@ -1,175 +1,180 @@
 "use client";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "@/components/button";
 import { useState } from "react";
 
-// Schema de validação
 const paymentSchema = z.object({
-  nome: z.string().min(3, "Nome muito curto"),
-  numeroCartao: z.string()
-    .min(16, "Número de cartão inválido")
-    .max(16, "Número de cartão inválido"),
-  validade: z.string()
-    .regex(/^(0[1-9]|1[0-2])\/\d{2}$/, "Formato inválido (MM/AA)"),
-  cvv: z.string()
-    .min(3, "CVV deve ter 3 ou 4 dígitos")
-    .max(4, "CVV deve ter 3 ou 4 dígitos"),
+  nome: z.string().optional(),
+  numeroCartao: z.string().optional(),
+  validade: z.string().optional(),
+  cvv: z.string().optional(),
+  formaPagamento: z.enum(["credito", "debito", "pix"], {
+    required_error: "Escolha uma forma de pagamento",
+  }),
+  parcelas: z.string().optional(),
 });
 
-type PaymentData = z.infer<typeof paymentSchema>;
+type PaymentFormData = z.infer<typeof paymentSchema>;
 
 export default function PaymentForm() {
   const {
-    control,
+    register,
     handleSubmit,
-    setValue,
+    watch,
     formState: { errors },
-  } = useForm<PaymentData>({
+  } = useForm<PaymentFormData>({
     resolver: zodResolver(paymentSchema),
   });
 
-  const [cardNumberDisplay, setCardNumberDisplay] = useState("");
-  const [expiryDisplay, setExpiryDisplay] = useState("");
+  const formaPagamento = watch("formaPagamento");
+  const [mensagem, setMensagem] = useState("");
 
-  const formatCardNumber = (value: string) => {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    const matches = v.match(/\d{4,16}/g);
-    const match = matches && matches[0] || '';
-    const parts = [];
-    
-    for (let i = 0, len = match.length; i < len; i += 4) {
-      parts.push(match.substring(i, i + 4));
-    }
-    
-    if (parts.length) {
-      return parts.join(' ');
-    }
-    return value;
-  };
+  const onSubmit = (data: PaymentFormData) => {
+    console.log("Dados enviados:", data);
 
-  const formatExpiry = (value: string) => {
-    const v = value.replace(/[^0-9]/g, '');
-    if (v.length >= 3) {
-      return `${v.slice(0, 2)}/${v.slice(2, 4)}`;
+    if (data.formaPagamento === "pix") {
+      setMensagem("Pagamento via Pix gerado com sucesso!");
+    } else {
+      setMensagem("Pagamento com cartão realizado com sucesso!");
     }
-    return value;
-  };
-
-  const onSubmit = (data: PaymentData) => {
-    console.log("Dados enviados:", {
-      ...data,
-      numeroCartao: data.numeroCartao.replace(/\s/g, '')
-    });
-    alert("Pagamento processado com sucesso!");
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md mx-auto">
-      <h2 className="text-xl font-semibold mb-6 text-center">Dados de Pagamento</h2>
-
-      {/* Campo Nome */}
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-gray-700">
+      {/* Forma de pagamento */}
       <div>
-        <label className="block text-sm font-medium mb-1 text-gray-700">
-          Nome no cartão
+        <label htmlFor="formaPagamento" className="block mb-1 font-semibold">
+          Forma de Pagamento
         </label>
-        <Controller
-          name="nome"
-          control={control}
-          render={({ field }) => (
-            <input
-              {...field}
-              type="text"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Como no cartão"
-            />
-          )}
-        />
-        {errors.nome && (
-          <p className="text-red-500 text-sm mt-1">{errors.nome.message}</p>
-        )}
-      </div>
-
-      {/* Campo Número do Cartão */}
-      <div>
-        <label className="block text-sm font-medium mb-1 text-gray-700">
-          Número do cartão
-        </label>
-        <input
-          type="text"
-          value={cardNumberDisplay}
-          onChange={(e) => {
-            const formatted = formatCardNumber(e.target.value);
-            setCardNumberDisplay(formatted);
-            setValue("numeroCartao", formatted.replace(/\s/g, ''));
-          }}
-          placeholder="0000 0000 0000 0000"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          maxLength={19} // 16 dígitos + 3 espaços
-        />
-        {errors.numeroCartao && (
-          <p className="text-red-500 text-sm mt-1">{errors.numeroCartao.message}</p>
-        )}
-      </div>
-
-      {/* Validade e CVV */}
-      <div className="flex gap-4">
-        {/* Campo Validade */}
-        <div className="flex-1">
-          <label className="block text-sm font-medium mb-1 text-gray-700">
-            Validade (MM/AA)
-          </label>
-          <input
-            type="text"
-            value={expiryDisplay}
-            onChange={(e) => {
-              const formatted = formatExpiry(e.target.value);
-              setExpiryDisplay(formatted);
-              setValue("validade", formatted);
-            }}
-            placeholder="MM/AA"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            maxLength={5}
-          />
-          {errors.validade && (
-            <p className="text-red-500 text-sm mt-1">{errors.validade.message}</p>
-          )}
-        </div>
-
-        {/* Campo CVV */}
-        <div className="flex-1">
-          <label className="block text-sm font-medium mb-1 text-gray-700">
-            CVV
-          </label>
-          <Controller
-            name="cvv"
-            control={control}
-            render={({ field }) => (
-              <input
-                {...field}
-                type="password"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="•••"
-                maxLength={3}
-              />
-            )}
-          />
-          {errors.cvv && (
-            <p className="text-red-500 text-sm mt-1">{errors.cvv.message}</p>
-          )}
-        </div>
-      </div>
-
-      {/* Botão de Submit */}
-      <div className="pt-4">
-        <Button 
-          btn="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200"
+        <select
+          id="formaPagamento"
+          {...register("formaPagamento")}
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#C7A315] focus:border-[#C7A315] transition-all"
         >
-          Finalizar Pagamento
-        </Button>
+          <option value="">Selecione</option>
+          <option value="credito">Cartão de Crédito</option>
+          <option value="debito">Cartão de Débito</option>
+          <option value="pix">Pix</option>
+        </select>
+        {errors.formaPagamento && (
+          <p className="text-red-500 text-sm mt-1">{errors.formaPagamento.message}</p>
+        )}
       </div>
+
+      {/* Campos de cartão */}
+      {(formaPagamento === "credito" || formaPagamento === "debito") && (
+        <>
+          <div>
+            <label htmlFor="nome" className="block mb-1 font-semibold">
+              Nome no Cartão
+            </label>
+            <input
+              type="text"
+              id="nome"
+              {...register("nome", { required: true })}
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#C7A315] focus:border-[#C7A315]"
+            />
+            {errors.nome && <p className="text-red-500 text-sm mt-1">Nome é obrigatório</p>}
+          </div>
+
+          <div>
+            <label htmlFor="numeroCartao" className="block mb-1 font-semibold">
+              Número do Cartão
+            </label>
+            <input
+              type="text"
+              id="numeroCartao"
+              maxLength={19}
+              placeholder="0000 0000 0000 0000"
+              {...register("numeroCartao", { required: true })}
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#C7A315] focus:border-[#C7A315]"
+            />
+            {errors.numeroCartao && <p className="text-red-500 text-sm mt-1">Número obrigatório</p>}
+          </div>
+
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="w-full">
+              <label htmlFor="validade" className="block mb-1 font-semibold">
+                Validade
+              </label>
+              <input
+                type="text"
+                id="validade"
+                placeholder="MM/AA"
+                maxLength={5}
+                {...register("validade", { required: true })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#C7A315] focus:border-[#C7A315]"
+              />
+              {errors.validade && <p className="text-red-500 text-sm mt-1">Validade obrigatória</p>}
+            </div>
+
+            <div className="w-full">
+              <label htmlFor="cvv" className="block mb-1 font-semibold">
+                CVV
+              </label>
+              <input
+                type="text"
+                id="cvv"
+                maxLength={4}
+                {...register("cvv", { required: true })}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#C7A315] focus:border-[#C7A315]"
+              />
+              {errors.cvv && <p className="text-red-500 text-sm mt-1">CVV obrigatório</p>}
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Parcelas (apenas para crédito) */}
+      {formaPagamento === "credito" && (
+        <div>
+          <label htmlFor="parcelas" className="block mb-1 font-semibold">
+            Parcelamento
+          </label>
+          <select
+            id="parcelas"
+            {...register("parcelas")}
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#C7A315] focus:border-[#C7A315]"
+          >
+            <option value="">Selecione</option>
+            <option value="avista">À vista</option>
+            {[...Array(24)].map((_, i) => (
+              <option key={i + 1} value={`${i + 1}x`}>
+                {i + 1}x de R$ {(5700 / (i + 1)).toFixed(2).replace('.', ',')}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {/* PIX QR Code simulado */}
+      {formaPagamento === "pix" && (
+        <div className="bg-[#fefce8] p-4 rounded-xl border border-[#c7a315] text-center">
+          <p className="font-semibold text-[#c7a315]">Use o QR Code abaixo para realizar o pagamento via Pix.</p>
+          <div className="mt-4 flex justify-center">
+            <img
+              src="/qr-code-exemplo.png"
+              alt="QR Code Pix"
+              className="w-40 h-40 border border-gray-300 rounded-lg"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Botão de envio */}
+      <button
+        type="submit"
+        className="w-full mt-4 bg-[#C7A315] hover:bg-[#a88e1b] text-white font-bold py-3 rounded-xl transition duration-200 shadow-md"
+      >
+        Finalizar Pagamento
+      </button>
+
+      {/* Mensagem de sucesso */}
+      {mensagem && (
+        <p className="text-green-600 font-medium mt-4 text-center">{mensagem}</p>
+      )}
     </form>
   );
 }
