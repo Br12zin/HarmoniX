@@ -6,7 +6,7 @@ try {
 
     $email = $postfields['email'] ?? null;
     $senha = $postfields['senha'] ?? null;
-    
+
     if (empty($email) || empty($senha)) {
         http_response_code(400);
         throw new Exception('Email e senha são obrigatórios.');

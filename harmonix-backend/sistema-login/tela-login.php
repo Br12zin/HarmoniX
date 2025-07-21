@@ -2,8 +2,8 @@
 session_start();
 // VERIFICA SE HÁ COOKIE DE NAVEGAÇÃO DOS ACESSOS
 if (
-    isset($_COOKIE["email"]) && 
-    isset($_COOKIE["password"]) && 
+    isset($_COOKIE["email"]) &&
+    isset($_COOKIE["password"]) &&
     isset($_COOKIE["remember"])
 ) {
     $email = $_COOKIE["email"];
@@ -17,6 +17,7 @@ if (
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,18 +102,22 @@ if (
         }
     </style>
 </head>
+
 <body>
-    <?php
-    include "mensagens.php";
-    ?>
+
 
     <div class="container">
+
         <div class="login-container">
+
             <div class="login-logo">
                 <img src="./imagens/logo-gold.png" alt="HarmoniX Logo">
             </div>
+
             <h2 class="login-title">Login HarmoniX</h2>
-            
+            <?php
+            include "mensagens.php";
+            ?>
             <form method="post" action="validar-login.php">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
@@ -127,15 +132,17 @@ if (
                         <input <?php echo $remember; ?> type="checkbox" class="form-check-input" id="remember" name="remember">
                         <label class="form-check-label" for="remember">Remember me</label>
                     </div>
-                    
+
                 </div>
+
                 <button type="submit" class="btn btn-primary w-100 py-2">
                     <i class="bi bi-box-arrow-in-right me-2"></i>Login
                 </button>
             </form>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

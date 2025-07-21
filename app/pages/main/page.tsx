@@ -9,6 +9,7 @@ import Footer from "@/app/pages/main/components/Footer";
 import { useVisibility } from "@/components/VisibilityContext";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 let timeout: NodeJS.Timeout;
 
@@ -117,7 +118,7 @@ const Main = () => {
         {/* Resultados */}
         {/* Resultados */}
         {query && resultados.length > 0 && (
-          <div className="absolute left-0 right-0 z-10 mt-2 w-full max-w-[700px] overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
+          <div className="absolute left-0 right-0 z-10 mt-2 w-full max-w-[700px] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg">
             {resultados.slice(0, 5).map((item, index) => (
               <Link
                 href={`/Instrumento/${item.id_produto}`}
@@ -125,7 +126,7 @@ const Main = () => {
                 className="flex items-center gap-3 px-4 py-3 transition hover:bg-gray-100"
               >
                 {/* Imagem do produto */}
-                <img
+                <Image
                   src={`http://localhost:8080/produtos/imagens/${item.imagem}`}
                   alt={item.produto}
                   className="h-12 w-12 flex-shrink-0 rounded-md border border-gray-200 object-cover"

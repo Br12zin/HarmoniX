@@ -12,7 +12,8 @@ import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IProduct } from "@/app/interfaces/IProduct";
 import { fetchProducts } from "@/app/services/produtos/get";
-
+import { formatter } from "@/app/utils/formatadorDeMoeda";
+import marcasDinamicas from "../../Marcas/[marca]/marcasDinamicas";
 interface InstrumentsItemProps {
   params: {
     id: string;
@@ -55,6 +56,14 @@ export default function InstrumentsItem() {
   );
   const parcelado = (precoComDesconto / 10).toFixed(2);
 
+  const sobreMarca = marcasDinamicas.find((marca) =>
+    marca.marca.toLowerCase() === instrumento?.marca.toLowerCase()
+      ? marca.cardDescription
+      : "",
+  );
+  console.log("Instrumento:", instrumento);
+  console.log("Sobre Marca:", sobreMarca);
+
   // const handleAddToCart = async () => {
   //   if (instrumento) {
   //     const success = await addToCart(instrumento, id_cliente, quantity);
@@ -74,41 +83,47 @@ export default function InstrumentsItem() {
   return (
     <>
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
-      <div className="mt-14">
-        <div className="container mx-auto flex">
-          <div className="mx-auto max-w-[50em]">
+      <div className="mt-14 px-4">
+        <div className="container mx-auto grid gap-10 md:grid-cols-2">
+          {/* Imagem */}
+          <div className="flex justify-center">
             <Image
               src={`http://localhost:8080/produtos/imagens/${instrumento.imagem}`}
               alt={instrumento.produto}
               width={550}
               height={700}
-              className="rounded-2xl border-2 border-slate-400 border-opacity-45 bg-white px-8"
+              className="h-auto max-w-full rounded-2xl border-2 border-slate-400 border-opacity-45 bg-white px-4"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = "/placeholder.jpg"; // Fallback image
+                (e.target as HTMLImageElement).src = "/placeholder.jpg";
               }}
             />
           </div>
-          <div className="mx-auto max-w-[35em] border-l-2 border-[#C7A315] border-opacity-50 ps-10">
-            <h1 className="font-quiche text-wrap text-4xl font-bold text-[#C7A315]">
+
+          {/* Informações do produto */}
+          <div className="flex flex-col justify-start gap-4 border-t-2 border-[#C7A315] border-opacity-50 pl-0 md:border-l-2 md:border-t-0 md:pl-10">
+            <h1 className="font-quiche break-words text-4xl font-bold text-[#C7A315]">
               {instrumento.produto}
             </h1>
-            <div className="text-yellow-400">
-              <p className="mt-5 flex">
-                <Star />
-                <Star />
-                <Star />
-                <Star />
-                <Star />
-              </p>
+
+            <div className="flex gap-1 text-yellow-400">
+              <Star />
+              <Star />
+              <Star />
+              <Star />
+              <Star />
             </div>
-            <h3 className="mt-5 text-xl text-slate-400 line-through">
-              R$ {instrumento.preco}
+
+            <h3 className="text-xl text-slate-400 line-through">
+              {formatter.format(Number(instrumento.preco))}
             </h3>
-            <div className="box-border flex flex-wrap items-baseline">
-              <h2 className="mt-5 text-3xl font-semibold text-[#C7A315]">
-                R$ {precoComDesconto}
-              </h2>
-              <p className="ms-2 font-bold text-slate-500">à vista</p>
+
+            <div className="flex flex-col gap-1">
+              <div className="flex items-baseline gap-2">
+                <h2 className="text-3xl font-semibold text-[#C7A315]">
+                  {formatter.format(Number(precoComDesconto))}
+                </h2>
+                <p className="font-bold text-slate-500">à vista</p>
+              </div>
               <p className="text-green-400">
                 (com 10% de desconto no Pix / Boleto Bancário / 1x no Cartão de
                 Crédito)
@@ -117,42 +132,51 @@ export default function InstrumentsItem() {
                 {`ou em 10x de R$${parcelado} sem juros no cartão`}
               </p>
             </div>
-            <div className="flex">
+
+            <div className="flex flex-wrap items-center gap-3">
               <CreditCard />
-              <p className="mx-2"> Cartão </p>
+              <p>Cartão</p>
               <Barcode />
-              <p className="mx-2"> Boleto </p>
+              <p>Boleto</p>
             </div>
-            <div className="flex items-center">
-              <Input className="m-0" />
-              <Button btn="mt-0 mb-5 ms-4">Calcular Frete</Button>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Input className="flex-1" />
+              <Button btn="mb-5">Calcular Frete</Button>
             </div>
-            <Button
-              // onClick={handleEnviar}
-              btn="mt-0 mb-3 ms-4 w-screen text-xl font-bold mx-auto"
-            >
-              Comprar
-            </Button>
+
+            <Button btn="w-full text-xl font-bold">Comprar</Button>
           </div>
         </div>
       </div>
-      <div className="container mx-auto mb-10 mt-20 border-t-2 border-[#C7A315]">
-        <h1 className="mt-4 text-center text-4xl text-[#C7A315]"></h1>
-        <div className="mb-10 bg-gray-50 p-6 font-sans text-gray-900">
-          <h1 className="mb-4 text-2xl font-bold">{instrumento.produto}</h1>
-          <p className="mb-4 text-gray-600">{instrumento.descricao}</p>
-          <h2 className="mb-2 mt-6 text-xl font-semibold">
+      <div className="container mx-auto mb-10 mt-20 border-t-2 border-[#C7A315] px-4">
+        <div className="my-20 break-words rounded-2xl bg-white p-20 font-sans text-gray-800 shadow-lg">
+          {/* Nome do produto */}
+          <h1 className="mb-6 text-3xl font-bold text-[#C7A315]">
+            {instrumento.produto}
+          </h1>
+
+          {/* Descrição do produto */}
+          <p className="text-base text-gray-700">{instrumento.descricao}</p>
+
+          {/* Especificações Técnicas */}
+          <h2 className="mb-6 mt-6 text-2xl font-semibold text-[#C7A315]">
             Especificações Técnicas
           </h2>
-
-          <p className="mb-4 whitespace-pre-line leading-tight text-gray-600">
+          <p className="text-base text-gray-700">
             {instrumento.especificacoes}
           </p>
 
-          <h2 className="mb-2 mt-6 text-xl font-semibold">Sobre a Marca</h2>
-          <p className="mb-4"></p>
+          {/* Sobre a Marca */}
+          <h2 className="my-6 mt-6 text-2xl font-extrabold text-[#C7A315]">
+            Sobre a Marca
+          </h2>
+          <p className="text-base text-gray-700">
+            {sobreMarca?.cardDescription}
+          </p>
         </div>
       </div>
+
       <CarouselProduto />
     </>
   );

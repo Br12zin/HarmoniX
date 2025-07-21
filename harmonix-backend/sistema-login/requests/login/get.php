@@ -26,13 +26,7 @@ $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 // ENCERRAR O CURL
 curl_close($curl);
 
-if (isset($error_msg)) {
-    // Trata o erro aqui
-    die("Erro no cURL: $error_msg");
-}
-if ($http_status !== 200) {
-    die("Erro HTTP: $http_status");
-}
+
 
 if (empty($response)) {
     $response = array();
