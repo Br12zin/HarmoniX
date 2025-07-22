@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import logoGold from "@/public/img/logo-gold.png";
-// import { Search } from "lucide-react";
 import Link from "next/link";
 import { AppSidebar } from "@/components/app-sidebar";
 import { useEffect, useState } from "react";
@@ -10,18 +9,16 @@ import IconBag from "@/components/icon-bag";
 
 const NavMain = ({ isVisible, onHandleVisibility, opacity = "0" }) => {
   const [bg, setBg] = useState("bg-transparent");
-  const [bgBtnNav, setBgBtnNav] = useState("");
   const [isClient, setIsClient] = useState(false);
+  const fixedGoldColor = "#C7A315"; // Cor fixa igual à da logo
 
   useEffect(() => {
     setIsClient(true);
     const handleScroll = () => {
       if (typeof window !== "undefined" && window.scrollY > 10) {
         setBg("bg-gradient-to-b from-[#111111] to-[#3f3e3e]");
-        setBgBtnNav("#a7a725");
       } else {
         setBg("bg-transparent");
-        setBgBtnNav("");
       }
     };
 
@@ -42,8 +39,8 @@ const NavMain = ({ isVisible, onHandleVisibility, opacity = "0" }) => {
           <AppSidebar
             mudarVisibilidade={onHandleVisibility}
             isVisible={isVisible}
-            btnSideNav={bgBtnNav}
-            fillbtn={bgBtnNav}
+            btnSideNav={fixedGoldColor}
+            fillbtn={fixedGoldColor}
           />
         </div>
         <div></div>
@@ -56,7 +53,7 @@ const NavMain = ({ isVisible, onHandleVisibility, opacity = "0" }) => {
           />
         </Link>
         <Link href="/pages/Carrinho" className="justify-self-end">
-          <IconBag colorIcon={bgBtnNav} opacidade={opacity} />
+          <IconBag colorIcon={fixedGoldColor} opacidade={opacity} />
         </Link>
       </div>
     </nav>

@@ -104,11 +104,11 @@ export function AppSidebar({
 
   return (
     <>
-      <SidebarProvider className="absolute " defaultOpen={false}>
-        <Sidebar className="bg-white">
+      <SidebarProvider className="absolute" defaultOpen={false}>
+        <Sidebar className="w-[34rem] bg-[#ececec]">
           <SidebarContent>
             <SidebarGroup>
-              <div className="flex">
+              <div className="flex h-10">
                 <CustomTrigger
                   onClick={() => mudarVisibilidade()}
                   className="hover:bg-transparent"

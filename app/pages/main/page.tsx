@@ -166,23 +166,23 @@ const Main = () => {
       <Carousel />
       <section className="flex flex-wrap justify-center gap-8 px-4 py-12 sm:gap-10">
         <GreyCard
-          imagem="/img/instruments-2.png"
+          imagem="/img/instrumentos.png"
           titulo="Instrumentos"
           paragrafo="Encontre os melhores instrumentos musicais, com o melhor preço e as melhores recomendações"
           link="/pages/CategoriaMarcas"
         />
         <GreyCard
           link="/pages/Marcas"
-          imagem="/img/brand-1.png"
+          imagem="/img/brand.png"
           titulo="Marcas"
           paragrafo="Encontre as principais marcas fornecedoras de instrumentos musicais do mercado"
         />
       </section>
-      <Footer
-        tamanho=""
-        rodape="bg-gradient-to-b from-slate-100 to-[#C7A315]"
-        txt="text-[#000000]"
-      />
+    <Footer
+  tamanho=""
+  rodape="bg-[#816a02]"
+  txt="text-black" 
+/>
     </div>
   );
 };

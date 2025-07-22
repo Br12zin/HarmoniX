@@ -1,32 +1,45 @@
 "use client";
-// import BackBtn from "@/components/BackButton";
 import Buttonfale from "@/components/buttonfale";
-// import Link from "next/link";
-// import Image from "next/image";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
+import Footer from "@/app/pages/main/components/Footer";
 
 export default function FaleConosco() {
   const { isVisible, onHandleVisibility } = useVisibility();
   return (
-    <div className="no-scroll-x h-screen w-screen bg-[#ECECEC]">
+    <div className="no-scroll-x no-scroll ">
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility} />
 
-      <div className="flex">
-        <div className="centralizador flex h-screen w-screen items-center justify-center">
-          <Buttonfale title="Chat" img="/img/chat.png"></Buttonfale>
-          <Buttonfale
+      <div className="flex flex-col items-center">
+        <div className="w-full text-center">
+          <h1 className="text-4xl font-bold text-[#C7A315] md:text-5xl">
+            Fale Conosco
+          </h1>
+          <p className="mt-4 text-xl text-gray-600">
+            Escolha a melhor forma de entrar em contato
+          </p>
+        </div>
+        <div className="flex">
+          <div className="centralizador flex h-[50%] w-screen pt-10 pb-20 justify-center ">
+            <Buttonfale title="Chat" img="/img/chat.png"  />
+            <Buttonfale
             title="Contato telefônico"
-            num1="(12) 12345-6789"
-            num2="(12) 1234-5678"
-            img="/img/telefone_colorido.png"
-          ></Buttonfale>
+            img="/img/telefone_telafaleconosco.png"
+          />
           <Buttonfale
             title="E-mail"
-            img="/img/icons/icone email.png"
-          ></Buttonfale>
+            img="/img/e-mail.png"
+          />
+
         </div>
+        </div>
+        
       </div>
+      <Footer
+  tamanho=""
+  rodape="bg-[#816a02]"
+  txt="text-black" 
+/>
     </div>
   );
 }

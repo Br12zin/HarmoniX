@@ -8,35 +8,34 @@ import { useVisibility } from "@/components/VisibilityContext";
 const Perfil = () => {
   const { onHandleVisibility, isVisible } = useVisibility();
   return (
-    <div className="bg-{#ECECEC}">
+    <div>
       <NavMain
         isVisible={isVisible}
         onHandleVisibility={onHandleVisibility}
-        apagar="hidden"
       />
       <div className="flex justify-center text-6xl">
-        <h1 className="mb-20">Olá, User</h1>
+        <h1 className="mb-20 text-white">Olá, User</h1>
       </div>
       <div className="align-items-center flex w-full justify-center">
         <div className="me-40">
           <Input
             formLogin="min-w-[20%]"
             placeholder={"Digite seu nome"}
-            variantText="text-xl"
+            variantText="text-xl text-white"
           >
             Nome
           </Input>
           <Input
             formLogin="min-w-[20%]"
             placeholder={"Digite seu e-mail"}
-            variantText="text-xl"
+            variantText="text-xl text-white"
           >
             E-mail
           </Input>
           <Input
             formLogin="min-w-[20%]"
             placeholder={"Digite sua senha"}
-            variantText="text-xl"
+            variantText="text-xl text-white"
           >
             Senha
           </Input>
@@ -45,14 +44,14 @@ const Perfil = () => {
           <Input
             formLogin="min-w-[20%]"
             placeholder={"Digite seu endereço"}
-            variantText="text-xl"
+            variantText="text-xl text-white"
           >
             Endereço
           </Input>
           <Input
             formLogin="min-w-[20%]"
             placeholder={"(DDD) Digite seu número"}
-            variantText="text-xl"
+            variantText="text-xl text-white"
           >
             Celular
           </Input>

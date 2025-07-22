@@ -22,7 +22,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/nwr6bvq.css" />
       </head>
-      <body className={`bg-[#ececec] antialiased`}>
+      <body className={`bg-[#1a1a1a] antialiased`}>
 
         <VisibilityProvider>{children}</VisibilityProvider>
       </body>

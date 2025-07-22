@@ -170,7 +170,7 @@ h6 {
 }
 
 .bg-main {
-  background-color: #ececec;
+  background-color: #1a1a1a;
 }
 
 /* Swiper */
@@ -244,20 +244,16 @@ h6 {
   background-repeat: no-repeat;
 }
 .imgt {
-  background-image: url(../public/img/telefone_colorido.png);
+  background-image: url(../public/img/telefone_telafaleconosco.png);
   background-size: auto;
   background-position: top;
   background-repeat: no-repeat;
 }
 .imge {
-  background-image: url(../public/img/icons/icone\ email.png);
+  background-image: url(../public/img/e-mail.png);
   background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.no-scroll-x {
-  overflow: hidden;
 }
 
 .circulofundo {
