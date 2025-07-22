@@ -8,27 +8,23 @@ import Button from "@/components/button";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
 import CarouselProduto from "@/components/carouselProduto";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IProduct } from "@/app/interfaces/IProduct";
 import { fetchProducts } from "@/app/services/produtos/get";
 import { formatter } from "@/app/utils/formatadorDeMoeda";
 import marcasDinamicas from "../../Marcas/[marca]/marcasDinamicas";
-interface InstrumentsItemProps {
-  params: {
-    id: string;
-  };
-}
+// import { addToCart } from "@/app/services/carrinho/post";
+
 
 export default function InstrumentsItem() {
   const params = useParams();
   const { id } = params || {};
-  const router = useRouter();
   const [instrumento, setInstrumento] = useState<IProduct | null>(null);
-  const [quantity, setQuantity] = useState(1);
+  const [quantidade, setQuantidade] = useState(1);
   const [error, setError] = useState<string | null>(null);
   const { isVisible, onHandleVisibility } = useVisibility();
-  const id_cliente = 3; // Hardcoded for testing; replace with dynamic client ID from auth
+  const cliente_id = 7; // Hardcoded for testing; replace with dynamic client ID from auth
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -64,18 +60,38 @@ export default function InstrumentsItem() {
   console.log("Instrumento:", instrumento);
   console.log("Sobre Marca:", sobreMarca);
 
-  // const handleAddToCart = async () => {
-  //   if (instrumento) {
-  //     const success = await addToCart(instrumento, id_cliente, quantity);
-  //     if (success) {
-  //       alert("Produto adicionado ao carrinho!");
-  //     } else {
-  //       setError(
-  //         "Falha ao adicionar o produto ao carrinho. Verifique o console para detalhes.",
-  //       );
-  //     }
-  //   }
-  // };
+  const handleAddToCart = async () => {
+    if (instrumento) {
+      const addToCart = async (
+        product: IProduct,
+        cliente_id: number,
+        quantidade: number,
+      ): Promise<boolean> => {
+        const response = await fetch(`http://localhost:8080/carrinho/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cliente_id: cliente_id,
+            id_produto: product.id_produto,
+            quantidade: quantidade,
+          }),
+        });
+        console.log("Response:", response);
+        return response.ok;
+      };
+
+      const success = await addToCart(instrumento, cliente_id, quantidade);
+      if (success) {
+        alert("Produto adicionado ao carrinho!");
+      } else {
+        setError(
+          "Falha ao adicionar o produto ao carrinho. Verifique o console para detalhes.",
+        );
+      }
+    }
+  };
   // import(
   //   `../../../../harmonix-backend/sistema-login/produtos/imagens/${instrumento.imagem}`
   // );
@@ -139,13 +155,31 @@ export default function InstrumentsItem() {
               <Barcode />
               <p>Boleto</p>
             </div>
+            <div></div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setQuantidade((q) => (q > 1 ? q - 1 : 1))}
+                className="h-10 w-10 rounded-full border border-gray-300 bg-[#C7A315]"
+              >
+                -
+              </button>
+              <span className="mx-2 mt-2">{quantidade}</span>
+              <button
+                onClick={() => setQuantidade((q) => q + 1)}
+                className="h-10 w-10 rounded-full border border-gray-300 bg-[#C7A315]"
+              >
+                +
+              </button>
+            </div>
 
             <div className="flex flex-wrap items-center gap-4">
               <Input className="flex-1" />
               <Button btn="mb-5">Calcular Frete</Button>
             </div>
 
-            <Button btn="w-full text-xl font-bold">Comprar</Button>
+            <Button onClick={handleAddToCart} btn="w-full text-xl font-bold">
+              Adicionar ao Carrinho
+            </Button>
           </div>
         </div>
       </div>
@@ -181,6 +215,4 @@ export default function InstrumentsItem() {
     </>
   );
 }
-function setError(arg0: string) {
-  throw new Error("Function not implemented.");
-}
+
