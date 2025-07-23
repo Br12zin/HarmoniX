@@ -16,7 +16,6 @@ import { formatter } from "@/app/utils/formatadorDeMoeda";
 import marcasDinamicas from "../../Marcas/[marca]/marcasDinamicas";
 // import { addToCart } from "@/app/services/carrinho/post";
 
-
 export default function InstrumentsItem() {
   const params = useParams();
   const { id } = params || {};
@@ -215,4 +214,3 @@ export default function InstrumentsItem() {
     </>
   );
 }
-

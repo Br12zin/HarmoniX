@@ -60,6 +60,7 @@ if (isset($_GET["key"])) {
                         <table class="table table-striped table-hover table-bordered align-middle text-center" id="produtos">
                             <thead class="table-dark">
                                 <tr>
+                                    <th>ID</th>
                                     <th>Imagem</th>
                                     <th class="text-center">Produto</th>
                                     <th class="text-center">Descrição</th>
@@ -69,7 +70,8 @@ if (isset($_GET["key"])) {
                                     <th class="text-center" style="min-width: 120px;">Preço</th>
                                     <th class="text-center">Desconto</th>
                                     <th class="text-center" style="min-width: 120px;">Preço Final</th>
-                                    
+                                    <th class="text-center" style="min-width: 120px;">Ações</th>
+
                                 </tr>
 
                             </thead>
@@ -108,8 +110,8 @@ if (isset($_GET["key"])) {
 </tr>
 ';
                                     }
-                                } 
-                                
+                                }
+
                                 ?>
                             </tbody>
                         </table>
@@ -131,7 +133,7 @@ if (isset($_GET["key"])) {
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.min.js"></script>
 
     <script>
-        let table = new DataTable('#produtos', {    
+        let table = new DataTable('#produtos', {
             language: {
                 url: "https://cdn.datatables.net/plug-ins/2.3.2/i18n/pt-BR.json"
             }
