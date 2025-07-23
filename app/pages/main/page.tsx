@@ -121,12 +121,14 @@ const Main = () => {
           <div className="absolute left-0 right-0 z-10 mt-2 w-full max-w-[700px] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-lg">
             {resultados.slice(0, 5).map((item, index) => (
               <Link
-                href={`/Instrumento/${item.id_produto}`}
+                href={`Instrumento/${item.id_produto}`}
                 key={index}
                 className="flex items-center gap-3 px-4 py-3 transition hover:bg-gray-100"
               >
                 {/* Imagem do produto */}
                 <Image
+                  width={250}
+                  height={250}
                   src={`http://localhost:8080/produtos/imagens/${item.imagem}`}
                   alt={item.produto}
                   className="h-12 w-12 flex-shrink-0 rounded-md border border-gray-200 object-cover"
@@ -178,11 +180,7 @@ const Main = () => {
           paragrafo="Encontre as principais marcas fornecedoras de instrumentos musicais do mercado"
         />
       </section>
-    <Footer
-  tamanho=""
-  rodape="bg-[#806903]"
-  txt="text-black" 
-/>
+      <Footer tamanho="" rodape="bg-[#806903]" txt="text-black" />
     </div>
   );
 };
