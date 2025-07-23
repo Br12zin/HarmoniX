@@ -18,13 +18,13 @@ export function DropDawn({ itens, mg }) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className={`ms-48 ${mg}`}>
-          <Button variant="personalizada" className="bg-white">
+          <Button variant="personalizada" className="bg-[#ececec]">
             <p className="text-sm font-bold">Selecione um Tipo</p>
             <ChevronDown className="ms-2 text-black"></ChevronDown>
           </Button>
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56 bg-white">
+      <DropdownMenuContent className="w-56 bg-[#ececec]">
         <ScrollArea className="h-56 overflow-y-auto">
           {itens.map((item, index) => (
             <Link key={index} href={item.link} className="font-semibold">

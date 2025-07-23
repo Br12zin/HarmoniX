@@ -95,7 +95,7 @@ const Main = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full rounded-full border border-gray-300 bg-[#F2F1F1] px-12 py-3 text-sm shadow-sm outline-none transition placeholder:text-gray-500 focus:ring-2 focus:ring-yellow-500"
+            className="w-full rounded-full border border-gray-300 bg-[#F2F1F1] px-12 py-3 text-lg shadow-sm outline-none transition placeholder:text-gray-500 focus:ring-2 focus:ring-yellow-500"
           />
 
           {/* Ícones lado direito */}
@@ -180,7 +180,7 @@ const Main = () => {
       </section>
     <Footer
   tamanho=""
-  rodape="bg-[#816a02]"
+  rodape="bg-[#806903]"
   txt="text-black" 
 />
     </div>

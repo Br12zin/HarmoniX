@@ -37,7 +37,7 @@ export default function FaleConosco() {
       </div>
       <Footer
   tamanho=""
-  rodape="bg-[#816a02]"
+  rodape="bg-[#806903]"
   txt="text-black" 
 />
     </div>

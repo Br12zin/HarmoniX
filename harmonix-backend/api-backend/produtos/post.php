@@ -26,7 +26,7 @@ try {
 
         $sql = "INSERT INTO produtos (id_categoria, id_marca, produto, especificacoes, descricao, quantidade, preco, desconto,  imagem) VALUES
         (:id_categoria, :id_marca, :produto, :especificacoes, :descricao,:quantidade, :preco,  :desconto,  :imagem)
-       ";
+    ";
 
 
 

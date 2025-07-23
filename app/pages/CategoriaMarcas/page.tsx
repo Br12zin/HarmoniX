@@ -9,7 +9,7 @@ import { sopros, cordas, percussao } from "./data/items-dropdawn";
 export default function CategoriaMarcas() {
   const { isVisible, onHandleVisibility } = useVisibility();
   return (
-    <div className=" bg-[#ECECEC]">
+    <div className="min-h-screen flex flex-col no-scroll">
       <div>
         <NavMain
           isVisible={isVisible}
@@ -17,7 +17,7 @@ export default function CategoriaMarcas() {
         />
       </div>
       <div className="mt-20 flex flex-col items-center">
-        <div className="mb-12 flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-white">
+        <div className="mb-12 flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-[#ececec]">
           <Image
             src="/img/icons/icone-instrumento-corda.png"
             alt=""
@@ -29,7 +29,7 @@ export default function CategoriaMarcas() {
           <DropDawn itens={cordas} mg="" />
         </div>
 
-        <div className="mb-12 flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-white">
+        <div className="mb-12 flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-[#ececec]">
           <Image
             src="/img/icons/icone-instrumento-sopro-metal.png"
             alt=""
@@ -41,7 +41,7 @@ export default function CategoriaMarcas() {
           <DropDawn itens={sopros} mg="" />
         </div>
 
-        <div className="flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-white">
+        <div className="flex h-16 w-[620px] items-center justify-around rounded-3xl border-[1px] border-slate-300 bg-[#ececec]">
           <Image
             src="/img/icons/icone-instrumento-percussao.png"
             alt=""

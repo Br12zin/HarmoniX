@@ -8,7 +8,7 @@ import { useVisibility } from "@/components/VisibilityContext";
 const Perfil = () => {
   const { onHandleVisibility, isVisible } = useVisibility();
   return (
-    <div>
+    <div className="no-scroll">
       <NavMain
         isVisible={isVisible}
         onHandleVisibility={onHandleVisibility}

@@ -8,12 +8,12 @@ export default function Checkout() {
     const { isVisible, onHandleVisibility } = useVisibility();
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col no-scroll">
+    <div className="min-h-screen flex flex-col no-scroll">
       <NavMain isVisible={isVisible} onHandleVisibility={onHandleVisibility}/>
 
-     <main className="flex flex-col md:flex-row gap-10 px-6 md:px-12 py-10 max-w-7xl mx-auto w-full bg-[#f3f3f3]">
+    <main className="flex flex-col md:flex-row gap-10 px-6 md:px-12 py-10 max-w-7xl mx-auto w-full ">
   {/* Resumo */}
-  <section className="bg-white shadow-xl rounded-3xl p-8 w-full md:w-1/2 border border-gray-200">
+  <section className="bg-[#ececec] shadow-xl rounded-3xl p-8 w-full md:w-1/2 border border-gray-200">
     <h2 className="text-2xl font-semibold text-[#C7A315] border-b-2 border-[#C7A315] pb-4 mb-6">Resumo da Compra</h2>
     <ul className="divide-y divide-gray-200 text-gray-700 text-base space-y-2">
       <li className="flex justify-between py-2">
@@ -32,7 +32,7 @@ export default function Checkout() {
   </section>
 
   {/* Formulário de Pagamento */}
-  <section className="bg-white shadow-xl rounded-3xl p-8 w-full md:w-1/2 border border-gray-200">
+  <section className="bg-[#ececec] shadow-xl rounded-3xl p-8 w-full md:w-1/2 border border-gray-200">
     <h2 className="text-2xl font-semibold text-[#C7A315] border-b-2 border-[#C7A315] pb-4 mb-6">Dados de Pagamento</h2>
     <PaymentForm />
   </section>
