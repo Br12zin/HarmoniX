@@ -12,7 +12,7 @@ const TiposIntrumentos = ({
 }: TiposInstrumentosProps) => {
   return (
     <>
-      <h1 className="flex justify-center text-3xl font-medium capitalize md:text-4xl">
+      <h1 className="flex justify-center text-3xl font-medium capitalize md:text-4xl text-white">
         {titulo}
       </h1>
       <div className="mx-4 my-10 2xl:mx-32">
