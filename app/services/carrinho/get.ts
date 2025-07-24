@@ -1,8 +1,9 @@
-export const fetchCarrinho = async () => {
-  const url = `http://localhost:8080/carrinho/?cliente_id=7`;
+export const fetchCarrinho = async (cliente_id) => {
+  const url = `http://localhost:8080/carrinho/?cliente_id=${cliente_id}`;
 
   const response = await fetch(url, {
     method: "GET",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },

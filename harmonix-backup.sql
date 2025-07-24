@@ -2,10 +2,10 @@
 -- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 23, 2025 at 08:12 PM
--- Server version: 11.7.2-MariaDB
--- PHP Version: 8.2.28
+-- Host: mysql:3306
+-- Tempo de geração: 24/07/2025 às 03:40
+-- Versão do servidor: 9.3.0
+-- Versão do PHP: 8.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,47 +18,48 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `harmonix`
+-- Banco de dados: `harmonix`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carrinho`
+-- Estrutura para tabela `carrinho`
 --
 
 CREATE TABLE `carrinho` (
-  `id_carrinho` int(11) NOT NULL,
+  `id_carrinho` int NOT NULL,
   `cliente_id` varchar(255) DEFAULT NULL,
-  `id_produto` int(11) DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+  `id_produto` int DEFAULT NULL,
+  `quantidade` int DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `carrinho`
+-- Despejando dados para a tabela `carrinho`
 --
 
 INSERT INTO `carrinho` (`id_carrinho`, `cliente_id`, `id_produto`, `quantidade`, `created_at`, `updated_at`) VALUES
-(16, '7', 58, 2, '2025-07-23 14:51:37', '2025-07-23 15:00:41'),
-(17, '7', 59, 2, '2025-07-23 15:24:43', '2025-07-23 15:24:43');
+(20, '7', 61, 1, '2025-07-24 00:14:42', '2025-07-24 00:14:42'),
+(22, '8', 64, 3, '2025-07-24 02:27:12', '2025-07-24 02:48:51'),
+(24, '8', 60, 1, '2025-07-24 03:37:23', '2025-07-24 03:37:23');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorias`
+-- Estrutura para tabela `categorias`
 --
 
 CREATE TABLE `categorias` (
-  `id_categoria` int(11) NOT NULL,
+  `id_categoria` int NOT NULL,
   `categoria` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `categorias`
+-- Despejando dados para a tabela `categorias`
 --
 
 INSERT INTO `categorias` (`id_categoria`, `categoria`, `created_at`, `updated_at`) VALUES
@@ -80,17 +81,17 @@ INSERT INTO `categorias` (`id_categoria`, `categoria`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoriasmarcas`
+-- Estrutura para tabela `categoriasmarcas`
 --
 
 CREATE TABLE `categoriasmarcas` (
-  `id_categoriaMarca` int(11) NOT NULL,
-  `id_categoria` int(11) NOT NULL,
-  `id_marca` int(11) NOT NULL
+  `id_categoriaMarca` int NOT NULL,
+  `id_categoria` int NOT NULL,
+  `id_marca` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `categoriasmarcas`
+-- Despejando dados para a tabela `categoriasmarcas`
 --
 
 INSERT INTO `categoriasmarcas` (`id_categoriaMarca`, `id_categoria`, `id_marca`) VALUES
@@ -144,28 +145,28 @@ INSERT INTO `categoriasmarcas` (`id_categoriaMarca`, `id_categoria`, `id_marca`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clientes`
+-- Estrutura para tabela `clientes`
 --
 
 CREATE TABLE `clientes` (
-  `cliente_id` int(11) NOT NULL,
+  `cliente_id` int NOT NULL,
   `nome` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `telefone` char(14) DEFAULT NULL,
   `cep` varchar(10) NOT NULL,
   `endereco` varchar(400) NOT NULL,
-  `numero` int(11) NOT NULL,
+  `numero` int NOT NULL,
   `cidade` varchar(50) NOT NULL,
   `estado` varchar(50) NOT NULL,
   `complemento` varchar(100) DEFAULT NULL,
   `bairro` varchar(150) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `clientes`
+-- Despejando dados para a tabela `clientes`
 --
 
 INSERT INTO `clientes` (`cliente_id`, `nome`, `email`, `senha`, `telefone`, `cep`, `endereco`, `numero`, `cidade`, `estado`, `complemento`, `bairro`, `created_at`, `updated_at`) VALUES
@@ -175,32 +176,32 @@ INSERT INTO `clientes` (`cliente_id`, `nome`, `email`, `senha`, `telefone`, `cep
 -- --------------------------------------------------------
 
 --
--- Table structure for table `itenspedidos`
+-- Estrutura para tabela `itenspedidos`
 --
 
 CREATE TABLE `itenspedidos` (
-  `id_itemPedido` int(11) NOT NULL,
-  `id_pedido` int(11) NOT NULL,
-  `id_produto` int(11) NOT NULL,
-  `quantidade` int(11) NOT NULL,
+  `id_itemPedido` int NOT NULL,
+  `id_pedido` int NOT NULL,
+  `id_produto` int NOT NULL,
+  `quantidade` int NOT NULL,
   `preco_unitario` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `marcas`
+-- Estrutura para tabela `marcas`
 --
 
 CREATE TABLE `marcas` (
-  `id_marca` int(11) NOT NULL,
+  `id_marca` int NOT NULL,
   `marca` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `marcas`
+-- Despejando dados para a tabela `marcas`
 --
 
 INSERT INTO `marcas` (`id_marca`, `marca`, `created_at`, `updated_at`) VALUES
@@ -224,56 +225,56 @@ INSERT INTO `marcas` (`id_marca`, `marca`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pagamento`
+-- Estrutura para tabela `pagamento`
 --
 
 CREATE TABLE `pagamento` (
-  `id_pagamento` int(11) NOT NULL,
+  `id_pagamento` int NOT NULL,
   `nome_cartao` varchar(255) NOT NULL,
   `numero_cartao` varchar(200) NOT NULL,
-  `validade_mes` int(11) NOT NULL,
-  `validade_ano` int(11) NOT NULL,
+  `validade_mes` int NOT NULL,
+  `validade_ano` int NOT NULL,
   `cvv` char(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pedidos`
+-- Estrutura para tabela `pedidos`
 --
 
 CREATE TABLE `pedidos` (
-  `id_pedido` int(11) NOT NULL,
-  `cliente_id` int(11) NOT NULL,
+  `id_pedido` int NOT NULL,
+  `cliente_id` int NOT NULL,
   `total` decimal(10,2) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
-  `id_produto` int(11) NOT NULL,
-  `id_categoria` int(11) NOT NULL,
-  `id_marca` int(11) NOT NULL,
+  `id_produto` int NOT NULL,
+  `id_categoria` int NOT NULL,
+  `id_marca` int NOT NULL,
   `produto` varchar(255) NOT NULL,
   `especificacoes` varchar(400) DEFAULT NULL,
-  `descricao` text DEFAULT NULL,
-  `quantidade` int(11) NOT NULL,
+  `descricao` text,
+  `quantidade` int NOT NULL,
   `preco` decimal(10,2) NOT NULL,
   `desconto` decimal(10,2) DEFAULT NULL,
   `imagem` varchar(500) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `produtos`
+-- Despejando dados para a tabela `produtos`
 --
 
 INSERT INTO `produtos` (`id_produto`, `id_categoria`, `id_marca`, `produto`, `especificacoes`, `descricao`, `quantidade`, `preco`, `desconto`, `imagem`, `created_at`, `updated_at`) VALUES
@@ -291,20 +292,20 @@ INSERT INTO `produtos` (`id_produto`, `id_categoria`, `id_marca`, `produto`, `es
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
-  `id_usuario` int(11) NOT NULL,
+  `id_usuario` int NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
   `imagem` varchar(250) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`, `imagem`, `created_at`) VALUES
@@ -312,24 +313,24 @@ INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha`, `imagem`, `creat
 (6, 'victor', 'victor2@email.com', '8cb2237d0679ca88db6464eac60da96345513964', 'asdasd', '2025-07-21 17:52:06');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `carrinho`
+-- Índices de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD PRIMARY KEY (`id_carrinho`),
   ADD KEY `id_produto` (`id_produto`);
 
 --
--- Indexes for table `categorias`
+-- Índices de tabela `categorias`
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indexes for table `categoriasmarcas`
+-- Índices de tabela `categoriasmarcas`
 --
 ALTER TABLE `categoriasmarcas`
   ADD PRIMARY KEY (`id_categoriaMarca`),
@@ -337,14 +338,14 @@ ALTER TABLE `categoriasmarcas`
   ADD KEY `id_marca` (`id_marca`);
 
 --
--- Indexes for table `clientes`
+-- Índices de tabela `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`cliente_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `itenspedidos`
+-- Índices de tabela `itenspedidos`
 --
 ALTER TABLE `itenspedidos`
   ADD PRIMARY KEY (`id_itemPedido`),
@@ -352,26 +353,26 @@ ALTER TABLE `itenspedidos`
   ADD KEY `id_produto` (`id_produto`);
 
 --
--- Indexes for table `marcas`
+-- Índices de tabela `marcas`
 --
 ALTER TABLE `marcas`
   ADD PRIMARY KEY (`id_marca`);
 
 --
--- Indexes for table `pagamento`
+-- Índices de tabela `pagamento`
 --
 ALTER TABLE `pagamento`
   ADD PRIMARY KEY (`id_pagamento`);
 
 --
--- Indexes for table `pedidos`
+-- Índices de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id_pedido`),
   ADD KEY `id_cliente` (`cliente_id`);
 
 --
--- Indexes for table `produtos`
+-- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id_produto`),
@@ -380,108 +381,108 @@ ALTER TABLE `produtos`
   ADD KEY `id_marca` (`id_marca`);
 
 --
--- Indexes for table `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `carrinho`
+-- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `id_carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_carrinho` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `categorias`
+-- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_categoria` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `categoriasmarcas`
+-- AUTO_INCREMENT de tabela `categoriasmarcas`
 --
 ALTER TABLE `categoriasmarcas`
-  MODIFY `id_categoriaMarca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_categoriaMarca` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
--- AUTO_INCREMENT for table `clientes`
+-- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cliente_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cliente_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `itenspedidos`
+-- AUTO_INCREMENT de tabela `itenspedidos`
 --
 ALTER TABLE `itenspedidos`
-  MODIFY `id_itemPedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_itemPedido` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `marcas`
+-- AUTO_INCREMENT de tabela `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_marca` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `pedidos`
+-- AUTO_INCREMENT de tabela `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pedido` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `produtos`
+-- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_produto` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Constraints for dumped tables
+-- Restrições para tabelas despejadas
 --
 
 --
--- Constraints for table `carrinho`
+-- Restrições para tabelas `carrinho`
 --
 ALTER TABLE `carrinho`
   ADD CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id_produto`);
 
 --
--- Constraints for table `categoriasmarcas`
+-- Restrições para tabelas `categoriasmarcas`
 --
 ALTER TABLE `categoriasmarcas`
   ADD CONSTRAINT `categoriasMarcas_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
   ADD CONSTRAINT `categoriasMarcas_ibfk_2` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id_marca`);
 
 --
--- Constraints for table `itenspedidos`
+-- Restrições para tabelas `itenspedidos`
 --
 ALTER TABLE `itenspedidos`
   ADD CONSTRAINT `itensPedidos_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   ADD CONSTRAINT `itensPedidos_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produtos` (`id_produto`);
 
 --
--- Constraints for table `pagamento`
+-- Restrições para tabelas `pagamento`
 --
 ALTER TABLE `pagamento`
   ADD CONSTRAINT `pagamento_ibfk_1` FOREIGN KEY (`id_pagamento`) REFERENCES `pedidos` (`id_pedido`);
 
 --
--- Constraints for table `pedidos`
+-- Restrições para tabelas `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cliente_id`);
 
 --
--- Constraints for table `produtos`
+-- Restrições para tabelas `produtos`
 --
 ALTER TABLE `produtos`
   ADD CONSTRAINT `produtos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),

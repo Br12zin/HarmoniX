@@ -1,14 +1,13 @@
 <?php
 
-
+require_once('../headers.php');
 try {
 
 
     // Recebe o corpo do DELETE como JSON
-    $data = json_decode(file_get_contents("php://input"), true);
 
-    $cliente_id = $data['cliente_id'] ?? null;
-    $id_produto = $data['id_produto'] ?? null;
+    $cliente_id = $_GET['cliente_id'] ?? null;
+    $id_produto = $_GET['id_produto'] ?? null;
 
     if (empty($cliente_id) || empty($id_produto)) {
         http_response_code(400);

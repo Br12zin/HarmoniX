@@ -14,7 +14,7 @@ export default function Carrinho() {
   const { isVisible, onHandleVisibility } = useVisibility();
   return (
     <>
-      <div className="h-screen w-screen bg-[#ECECEC]">
+      <div className="h-screen w-screen">
         <div>
           <NavMain
             isVisible={isVisible}

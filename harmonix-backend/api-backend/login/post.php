@@ -2,6 +2,7 @@
 
 
 try {
+
     $postfields = json_decode(file_get_contents('php://input'), true);
 
     $email = $postfields['email'] ?? null;
@@ -21,6 +22,14 @@ try {
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario) {
+
+        session_set_cookie_params([
+            'httponly' => true,
+            'secure' => false, // só funciona com HTTPS
+            'samesite' => 'Strict'
+        ]);
+        session_start();
+        $_SESSION['cliente_id'] = $usuario['cliente_id'];
         $result = [
             'status' => 'success',
             'message' => 'Login realizado com sucesso!',

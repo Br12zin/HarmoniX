@@ -6,6 +6,7 @@ import { useVisibility } from "@/components/VisibilityContext";
 import { fetchCarrinho } from "@/app/services/carrinho/get";
 import { useEffect, useState } from "react";
 import { formatter } from "@/app/utils/formatadorDeMoeda";
+import { getClienteId } from "@/app/services/clientes/get";
 
 interface ItemCarrinho {
   id_carrinho: number;
@@ -18,18 +19,29 @@ interface ItemCarrinho {
 export default function Checkout() {
   const { isVisible, onHandleVisibility } = useVisibility();
   const [carrinho, setCarrinho] = useState<ItemCarrinho[] | null>(null);
+  const [cliente_id, setCliente_id] = useState<number | null>(null);
 
+  useEffect(() => {
+    const fetchClienteId = async () => {
+      const id = await getClienteId();
+      if (id) {
+        setCliente_id(id);
+      }
+    };
+
+    fetchClienteId();
+  }, []);
   useEffect(() => {
     const LoadCarrinho = async () => {
       try {
-        const carrinhoCarregado = await fetchCarrinho();
+        const carrinhoCarregado = await fetchCarrinho(cliente_id);
         setCarrinho(carrinhoCarregado || null);
       } catch (err) {
         console.error(err);
       }
     };
     LoadCarrinho();
-  }, []);
+  }, [cliente_id]);
   useEffect(() => {
     console.log("Carrinho atual:", carrinho);
   }, [carrinho]);

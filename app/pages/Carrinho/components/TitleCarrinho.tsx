@@ -7,11 +7,11 @@ export default function TitleCarrinho({
 }) {
   return (
     <>
-      <h1
+      <p
         className={`items-center text-center text-2xl font-bold text-slate-800 ${tt}`}
       >
         {children}
-      </h1>
+      </p>
     </>
   );
 }

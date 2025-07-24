@@ -14,6 +14,7 @@ import { IProduct } from "@/app/interfaces/IProduct";
 import { fetchProducts } from "@/app/services/produtos/get";
 import { formatter } from "@/app/utils/formatadorDeMoeda";
 import marcasDinamicas from "../../Marcas/[marca]/marcasDinamicas";
+import { getClienteId } from "@/app/services/clientes/get";
 // import { addToCart } from "@/app/services/carrinho/post";
 
 export default function InstrumentsItem() {
@@ -23,8 +24,23 @@ export default function InstrumentsItem() {
   const [quantidade, setQuantidade] = useState(1);
   const [error, setError] = useState<string | null>(null);
   const { isVisible, onHandleVisibility } = useVisibility();
-  const cliente_id = 7; // Hardcoded for testing; replace with dynamic client ID from auth
+  const [cliente_id, setCliente_id] = useState<number | null>(null);
 
+  useEffect(() => {
+    const fetchClienteId = async () => {
+      const id = await getClienteId();
+
+      if (id) {
+        setCliente_id(id);
+      }
+    };
+
+    fetchClienteId();
+  }, [cliente_id]);
+
+  useEffect(() => {
+    console.log("Cliente ID:", cliente_id);
+  }, [cliente_id]);
   useEffect(() => {
     const loadProduct = async () => {
       try {
@@ -80,7 +96,10 @@ export default function InstrumentsItem() {
         console.log("Response:", response);
         return response.ok;
       };
-
+      if (!cliente_id) {
+        setError("Cliente ID não encontrado. Por favor, faça login.");
+        return;
+      }
       const success = await addToCart(instrumento, cliente_id, quantidade);
       if (success) {
         alert("Produto adicionado ao carrinho!");

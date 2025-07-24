@@ -5,10 +5,15 @@ import MaxMinus from "./MaxMinus";
 import Button from "./button";
 import { fetchCarrinho } from "@/app/services/carrinho/get";
 import { formatter } from "@/app/utils/formatadorDeMoeda";
+import { editCart } from "@/app/services/carrinho/put";
+import { deleteItemCart } from "@/app/services/carrinho/delete";
+import { getClienteId } from "@/app/services/clientes/get";
 
 interface ItemCarrinho {
+  id_produto: number;
   id_carrinho: number;
-  nome: string;
+  cliente_id: number;
+  produto: string;
   preco: number;
   desconto: number;
   quantidade: number;
@@ -16,25 +21,43 @@ interface ItemCarrinho {
 
 export default function CarrinhoComp() {
   const [carrinho, setCarrinho] = useState<ItemCarrinho[] | null>(null);
+  const [cliente_id, setCliente_id] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchClienteId = async () => {
+      const id = await getClienteId();
+      console.log("Cliente ID:", id);
+      if (id) {
+        setCliente_id(id);
+      }
+    };
+
+    fetchClienteId();
+  }, []);
 
   useEffect(() => {
     const LoadCarrinho = async () => {
       try {
-        const carrinhoCarregado = await fetchCarrinho();
+        const carrinhoCarregado = await fetchCarrinho(cliente_id);
         setCarrinho(carrinhoCarregado || null);
       } catch (err) {
         console.error(err);
       }
     };
     LoadCarrinho();
-  }, []);
+  }, [cliente_id]);
 
   // Função para remover item do carrinho
-  const removerDoCarrinho = (index: number) => {
+  const removerDoCarrinho = (
+    index: number,
+    id_produto: number,
+    id_cliente: number,
+  ) => {
     if (!carrinho) return;
     const novosItens = [...carrinho];
     novosItens.splice(index, 1);
     setCarrinho(novosItens);
+    deleteItemCart(id_produto, id_cliente);
   };
 
   // Função para incrementar quantidade
@@ -55,21 +78,9 @@ export default function CarrinhoComp() {
     }
   };
 
-  useEffect(() => {
-    const LoadCarrinho = async () => {
-      try {
-        const carrinhoCarregado = await fetchCarrinho();
-        setCarrinho(carrinhoCarregado || null);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    LoadCarrinho();
-  }, []);
-
   return (
     <>
-      <div className="container mx-auto flex flex-col items-center">
+      <div className="container mx-auto mt-10 flex flex-col items-center rounded-2xl bg-[#ECECEC] p-10">
         <div className="mb-4 grid w-full grid-cols-5 gap-8 border-b-2 border-black">
           <TitleCarrinho>Produto</TitleCarrinho>
           <TitleCarrinho>Preço</TitleCarrinho>
@@ -88,7 +99,7 @@ export default function CarrinhoComp() {
                 className="mb-4 grid w-full grid-cols-5 items-center gap-8"
               >
                 <div className="ms-10 flex flex-col justify-center">
-                  <TitleCarrinho>{item.nome}</TitleCarrinho>
+                  <TitleCarrinho>{item.produto}</TitleCarrinho>
                 </div>
                 <TitleCarrinho>
                   <span className="font-light"></span>{" "}
@@ -103,7 +114,15 @@ export default function CarrinhoComp() {
                   <span className="font-light"></span> {subtotal}
                 </TitleCarrinho>
                 <div className="flex justify-center text-2xl">
-                  <button onClick={() => removerDoCarrinho(index)}>
+                  <button
+                    onClick={() =>
+                      removerDoCarrinho(
+                        index,
+                        item.id_produto,
+                        cliente_id as number,
+                      )
+                    }
+                  >
                     <Trash />
                   </button>
                 </div>
@@ -129,7 +148,13 @@ export default function CarrinhoComp() {
             </TitleCarrinho>
             <Button
               caminho={"/pages/TelaPagamento"}
-              onClick={"/pages/TelaPagamento"}
+              onClick={() => {
+                if (Array.isArray(carrinho) && carrinho.length > 0) {
+                  carrinho.forEach((item) =>
+                    editCart(item, cliente_id as number, item.quantidade),
+                  );
+                }
+              }}
               btn="ms-28  me-8 text-xl"
             >
               Finalizar compra

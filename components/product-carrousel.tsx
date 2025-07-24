@@ -107,7 +107,7 @@ export default function ProductCarrousel({ marca }: { marca: string }) {
             className={estilos.swiper_slide}
           >
             <CardInstrumentos
-              image={`http://localhost:8080/produtos/imagens/${produto.imagem}`}
+              image={produto.imagem}
               namecard={produto.produto}
               oldPrice={produto.preco.toString()}
               newPrice={(produto.preco - produto.desconto).toString()}

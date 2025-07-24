@@ -15,28 +15,28 @@ export default function Login() {
   const [senha, setSenha] = useState("");
 
   const handleLogin = async () => {
-  try {
-    const res = await fetch("http://localhost:8080/login/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, senha }),
-    });
+    try {
+      const res = await fetch("http://localhost:8080/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({ email, senha }),
+      });
 
-    const data = await res.json();
-    
-    if (res.ok && data.status === "success") {
-      router.push("/pages/main");
-    } else {
-      alert(data.message || "Email ou senha inválidos.");
+      const data = await res.json();
+
+      if (res.ok && data.status === "success") {
+        router.push("/pages/main");
+      } else {
+        alert(data.message || "Email ou senha inválidos.");
+      }
+    } catch (error) {
+      console.error("Erro no login:", error);
+      alert("Erro na conexão com o servidor.");
     }
-  } catch (error) {
-    console.error("Erro no login:", error);
-    alert("Erro na conexão com o servidor.");
-  }
-};
-
+  };
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#ECECEC]">
@@ -49,7 +49,6 @@ export default function Login() {
 
         <Input
           tipo="email"
-          
           placeholder="seuemail@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +58,6 @@ export default function Login() {
 
         <Input
           tipo="password"
-          
           className="mb-0"
           placeholder="***"
           value={senha}
