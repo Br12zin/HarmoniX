@@ -1,7 +1,5 @@
 <?php
 // include"../verificar-autenticacao.php";
-$conn = new PDO('mysql:host=localhost;dbname=harmonix', 'root', 'senha123');
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 try {
     // Recuperar informações de formulário vindo do Frontend
@@ -22,9 +20,9 @@ try {
 
         // Verifica campos obrigatórios
         if (empty($nome) || empty($email) || empty($senha) || empty($telefone) || empty($endereco) || empty($numero) || empty($cep) || empty($bairro) || empty($cidade) || empty($estado)) {
-    http_response_code(400);
-    throw new Exception('Nome, E-mail, Senha, Telefone e Endereço são obrigatórios');
-    }
+            http_response_code(400);
+            throw new Exception('Nome, E-mail, Senha, Telefone e Endereço são obrigatórios');
+        }
 
         $sql = "
         INSERT INTO clientes (nome,email,senha, telefone, cep, endereco, numero, cidade, estado, complemento, bairro) VALUES 

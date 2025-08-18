@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 import Button from "@/components/button";
 import Title from "@/components/Title";
 import Input from "@/components/Input";
@@ -53,7 +52,18 @@ export default function CadastreSe() {
   };
 
   const handleCadastro = async () => {
-    if (!email || !senha || !nome || !telefone || !endereco || !numero || !cep || !bairro || !cidade || !estado) {
+    if (
+      !email ||
+      !senha ||
+      !nome ||
+      !telefone ||
+      !endereco ||
+      !numero ||
+      !cep ||
+      !bairro ||
+      !cidade ||
+      !estado
+    ) {
       setError("Preencha todos os campos obrigatórios!");
       return;
     }
@@ -107,14 +117,16 @@ export default function CadastreSe() {
   };
 
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[#121212] px-4 py-10 ">
-      <div className="w-full max-w-5xl rounded-2xl bg-white/95 p-10 shadow-2xl border border-[#C7A315]">
+    <div className="flex h-full w-full items-center justify-center bg-[#ECECEC] px-4 py-10">
+      <div className="w-full max-w-5xl rounded-2xl border bg-white p-10 shadow-2xl">
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <Link href="/">
             <BackBtn />
           </Link>
-          <Title classe="text-[#1a1a1a] text-3xl font-semibold">Cadastre-se</Title>
+          <Title classe="text-[#1a1a1a] text-3xl font-semibold">
+            Cadastre-se
+          </Title>
           <div className="w-[32px]" />
         </div>
 
@@ -127,90 +139,154 @@ export default function CadastreSe() {
 
         {/* Formulário */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-  <Input placeholder="Seu nome completo" value={nome} onChange={(e) => setNome(e.target.value)}>Nome</Input>
+          <Input
+            placeholder="Seu nome completo"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          >
+            Nome
+          </Input>
 
-  <Input placeholder="seuemail@email.com" tipo="email" value={email} onChange={(e) => setEmail(e.target.value)}>Email</Input>
+          <Input
+            placeholder="seuemail@email.com"
+            tipo="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          >
+            Email
+          </Input>
 
-  <Input placeholder="Confirmar email" tipo="email" value={confirmEmail} onChange={(e) => setConfirmEmail(e.target.value)}>Confirmar Email</Input>
+          <Input
+            placeholder="Confirmar email"
+            tipo="email"
+            value={confirmEmail}
+            onChange={(e) => setConfirmEmail(e.target.value)}
+          >
+            Confirmar Email
+          </Input>
 
-  <Input placeholder="********" tipo="password" value={senha} onChange={(e) => setSenha(e.target.value)}>Senha</Input>
+          <Input
+            placeholder="********"
+            tipo="password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+          >
+            Senha
+          </Input>
 
-  <Input placeholder="********" tipo="password" value={confirmSenha} onChange={(e) => setConfirmSenha(e.target.value)}>Confirmar Senha</Input>
+          <Input
+            placeholder="********"
+            tipo="password"
+            value={confirmSenha}
+            onChange={(e) => setConfirmSenha(e.target.value)}
+          >
+            Confirmar Senha
+          </Input>
 
-  {/* Telefone */}
-  <Input
-    placeholder="(99) 99999-9999"
-    value={telefone}
-    onChange={(e) => {
-      let valor = e.target.value.replace(/\D/g, "");
-      if (valor.length > 11) valor = valor.slice(0, 11);
+          {/* Telefone */}
+          <Input
+            placeholder="(99) 99999-9999"
+            value={telefone}
+            onChange={(e) => {
+              let valor = e.target.value.replace(/\D/g, "");
+              if (valor.length > 11) valor = valor.slice(0, 11);
 
-      if (valor.length > 0) {
-        valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
-        if (valor.length > 10) {
-          valor = valor.replace(/(\d{5})(\d{4})$/, "$1-$2");
-        } else {
-          valor = valor.replace(/(\d{4})(\d{4})$/, "$1-$2");
-        }
-      }
+              if (valor.length > 0) {
+                valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2");
+                if (valor.length > 10) {
+                  valor = valor.replace(/(\d{5})(\d{4})$/, "$1-$2");
+                } else {
+                  valor = valor.replace(/(\d{4})(\d{4})$/, "$1-$2");
+                }
+              }
 
-      setTelefone(valor);
-    }}
-  >
-    Telefone
-  </Input>
+              setTelefone(valor);
+            }}
+          >
+            Telefone
+          </Input>
 
-  {/* Endereço e Número */}
-  <Input placeholder="Rua Exemplo" value={endereco} onChange={(e) => setEndereco(e.target.value)}>Endereço</Input>
+          {/* Endereço e Número */}
+          <Input
+            placeholder="Rua Exemplo"
+            value={endereco}
+            onChange={(e) => setEndereco(e.target.value)}
+          >
+            Endereço
+          </Input>
 
-  <Input
-    placeholder="123"
-    value={numero}
-    onChange={(e) => setNumero(e.target.value.replace(/\D/g, ""))}
-  >
-    Número
-  </Input>
+          <Input
+            placeholder="123"
+            value={numero}
+            onChange={(e) => setNumero(e.target.value.replace(/\D/g, ""))}
+          >
+            Número
+          </Input>
 
-  {/* CEP */}
-  <Input
-    placeholder="00000-000"
-    value={cep}
-    onChange={(e) => {
-      let valor = e.target.value.replace(/\D/g, "");
-      if (valor.length > 8) valor = valor.slice(0, 8);
+          {/* CEP */}
+          <Input
+            placeholder="00000-000"
+            value={cep}
+            onChange={(e) => {
+              let valor = e.target.value.replace(/\D/g, "");
+              if (valor.length > 8) valor = valor.slice(0, 8);
 
-      if (valor.length > 5) {
-        valor = valor.replace(/^(\d{5})(\d{0,3})$/, "$1-$2");
-      }
+              if (valor.length > 5) {
+                valor = valor.replace(/^(\d{5})(\d{0,3})$/, "$1-$2");
+              }
 
-      setCep(valor);
-      if (valor.length === 9) {
-        handleBuscarCep(valor);
-      }
-    }}
-  >
-    CEP
-  </Input>
+              setCep(valor);
+              if (valor.length === 9) {
+                // handleBuscarCep(valor);
+              }
+            }}
+          >
+            CEP
+          </Input>
 
-  <Input placeholder="Bairro" value={bairro} onChange={(e) => setBairro(e.target.value)}>Bairro</Input>
+          <Input
+            placeholder="Bairro"
+            value={bairro}
+            onChange={(e) => setBairro(e.target.value)}
+          >
+            Bairro
+          </Input>
 
-  <Input placeholder="Casa, Apto, etc." value={complemento} onChange={(e) => setComplemento(e.target.value)}>Complemento</Input>
+          <Input
+            placeholder="Casa, Apto, etc."
+            value={complemento}
+            onChange={(e) => setComplemento(e.target.value)}
+          >
+            Complemento
+          </Input>
 
-  <Input placeholder="SP, RJ..." value={estado} onChange={(e) => setEstado(e.target.value)}>Estado</Input>
+          <Input
+            placeholder="SP, RJ..."
+            value={estado}
+            onChange={(e) => setEstado(e.target.value)}
+          >
+            Estado
+          </Input>
 
-  <Input placeholder="São Paulo" value={cidade} onChange={(e) => setCidade(e.target.value)}>Cidade</Input>
-</div>
-
+          <Input
+            placeholder="São Paulo"
+            value={cidade}
+            onChange={(e) => setCidade(e.target.value)}
+          >
+            Cidade
+          </Input>
+        </div>
 
         {/* Botão */}
         <div className="mt-10 text-center">
           <Button
             onClick={handleCadastro}
             disabled={loading}
-            className="bg-[#C7A315] hover:bg-[#a88f0c] text-white font-semibold px-6 py-2 rounded-xl transition-all"
+            className="rounded-xl bg-[#C7A315] px-6 py-2 font-semibold text-white transition-all hover:bg-[#a88f0c]"
           >
             {loading ? "Cadastrando..." : "Cadastrar-se"}
           </Button>
+          
         </div>
       </div>
     </div>

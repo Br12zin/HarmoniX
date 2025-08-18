@@ -60,11 +60,7 @@ if (isset($_GET["key"])) {
                         <table class="table table-striped table-hover table-bordered align-middle text-center" id="produtos">
                             <thead class="table-dark">
                                 <tr>
-<<<<<<< HEAD
                                     <th>ID</th>
-=======
-                                    <th>id</th>
->>>>>>> a3025283c4d39bf514e4c7eef50d54edd1578be9
                                     <th>Imagem</th>
                                     <th class="text-center">Produto</th>
                                     <th class="text-center">Descrição</th>
@@ -74,13 +70,8 @@ if (isset($_GET["key"])) {
                                     <th class="text-center" style="min-width: 120px;">Preço</th>
                                     <th class="text-center">Desconto</th>
                                     <th class="text-center" style="min-width: 120px;">Preço Final</th>
-<<<<<<< HEAD
                                     <th class="text-center" style="min-width: 120px;">Ações</th>
 
-=======
-                                    <th>Ações</th>
-                                    
->>>>>>> a3025283c4d39bf514e4c7eef50d54edd1578be9
                                 </tr>
 
                             </thead>

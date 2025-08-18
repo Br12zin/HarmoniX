@@ -19,7 +19,7 @@ try {
 
     $result = array(
         'status' => 'success',
-        'message' => 'Cliente excluído com sucesso.'
+        'message' => 'Produto excluído com sucesso.'
     );
 } catch (Exception $e) {
     http_response_code(400);

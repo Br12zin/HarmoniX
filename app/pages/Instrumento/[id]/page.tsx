@@ -7,7 +7,7 @@ import Input from "@/components/Input";
 import Button from "@/components/button";
 import NavMain from "@/components/nav-main";
 import { useVisibility } from "@/components/VisibilityContext";
-import CarouselProduto from "@/components/carouselProduto";
+// import CarouselProduto from "@/components/carouselProduto";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { IProduct } from "@/app/interfaces/IProduct";
@@ -147,14 +147,14 @@ export default function InstrumentsItem() {
               <Star />
             </div>
 
-            <h3 className="text-xl text-slate-400 line-through">
+            {/* <h3 className="text-xl text-slate-400 line-through">
               {formatter.format(Number(instrumento.preco))}
-            </h3>
+            </h3> */}
 
             <div className="flex flex-col gap-1">
               <div className="flex items-baseline gap-2">
                 <h2 className="text-3xl font-semibold text-[#C7A315]">
-                  {formatter.format(Number(precoComDesconto))}
+                  {formatter.format(Number(instrumento.preco))}
                 </h2>
                 <p className="font-bold text-slate-500">à vista</p>
               </div>
@@ -167,14 +167,14 @@ export default function InstrumentsItem() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 text-white">
               <CreditCard />
               <p>Cartão</p>
               <Barcode />
               <p>Boleto</p>
             </div>
             <div></div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 text-white">
               <button
                 onClick={() => setQuantidade((q) => (q > 1 ? q - 1 : 1))}
                 className="h-10 w-10 rounded-full border border-gray-300 bg-[#C7A315]"
@@ -229,7 +229,7 @@ export default function InstrumentsItem() {
         </div>
       </div>
 
-      <CarouselProduto />
+      {/* <CarouselProduto /> */}
     </>
   );
 }
