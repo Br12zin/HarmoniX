@@ -81,7 +81,7 @@ if (isset($_GET["key"])) {
 
                                 // SE HOUVER CLIENTES NA BD, EXIBIR
                                 require("../requests/produtos/get.php");
-                                if (!empty($response)) {
+                                if (!empty($response["data"])) {
                                     foreach ($response["data"] as $key => $produto) {
                                         echo '
 <tr>
