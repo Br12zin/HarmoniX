@@ -80,7 +80,7 @@ const items = [
   },
   {
     title: "Meus Pedidos",
-    url: "/pages/Carrinho",
+    url: "/pages/Pedidos",
 
     image: carrinho,
   },

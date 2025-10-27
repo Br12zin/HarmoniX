@@ -32,6 +32,11 @@ try {
 
     $data = $stmt->fetch(PDO::FETCH_OBJ);
 
+
+    $result = array(
+        'status' => 'success',
+        'data' => $data
+    );
     // Verifica se o resultado da pesquisa é vazio
     if (empty($data)) {
         // Se o resultado for vazio, retorna um erro

@@ -7,7 +7,6 @@ import { IProduct } from "@/app/interfaces/IProduct";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { fetchProducts } from "@/app/services/produtos/get";
-
 const Violoes = () => {
   const params = useParams();
   const { categoria } = params as { categoria: string };
