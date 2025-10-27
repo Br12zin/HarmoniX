@@ -38,7 +38,7 @@ export default function CarrinhoComp() {
   useEffect(() => {
     const LoadCarrinho = async () => {
       try {
-        const carrinhoCarregado = await fetchCarrinho(cliente_id);
+        const carrinhoCarregado = await fetchCarrinho(cliente_id as number);
         setCarrinho(carrinhoCarregado || null);
       } catch (err) {
         console.error(err);

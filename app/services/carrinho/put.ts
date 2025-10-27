@@ -1,7 +1,7 @@
 import { IProduct } from "@/app/interfaces/IProduct";
 
 export const editCart = async (
-  product,
+  product: IProduct,
   cliente_id: number,
   quantidade: number,
 ): Promise<boolean> => {

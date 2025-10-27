@@ -1,5 +1,3 @@
-import { IProduct } from "@/app/interfaces/IProduct";
-
 export const deleteItemCart = async (
   id_produto: number,
   cliente_id: number,
