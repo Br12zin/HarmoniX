@@ -1,4 +1,4 @@
-export const fetchCarrinho = async (cliente_id) => {
+export const fetchCarrinho = async (cliente_id: number) => {
   const url = `http://localhost:8080/carrinho/?cliente_id=${cliente_id}`;
 
   const response = await fetch(url, {
