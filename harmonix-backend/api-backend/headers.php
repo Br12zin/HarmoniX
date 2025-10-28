@@ -4,21 +4,28 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Conecta-se ao banco de dados
-require_once 'conn.php';
+$allowed_origins = [
+    'http://localhost:3000',
+    'http://localhost:8081',
+    'http://localhost:8000',
+    'https://meusite.com',
+];
+
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: $origin");
+}
 
 // Define os headers CORS
-header('Access-Control-Allow-Origin: *'); // Mudar Depois
+// header('Access-Control-Allow-Origin: http://localhost:3000, http://localhost:8081'); // Mudar Depois
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json; charset=utf-8');
 
-
-
-
 // Define uma constante com o método HTTP da requisição
 define('method', $_SERVER['REQUEST_METHOD']);
-
 
 // Responde imediatamente a requisições OPTIONS (pré-flight)
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -26,10 +33,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-$headers = apache_request_headers();
-$token = isset($headers['Authorization']) ? $headers['Authorization'] : null;
+require_once 'conn.php';
 
-if ($token === null) {
+$headers = function_exists('getallheaders') ? getallheaders() : [];
+
+// Normaliza todas as chaves para minúsculas
+$normalized = [];
+
+foreach ($headers as $key => $value) {
+    $normalized[strtolower($key)] = $value;
+}
+
+$token = $normalized['authorization'] ?? ''; // funciona mesmo se vier minúsculo
+$token = trim($token);
+
+// $headers = apache_request_headers();
+// $token = isset($headers['Authorization']) ? $headers['Authorization'] : null;
+
+if (empty($token)) {
     http_response_code(400);
     $result = array(
         'status' => 'error',

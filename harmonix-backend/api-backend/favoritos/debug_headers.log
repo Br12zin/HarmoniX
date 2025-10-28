@@ -1,0 +1,84 @@
+2025-10-25T00:12:30+00:00 === HEADERS ===
+Array
+(
+    [getallheaders] => Array
+        (
+            [content-type] => application/json
+            [authorization] => stNOJvYxgbX3bRg3CEGMTNiqnIO3TMMHPi8K3ehLzk3KqcN3tJbDnBdMwWvAj84r2fiKvaAxQC58i1BsR5iqjBzzscwMudNv8xL6
+            [Host] => 192.168.1.3:8080
+            [Connection] => Keep-Alive
+            [Accept-Encoding] => gzip
+            [User-Agent] => okhttp/4.12.0
+        )
+
+    [_SERVER] => Array
+        (
+            [DOCUMENT_ROOT] => C:\ReactNextJS\HarmoniX\harmonix-backend\api-backend
+            [REMOTE_ADDR] => 192.168.1.3
+            [REMOTE_PORT] => 9536
+            [SERVER_SOFTWARE] => PHP/8.4.7 (Development Server)
+            [SERVER_PROTOCOL] => HTTP/1.1
+            [SERVER_NAME] => 192.168.1.3
+            [SERVER_PORT] => 8080
+            [REQUEST_URI] => /favoritos?cliente_id=8
+            [REQUEST_METHOD] => GET
+            [SCRIPT_NAME] => /favoritos/index.php
+            [SCRIPT_FILENAME] => C:\ReactNextJS\HarmoniX\harmonix-backend\api-backend\favoritos\index.php
+            [PHP_SELF] => /favoritos/index.php
+            [QUERY_STRING] => cliente_id=8
+            [CONTENT_TYPE] => application/json
+            [HTTP_CONTENT_TYPE] => application/json
+            [HTTP_AUTHORIZATION] => stNOJvYxgbX3bRg3CEGMTNiqnIO3TMMHPi8K3ehLzk3KqcN3tJbDnBdMwWvAj84r2fiKvaAxQC58i1BsR5iqjBzzscwMudNv8xL6
+            [HTTP_HOST] => 192.168.1.3:8080
+            [HTTP_CONNECTION] => Keep-Alive
+            [HTTP_ACCEPT_ENCODING] => gzip
+            [HTTP_USER_AGENT] => okhttp/4.12.0
+            [REQUEST_TIME_FLOAT] => 1761351150.9964
+            [REQUEST_TIME] => 1761351150
+        )
+
+)
+
+
+2025-10-25T00:16:04+00:00 === HEADERS ===
+Array
+(
+    [getallheaders] => Array
+        (
+            [content-type] => application/json
+            [authorization] => stNOJvYxgbX3bRg3CEGMTNiqnIO3TMMHPi8K3ehLzk3KqcN3tJbDnBdMwWvAj84r2fiKvaAxQC58i1BsR5iqjBzzscwMudNv8xL6
+            [Host] => 192.168.1.3:8080
+            [Connection] => Keep-Alive
+            [Accept-Encoding] => gzip
+            [User-Agent] => okhttp/4.12.0
+        )
+
+    [_SERVER] => Array
+        (
+            [DOCUMENT_ROOT] => C:\ReactNextJS\HarmoniX\harmonix-backend\api-backend
+            [REMOTE_ADDR] => 192.168.1.3
+            [REMOTE_PORT] => 5824
+            [SERVER_SOFTWARE] => PHP/8.4.7 (Development Server)
+            [SERVER_PROTOCOL] => HTTP/1.1
+            [SERVER_NAME] => 192.168.1.3
+            [SERVER_PORT] => 8080
+            [REQUEST_URI] => /favoritos?cliente_id=8
+            [REQUEST_METHOD] => GET
+            [SCRIPT_NAME] => /favoritos/index.php
+            [SCRIPT_FILENAME] => C:\ReactNextJS\HarmoniX\harmonix-backend\api-backend\favoritos\index.php
+            [PHP_SELF] => /favoritos/index.php
+            [QUERY_STRING] => cliente_id=8
+            [CONTENT_TYPE] => application/json
+            [HTTP_CONTENT_TYPE] => application/json
+            [HTTP_AUTHORIZATION] => stNOJvYxgbX3bRg3CEGMTNiqnIO3TMMHPi8K3ehLzk3KqcN3tJbDnBdMwWvAj84r2fiKvaAxQC58i1BsR5iqjBzzscwMudNv8xL6
+            [HTTP_HOST] => 192.168.1.3:8080
+            [HTTP_CONNECTION] => Keep-Alive
+            [HTTP_ACCEPT_ENCODING] => gzip
+            [HTTP_USER_AGENT] => okhttp/4.12.0
+            [REQUEST_TIME_FLOAT] => 1761351364.4716
+            [REQUEST_TIME] => 1761351364
+        )
+
+)
+
+

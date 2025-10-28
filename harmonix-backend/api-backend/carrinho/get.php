@@ -11,7 +11,7 @@ try {
 
     // Consulta os produtos no carrinho
     $query = "
-        SELECT c.id_carrinho, c.quantidade, p.id_produto, p.produto, p.preco, p.imagem
+        SELECT c.id_carrinho, c.quantidade, p.id_produto, p.produto, p.preco, p.imagem, p.desconto
         FROM carrinho c
         JOIN produtos p ON c.id_produto = p.id_produto
         WHERE c.cliente_id = ?
