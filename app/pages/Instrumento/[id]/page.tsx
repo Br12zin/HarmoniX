@@ -15,7 +15,7 @@ import { fetchProducts } from "@/app/services/produtos/get";
 import { formatter } from "@/app/utils/formatadorDeMoeda";
 import marcasDinamicas from "../../Marcas/[marca]/marcasDinamicas";
 import { getClienteId } from "@/app/services/clientes/get";
-// import { addToCart } from "@/app/services/carrinho/post";
+import { addToCart } from "@/app/services/carrinho/post";
 
 export default function InstrumentsItem() {
   const params = useParams();
@@ -77,25 +77,26 @@ export default function InstrumentsItem() {
 
   const handleAddToCart = async () => {
     if (instrumento) {
-      const addToCart = async (
-        product: IProduct,
-        cliente_id: number,
-        quantidade: number,
-      ): Promise<boolean> => {
-        const response = await fetch(`http://localhost:8080/carrinho/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            cliente_id: cliente_id,
-            id_produto: product.id_produto,
-            quantidade: quantidade,
-          }),
-        });
-        console.log("Response:", response);
-        return response.ok;
-      };
+      // const addToCart = async (
+      //   product: IProduct,
+      //   cliente_id: number,
+      //   quantidade: number,
+      // ): Promise<boolean> => {
+      //   const response = await fetch(`http://localhost:8080/carrinho/`, {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       cliente_id: cliente_id,
+      //       id_produto: product.id_produto,
+      //       quantidade: quantidade,
+      //     }),
+      //   });
+      //   console.log("Response:", response);
+      //   return response.ok;
+      // };
+      
       if (!cliente_id) {
         setError("Cliente ID não encontrado. Por favor, faça login.");
         return;
