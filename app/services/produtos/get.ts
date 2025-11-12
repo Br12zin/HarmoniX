@@ -1,5 +1,5 @@
 import { IProduct } from "@/app/interfaces/IProduct";
-
+import { BASE_URL, AUTH_TOKEN } from "@/app/config/api";
 export const fetchProducts = async (
   categoria?: string,
   marca?: string,
@@ -9,14 +9,13 @@ export const fetchProducts = async (
   if (categoria) params.append("categoria", categoria);
   if (marca) params.append("marca", marca);
 
-  const url = `http://localhost:8080/produtos/?${params.toString()}`;
+  const url = `${BASE_URL}/produtos/?${params.toString()}`;
 
   const response = await fetch(url, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization:
-        "stNOJvYxgbX3bRg3CEGMTNiqnIO3TMMHPi8K3ehLzk3KqcN3tJbDnBdMwWvAj84r2fiKvaAxQC58i1BsR5iqjBzzscwMudNv8xL6",
+      Authorization: AUTH_TOKEN,
     },
   });
 

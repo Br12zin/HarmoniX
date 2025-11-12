@@ -1,8 +1,14 @@
+import { BASE_URL, AUTH_TOKEN } from "@/app/config/api";
+
 export const handleLogout = async () => {
   try {
-    const res = await fetch("http://localhost:8080/logout/", {
+    const res = await fetch(`${BASE_URL}/logout/`, {
       method: "POST", // ou GET, se preferir
       credentials: "include", // 🔥 essencial para enviar o cookie da sessão
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: AUTH_TOKEN,
+      },
     });
 
     const data = await res.json();

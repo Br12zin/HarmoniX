@@ -8,6 +8,7 @@ import Title from "@/components/Title";
 import Input from "@/components/Input";
 import Link from "next/link";
 import BackBtn from "@/components/BackButton";
+import { AUTH_TOKEN, BASE_URL } from "@/app/config/api";
 
 export default function CadastreSe() {
   const router = useRouter();
@@ -30,11 +31,15 @@ export default function CadastreSe() {
 
   const handleBuscarCep = async (cepDigitado: string) => {
     const cepLimpo = cepDigitado.replace(/\D/g, "");
+    console.log("Buscando CEP:", cepLimpo);
     if (cepLimpo.length !== 8) return;
 
     try {
-      const res = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
+      const res = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`, {
+        method: "GET",
+      });
       const data = await res.json();
+      console.log("Dados do CEP:", data);
 
       if (data.erro) {
         setError("CEP não encontrado.");
@@ -82,9 +87,12 @@ export default function CadastreSe() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8080/clientes/", {
+      const res = await fetch(`${BASE_URL}/clientes/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${AUTH_TOKEN}`,
+        },
         body: JSON.stringify({
           nome,
           email,
@@ -237,7 +245,7 @@ export default function CadastreSe() {
 
               setCep(valor);
               if (valor.length === 9) {
-                // handleBuscarCep(valor);
+                handleBuscarCep(valor);
               }
             }}
           >
@@ -286,7 +294,6 @@ export default function CadastreSe() {
           >
             {loading ? "Cadastrando..." : "Cadastrar-se"}
           </Button>
-          
         </div>
       </div>
     </div>

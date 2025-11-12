@@ -20,6 +20,8 @@ export default function Login() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization:
+            "stNOJvYxgbX3bRg3CEGMTNiqnIO3TMMHPi8K3ehLzk3KqcN3tJbDnBdMwWvAj84r2fiKvaAxQC58i1BsR5iqjBzzscwMudNv8xL6",
         },
         credentials: "include",
         body: JSON.stringify({ email, senha }),

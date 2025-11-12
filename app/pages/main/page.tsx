@@ -56,6 +56,14 @@ const Main = () => {
     try {
       const response = await fetch(
         `http://localhost:8080/produtos/?q=${encodeURIComponent(query)}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "stNOJvYxgbX3bRg3CEGMTNiqnIO3TMMHPi8K3ehLzk3KqcN3tJbDnBdMwWvAj84r2fiKvaAxQC58i1BsR5iqjBzzscwMudNv8xL6",
+          },
+        },
       );
       const json = await response.json();
 
