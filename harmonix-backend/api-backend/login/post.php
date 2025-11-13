@@ -6,7 +6,7 @@ try {
     $postfields = json_decode(file_get_contents('php://input'), true);
 
     $email = $postfields['email'] ?? null;
-    $senha = $postfields['senha'] ?? null;
+    $senha = $postfields['password'] ?? null;
 
     if (empty($email) || empty($senha)) {
         http_response_code(400);
