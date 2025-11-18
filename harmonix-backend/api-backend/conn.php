@@ -1,6 +1,6 @@
 <?php
 
-
+require __DIR__ . '/vendor/autoload.php'; // Autoload Composer dependencies
 define('DB_HOST', 'localhost'); // Servidor do banco de dados
 define('DB_USER', 'root'); // Usuário do banco de dados
 define('DB_PASS', 'root'); // Senha do banco de dados
