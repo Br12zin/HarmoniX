@@ -1,13 +1,10 @@
 <?php
 
 
-// Funcionalidade de login usando JWT que pode ser usada por apps móveis e frontends modernos
-use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
-
-$key = "CHAVE_SECRETA_MUITO_FORTE_AQUI"; // depois substitua por algo forte
+//  Antigo que funciona com o site
 
 try {
+
     $postfields = json_decode(file_get_contents('php://input'), true);
 
     $email = $postfields['email'] ?? null;
@@ -23,26 +20,23 @@ try {
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':senha', $senha);
     $stmt->execute();
+
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario) {
 
-        // Criar token JWT
-        $payload = [
-            "cliente_id" => $usuario["cliente_id"],
-            "email" => $usuario["email"],
-            "exp" => time() + (60 * 60 * 24 * 7), // expira em 7 dias
-        ];
-
-        $jwt = JWT::encode($payload, $key, 'HS256');
-
+        session_set_cookie_params([
+            'httponly' => true,
+            'secure' => false, // só funciona com HTTPS
+            'samesite' => 'Strict'
+        ]);
+        session_start();
+        $_SESSION['cliente_id'] = $usuario['cliente_id'];
         $result = [
             'status' => 'success',
             'message' => 'Login realizado com sucesso!',
-            'token' => $jwt,
             'usuario' => $usuario
         ];
-
     } else {
         $result = [
             'status' => 'error',
@@ -60,10 +54,15 @@ try {
 }
 
 
-// Antigo que funciona com o site
+// Novo com token pra login e biometria
+
+// Funcionalidade de login usando JWT que pode ser usada por apps móveis e frontends modernos
+// use Firebase\JWT\JWT;
+// use Firebase\JWT\Key;
+
+// $key = "1234"; // depois substitua por algo forte
 
 // try {
-
 //     $postfields = json_decode(file_get_contents('php://input'), true);
 
 //     $email = $postfields['email'] ?? null;
@@ -79,21 +78,23 @@ try {
 //     $stmt->bindParam(':email', $email);
 //     $stmt->bindParam(':senha', $senha);
 //     $stmt->execute();
-
 //     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
 //     if ($usuario) {
 
-//         session_set_cookie_params([
-//             'httponly' => true,
-//             'secure' => false, // só funciona com HTTPS
-//             'samesite' => 'Strict'
-//         ]);
-//         session_start();
-//         $_SESSION['cliente_id'] = $usuario['cliente_id'];
+//         // Criar token JWT
+//         $payload = [
+//             "cliente_id" => $usuario["cliente_id"],
+//             "email" => $usuario["email"],
+//             "exp" => time() + (60 * 60 * 24 * 7), // expira em 7 dias
+//         ];
+
+//         $jwt = JWT::encode($payload, $key, 'HS256');
+
 //         $result = [
 //             'status' => 'success',
 //             'message' => 'Login realizado com sucesso!',
+//             'token' => $jwt,
 //             'usuario' => $usuario
 //         ];
 //     } else {
