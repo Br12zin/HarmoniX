@@ -9,16 +9,15 @@ try {
         $id = $postfields['id'] ?? null;
         $nome = $postfields['nome'] ?? null;
         $cpf = $postfields['cpf'] ?? null;
-        $imagem = $postfields['imagem'] ?? null;
         $email = $postfields['email'] ?? null;
-        $whatsapp = $postfields['whatsapp'] ?? null;
-        $logradouro = $postfields['endereco']['logradouro'] ?? null;
-        $numero = $postfields['endereco']['numero'] ?? null;
-        $complemento = $postfields['endereco']['complemento'] ?? null;
-        $bairro = $postfields['endereco']['bairro'] ?? null;
-        $cidade = $postfields['endereco']['cidade'] ?? null;
-        $estado = $postfields['endereco']['estado'] ?? null;
-        $cep = $postfields['endereco']['cep'] ?? null;
+        $telefone = $postfields['telefone'] ?? null;
+        $endereco = $postfields['endereco']['endereco'] ?? '';
+        $numero = $postfields['endereco']['numero'] ?? '';
+        $complemento = $postfields['endereco']['complemento'] ?? '';
+        $bairro = $postfields['endereco']['bairro'] ?? '';
+        $cidade = $postfields['endereco']['cidade'] ?? '';
+        $estado = $postfields['endereco']['estado'] ?? '';
+        $cep = $postfields['endereco']['cep'] ?? '';
 
 
         // Verifica campos obrigatórios
@@ -35,27 +34,25 @@ try {
         UPDATE clientes SET 
             nome = :nome,
             cpf = :cpf,
-            imagem = :imagem,
-            whatsapp = :whatsapp,
+            telefone = :telefone,
             email = :email, 
-            logradouro = :logradouro, 
+            endereco = :endereco, 
             numero = :numero, 
             complemento = :complemento, 
             bairro = :bairro, 
             cidade = :cidade,
             estado = :estado,
             cep = :cep
-        WHERE id_cliente = :id
+        WHERE cliente_id = :id
         ";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
-        $stmt->bindParam(':whatsapp', $whatsapp, PDO::PARAM_STR);
-        $stmt->bindParam(':imagem', $imagem, PDO::PARAM_STR);
+        $stmt->bindParam(':telefone', $telefone, PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':logradouro', $logradouro);
+        $stmt->bindParam(':endereco', $endereco);
         $stmt->bindParam(':numero', $numero);
         $stmt->bindParam(':complemento', $complemento, is_null($complemento) ? PDO::PARAM_NULL : PDO::PARAM_STR);
         $stmt->bindParam(':bairro', $bairro);
