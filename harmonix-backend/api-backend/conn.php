@@ -1,10 +1,10 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
-define('DB_HOST', 'localhost'); // Servidor do banco de dados
-define('DB_USER', 'root'); // Usuário do banco de dados
-define('DB_PASS', 'root'); // Senha do banco de dados
-define('DB_NAME', 'harmonix'); // Nome do banco de dados
+define('DB_HOST', '50.116.87.103'); // Servidor do banco de dados
+define('DB_USER', 'g1aco290_alunos'); // Usuário do banco de dados
+define('DB_PASS', 'Alunos@2025'); // Senha do banco de dados
+define('DB_NAME', 'g1aco290_grupo01'); // Nome do banco de dados
 
 
 try {

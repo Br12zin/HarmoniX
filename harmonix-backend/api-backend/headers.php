@@ -16,6 +16,7 @@ $allowed_origins = [
     'http://localhost:8088',
     'http://localhost:8000',
     'https://meusite.com',
+    'https://g1a.com.br/grupo-01/api-backend/',
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
