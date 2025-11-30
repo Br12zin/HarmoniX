@@ -31,10 +31,7 @@ try {
             http_response_code(400);
             throw new Exception('ID do cliente é obrigatório');
         }
-        if (empty($nome)) {
-            http_response_code(400);
-            throw new Exception('Nome é obrigatório');
-        }
+        
 
         $sql = "
         UPDATE clientes SET 
