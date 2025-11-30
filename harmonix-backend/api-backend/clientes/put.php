@@ -1,6 +1,12 @@
 <?php
 
 try {
+    // Verificar se a conexão com o banco de dados existe
+    if (!isset($conn) || $conn === null) {
+        http_response_code(500);
+        throw new Exception('Conexão com o banco de dados não foi estabelecida');
+    }
+
     // Recuperar informações de formulário vindo do Frontend
     $postfields = json_decode(file_get_contents('php://input'), true);
 
@@ -25,10 +31,7 @@ try {
             http_response_code(400);
             throw new Exception('ID do cliente é obrigatório');
         }
-        if (empty($nome) || empty($postfields['endereco'])) {
-            http_response_code(400);
-            throw new Exception('Nome e Endereço são obrigatórios');
-        }
+        
 
         $sql = "
         UPDATE clientes SET 
