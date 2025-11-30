@@ -43,6 +43,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 require_once 'conn.php';
 
+if (!isset($conn) || !($conn instanceof PDO)) {
+    http_response_code(500);
+    $result = array(
+        'status' => 'error',
+        'message' => 'Database connection not established'
+    );
+    echo json_encode($result);
+    exit;
+}
+
 $headers = function_exists('getallheaders') ? getallheaders() : [];
 
 // Normaliza todas as chaves para minúsculas
