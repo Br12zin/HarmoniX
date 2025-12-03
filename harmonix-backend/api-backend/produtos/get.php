@@ -44,17 +44,16 @@ try {
 
         // Monta a sintaxe SQL de busca
         $sql = "
-            SELECT * 
-            FROM produtos
-            JOIN marcas ON produtos.id_marca = marcas.id_marca
-            WHERE id_marca = :id_marca
-
-        ";
+    SELECT * 
+    FROM produtos
+    JOIN marcas ON produtos.id_marca = marcas.id_marca
+    WHERE produtos.id_marca = :id_marca
+";
 
         // Preparar a sintaxe SQL
         $stmt = $conn->prepare($sql);
         // Vincular o parâmetro :produto com o valor da variável $produto
-        $stmt->bindValue(':id_marca', '%' . $id_marca . '%', PDO::PARAM_STR);
+        $stmt->bindValue(':id_marca', $id_marca, PDO::PARAM_STR);
     } elseif (isset($_GET["id_categoria"]) && is_string($_GET["id_categoria"])) {
         $id_categoria = $_GET["id_categoria"];
 
@@ -110,6 +109,21 @@ try {
         // Preparar a sintaxe SQL
         $stmt = $conn->prepare($sqlProdutos);
         $stmt->bindValue("idCategoria", $idCategoria, PDO::PARAM_INT);
+    } else if (isset($_GET["id_principal"]) && is_numeric($_GET["id_principal"])) {
+
+        $id_principal = $_GET["id_principal"];
+
+        // Seleciona produtos onde a categoria (subcategoria) pertence à categoria principal
+        $sql = "
+            SELECT p.*
+            FROM produtos p
+            INNER JOIN categorias c ON p.id_categoria = c.id_categoria
+            WHERE c.id_principal = :id_principal
+            ORDER BY p.produto
+        ";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id_principal', $id_principal, PDO::PARAM_INT);
     } elseif (isset($_GET["marca"]) && is_string($_GET["marca"])) {
         // Decodifica a URL
         $marcaNome = urldecode($_GET["marca"] ?? "");
@@ -166,7 +180,7 @@ try {
         }
 
         $sql = "
-        SELECT produtos.*, marcas.marca AS nome_marca, categorias.categoria AS nome_categoria
+        SELECT produtos.*, marcas.marca, categorias.categoria
         FROM produtos
         JOIN marcas ON produtos.id_marca = marcas.id_marca
         JOIN categorias ON produtos.id_categoria = categorias.id_categoria

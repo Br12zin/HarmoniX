@@ -33,6 +33,19 @@ try {
         $stmt = $conn->prepare($sql);
         // Vincular o parâmetro :nome com o valor da variável $nome
         $stmt->bindValue(':categoria', '%' . $categoria . '%', PDO::PARAM_STR);
+    } elseif (isset($_GET["id_principal"]) && is_numeric($_GET["id_principal"])) {
+
+        $id_principal = $_GET["id_principal"];
+
+        $sql = "
+            SELECT *
+            FROM categorias
+            WHERE id_principal = :id_principal
+            ORDER BY categoria
+        ";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':id_principal', $id_principal, PDO::PARAM_INT);
     } else {
         // Monta a sintaxe SQL de busca
         $sql = "
