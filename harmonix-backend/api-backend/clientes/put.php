@@ -7,82 +7,85 @@ try {
         throw new Exception('Conexão com o banco de dados não foi estabelecida');
     }
 
-    // Recuperar informações de formulário vindo do Frontend
+    // Recuperar informações do Frontend
     $postfields = json_decode(file_get_contents('php://input'), true);
 
-    // Verificar se existe informações de formulário
-    if (!empty($postfields)) {
-        $id = $postfields['id'] ?? null;
-        $nome = $postfields['nome'] ?? null;
-        $cpf = $postfields['cpf'] ?? null;
-        $email = $postfields['email'] ?? null;
-        $telefone = $postfields['telefone'] ?? null;
-        $endereco = $postfields['endereco']['endereco'] ?? '';
-        $numero = $postfields['endereco']['numero'] ?? '';
-        $complemento = $postfields['endereco']['complemento'] ?? '';
-        $bairro = $postfields['endereco']['bairro'] ?? '';
-        $cidade = $postfields['endereco']['cidade'] ?? '';
-        $estado = $postfields['endereco']['estado'] ?? '';
-        $cep = $postfields['endereco']['cep'] ?? '';
-
-
-        // Verifica campos obrigatórios
-        if (empty($id)) {
-            http_response_code(400);
-            throw new Exception('ID do cliente é obrigatório');
-        }
-        
-
-        $sql = "
-        UPDATE clientes SET 
-            nome = :nome,
-            cpf = :cpf,
-            telefone = :telefone,
-            email = :email, 
-            endereco = :endereco, 
-            numero = :numero, 
-            complemento = :complemento, 
-            bairro = :bairro, 
-            cidade = :cidade,
-            estado = :estado,
-            cep = :cep
-        WHERE cliente_id = :id
-        ";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-        $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
-        $stmt->bindParam(':telefone', $telefone, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':endereco', $endereco);
-        $stmt->bindParam(':numero', $numero);
-        $stmt->bindParam(':complemento', $complemento, is_null($complemento) ? PDO::PARAM_NULL : PDO::PARAM_STR);
-        $stmt->bindParam(':bairro', $bairro);
-        $stmt->bindParam(':cidade', $cidade);
-        $stmt->bindParam(':estado', $estado);
-        $stmt->bindParam(':cep', $cep);
-
-        $stmt->execute();
-
-        $result = array(
-            'status' => 'success',
-            'message' => 'Cliente alterado com sucesso!'
-        );
-    } else {
+    if (empty($postfields)) {
         http_response_code(400);
-        // Se não existir dados, retornar erro
         throw new Exception('Nenhum dado foi enviado!');
     }
+
+    // ID é obrigatório
+    $id = $postfields['id'] ?? null;
+    if (empty($id)) {
+        http_response_code(400);
+        throw new Exception('ID do cliente é obrigatório');
+    }
+
+    // Lista de campos diretos da tabela
+    $camposSimples = [
+        'nome',
+        'cpf',
+        'email',
+        'telefone'
+    ];
+
+    // Campos de endereço
+    $camposEndereco = [
+        'endereco',
+        'numero',
+        'complemento',
+        'bairro',
+        'cidade',
+        'estado',
+        'cep'
+    ];
+
+    $set = [];
+    $params = [':id' => $id];
+
+    // Monta campos simples
+    foreach ($camposSimples as $campo) {
+        if (isset($postfields[$campo])) {
+            $set[] = "$campo = :$campo";
+            $params[":$campo"] = $postfields[$campo];
+        }
+    }
+
+    // Monta campos de endereço
+    if (isset($postfields['endereco']) && is_array($postfields['endereco'])) {
+        foreach ($camposEndereco as $campo) {
+            if (isset($postfields['endereco'][$campo])) {
+                $set[] = "$campo = :$campo";
+                $params[":$campo"] = $postfields['endereco'][$campo];
+            }
+        }
+    }
+
+    // Verifica se existe algo para atualizar
+    if (empty($set)) {
+        http_response_code(400);
+        throw new Exception('Nenhum campo válido para atualizar');
+    }
+
+    // Monta UPDATE dinâmico
+    $sql = "UPDATE clientes SET " . implode(", ", $set) . " WHERE cliente_id = :id";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
+
+    $result = [
+        'status' => 'success',
+        'message' => 'Cliente alterado com sucesso!'
+    ];
 } catch (Exception $e) {
-    // Se houver erro, retorna o erro
-    $result = array(
+
+    $result = [
         'status' => 'error',
-        'message' => $e->getMessage(),
-    );
+        'message' => $e->getMessage()
+    ];
 } finally {
-    // Retorna os dados em formato JSON
+
     echo json_encode($result);
-    // Fecha a conexão com o banco de dados
     $conn = null;
 }
